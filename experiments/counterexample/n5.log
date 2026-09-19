@@ -1,0 +1,24 @@
+=== Fl(C^5) [validation: must be [5]_q!]: n = 5, h = {5, 5, 5, 5, 5}
+  fixed points = 120, GKM edges = 600
+                                 2      3      4      5      6      7     8     9    10
+  Hilbert numerator = 1 + 4T + 9T  + 15T  + 20T  + 22T  + 20T  + 15T  + 9T  + 4T  + T
+                             5
+  denominator       = (1 - T)
+  Betti (coeffs of T^k, T ~ q^2) = {1, 4, 9, 15, 20, 22, 20, 15, 9, 4, 1}
+
+=== WITNESS X1 = Hess(h=(2,3,5,5,5)): n = 5, h = {2, 3, 5, 5, 5}
+  fixed points = 120, GKM edges = 300
+                                   2      3      4    5
+  Hilbert numerator = 1 + 17T + 42T  + 42T  + 17T  + T
+                             5
+  denominator       = (1 - T)
+  Betti (coeffs of T^k, T ~ q^2) = {1, 17, 42, 42, 17, 1}
+
+=== WITNESS X2 = Hess(h=(2,4,4,5,5)): n = 5, h = {2, 4, 4, 5, 5}
+  fixed points = 120, GKM edges = 300
+                                   2      3      4    5
+  Hilbert numerator = 1 + 12T + 47T  + 47T  + 12T  + T
+                             5
+  denominator       = (1 - T)
+  Betti (coeffs of T^k, T ~ q^2) = {1, 12, 47, 47, 12, 1}
+

@@ -70,23 +70,20 @@ so the phenomenon is not special to `n = 5`.
 
 ### What remains to be done on this track
 
-1. **An independent recomputation of the Betti numbers.** Everything above rests on one
-   formula. It passes three sanity checks — `h = (n,…,n)` reproduces `[n]_q!` exactly for
-   `n = 3,4,5`; the totals are `n!` (Euler characteristic = number of fixed points); the
-   polynomials are palindromic (Poincaré duality) — and `β₀` independently matches the
-   predicted component count `C(n,m)` at every break. That is strong but not a proof.
-   Recompute `H*_T` from the GKM presentation of Пример 17 as a graded `Q[t₁,…,t₅]`-module and
-   read off the Hilbert series. **This is the step where Macaulay2 earns its place**; see
-   `RESULTS.md` for the intended computation.
+1. ~~**An independent recomputation of the Betti numbers.**~~ **Done.** `H*_T` was rebuilt in
+   Macaulay2 directly from the GKM presentation of Пример 17 — the kernel of
+   `⊕_{w} R → ⊕_{edges} R/(α_pq)` as a graded `Q[t₁,…,t_n]`-module — and its Hilbert series
+   numerator agrees with the Shareshian–Wachs count on every case, including the three full
+   flag varieties, which reproduce `[n]_q!` exactly for `n = 3,4,5`. The two routes share no
+   input. See `experiments/counterexample/{gkm.m2,gkm_n5.m2}` and `RESULTS.md`.
 2. **Write the section.** Statement, the `Fl(C⁵)` pair, the two indifference graphs, the
    matroid isomorphism, the Betti table, and the deduction. One page.
 3. **Optional.** Push the sweep to `n = 7` to see whether a witness exists with a
    3-connected local matroid (there, 2-isomorphism forces graph isomorphism, so any witness
    must come from a genuinely different mechanism).
 
-**Kill criterion.** Superseded — the search succeeded. The remaining risk is item 1 above: if
-the GKM recomputation disagrees with the Shareshian–Wachs count, the sweep's Betti numbers are
-wrong and the witnesses must be re-derived from the GKM side.
+**Kill criterion.** Superseded — the search succeeded and the independent GKM recomputation
+confirms it. What remains is exposition, not risk.
 
 **Payoff.** The thesis's second declared result becomes a proved statement with a witness small
 enough to print in full.
@@ -247,7 +244,7 @@ and is fully within reach of current Mathlib.
 
 | Window | Items | Gate to the next window |
 |---|---|---|
-| Days 1–30 | Track A item 1 (GKM recomputation in Macaulay2) + write the section; Track B items 1–8; Track C reframing | GKM Hilbert series agrees with the Shareshian–Wachs count |
+| Days 1–30 | Track A: write the counterexample section (computation done); Track B items 1–8; Track C reframing | section drafted; v2 errata applied |
 | Days 31–60 | Track B items 9–12 (v2 of the text); Track G Tier 1 | v2 compiles; Lean Tier 1 target stated and proved |
 | Days 61–90 | Track D warm-up + complexity-1 test; Track E examples | Q1 resolved or reformulated |
 | Beyond | Track F; Track G Tier 2; flag-Dressian poset map | Gated on the kill criteria above |
@@ -264,7 +261,7 @@ and matroids of weights of torus actions*. Tracks E and F are the sequel.
 
 | Risk | Where it bites | Mitigation |
 |---|---|---|
-| The Shareshian–Wachs count is misapplied, invalidating every Betti number in the sweep | Track A | Three sanity checks already pass (`[n]_q!`, totals `= n!`, palindromic, `β₀ =` component count); the GKM recomputation in Macaulay2 is the independent confirmation and is scheduled first |
+| ~~The Shareshian–Wachs count is misapplied~~ | Track A | **Retired.** The Macaulay2 GKM recomputation is independent of that formula and agrees on every case |
 | A referee dismisses a disconnected witness | Track A write-up | The published pair is connected (`Fl(C⁵)`, `h = (2,3,5,5,5)` vs `(2,4,4,5,5)`); the disconnected pairs appear only as remarks |
 | Feichtner–Yuzvinsky restatement changes what Теорема 2 is used for downstream | Track B item 3 | Теорема 2 is cited nowhere else in the thesis; the edit is local |
 | Ayzenberg–Cherepanov `[2]` still unpublished at resubmission | Track B item 12 | Re-check for a journal version before the bibliography freeze |

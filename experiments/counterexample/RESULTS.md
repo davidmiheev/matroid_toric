@@ -36,23 +36,45 @@ In every row the two local weight matroids were confirmed isomorphic by exhausti
 hence `H*_T`, do not. The disconnected rows are valid but cheap: their `β₀` is the component
 count, so the two spaces are separated by counting components. Prefer the connected rows.
 
-## Still owed: the independent GKM recomputation (Macaulay2)
+## The independent GKM recomputation (Macaulay2) — ✅ **done, confirms the witness**
 
-Everything above depends on one formula. The independent check does not use it at all: build
-the GKM ring of Теорема 4 directly and read off its Hilbert series.
+Everything above depends on one formula, so the check was redone from the GKM presentation of
+Теорема 4, using no Shareshian–Wachs input at all. For `R = Q[t₁,…,t_n]`,
 
-For `h` on `[n]`, let `R = Q[t₁,…,t_n]` with `deg tᵢ = 2`. The GKM presentation is the kernel
+    H*_T(Hess(M,h))  =  ker ( ⊕_{w ∈ Sₙ} R  ⟶  ⊕_{edges (p,q)} R/(α_pq) ),
 
-    H*_T(Hess(M,h))  =  ker ( ⊕_{w ∈ Sₙ} R  ⟶  ⊕_{edges (p,q)} R/(α_pq) )
+the map sending `(f_w)` to `(f_p − f_q mod α_pq)`, with an edge between `w` and `w·(j i)` for
+`j < i ⩽ h(j)` of weight `α = t_{w(j)} − t_{w(i)}`. `gkm.m2` builds this kernel as a graded
+module and reads the Betti numbers off `hilbertSeries`; the variables have degree 1, so the
+series variable `T` is cohomological degree 2 and `Hilb = (Σ_k β_{2k} T^k)/(1−T)^n`.
 
-where the map sends `(f_w)` to `(f_p − f_q mod α_pq)`, the sum is over pairs `p, q ∈ Sₙ`
-differing by a transposition `(j i)` with `j < i ⩽ h(j)`, and `α_pq = t_{p(j)} − t_{p(i)}`. In
-Macaulay2 this is a graded module kernel, and `hilbertSeries` gives `P(q)/(1−q²)ⁿ`; the
-numerator must equal the Poincaré polynomial computed here. For `n = 5` the source has rank
-120 over a 5-variable ring — large but well within range; if it is slow, restrict to one
-connected component or use the module of sections over the GKM graph's edge set directly.
+Run: `M2 --script gkm.m2` (n = 3,4) and `M2 --script gkm_n5.m2` (n = 5); Macaulay2 1.22,
+well under a minute each.
 
-Agreement confirms the witness. Disagreement means the Shareshian–Wachs convention is being
-misapplied in `sweep.py`, and every Betti number in this file must be re-derived from the GKM
-side — the matroid isomorphisms are unaffected either way, since they are computed exhaustively
-and independently.
+| case | GKM kernel Hilbert numerator | agrees with `sweep.py` |
+|---|---|---|
+| `Fl(C³)` | `1 + 2T + 2T² + T³` `= [3]_q!` | ✅ |
+| `Fl(C⁴)` | `1 + 3T + 5T² + 6T³ + 5T⁴ + 3T⁵ + T⁶` `= [4]_q!` | ✅ |
+| `Fl(C⁵)` | `1 + 4T + 9T² + 15T³ + 20T⁴ + 22T⁵ + …` `= [5]_q!` | ✅ |
+| `h = (2,3,3,4)` | `4 + 16T + 4T²` | ✅ |
+| `h = (2,2,4,4)` | `6 + 12T + 6T²` | ✅ |
+| **`h = (2,3,5,5,5)`** | **`1 + 17T + 42T² + 42T³ + 17T⁴ + T⁵`** | ✅ |
+| **`h = (2,4,4,5,5)`** | **`1 + 12T + 47T² + 47T³ + 12T⁴ + T⁵`** | ✅ |
+
+The two computations are independent — one counts `G_h`-inversions over `Sₙ`, the other takes
+a module kernel over a polynomial ring — and they agree on every case, including the three
+full flag varieties whose answers are known in advance. The witness stands:
+
+> **`X₁ = Hess(M,(2,3,5,5,5))` and `X₂ = Hess(M,(2,4,4,5,5))` in `Fl(C⁵)` have isomorphic
+> local weight matroids at every fixed point — hence equal `A*(M)` and `OS(M)` — and
+> `H*_T(X₁) ≇ H*_T(X₂)`.**
+
+## Reproducing
+
+```
+python3 sweep.py          # the n = 4,5,6 search             (~4 min, no dependencies)
+python3 verify_pairs.py   # exhaustive matroid isomorphism   (~1 min)
+M2 --script gkm.m2        # GKM recomputation, n = 3,4       (Macaulay2 1.22)
+M2 --script gkm_n5.m2     # GKM recomputation, n = 5
+M2 --script gkm_n6.m2     # GKM recomputation, connected n = 6 pair
+```
