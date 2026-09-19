@@ -10,6 +10,7 @@ program derived from its audit.
 |---|---|
 | `docs/thesis_matroid_invariants_torus_actions.pdf` | The thesis as submitted (20 pp., 18 refs). |
 | `audit/matroid_torus_thesis_audit.md` | Checkpoint audit (CP0–CP4): reference pins, mathematical audit, priority fix table, development program. |
+| `experiments/counterexample/` | The Track A sweep: scripts, verified witness pairs, and what is left to confirm in Macaulay2. |
 | `PLAN.md` | Development plan built from the audit: tracks, milestones, atomic experiments, kill criteria, artifacts. |
 | `docs/lean-formalization-feasibility.md` | Feasibility study for formally verifying the results in Lean 4 / Mathlib, with a tiered target list checked against the current Mathlib tree. |
 
@@ -20,7 +21,9 @@ the linear matroid of weights `S(X)_{⩾pt}`) is sound; its proof is the slice t
 excision plus a GKM computation for the compactified tangent representation, and it agrees
 with Ayzenberg–Cherepanov (arXiv:2203.06282). The advertised *corollary* — that equivariant
 cohomology is not determined by the Chow ring and the Orlik–Solomon algebra of the local
-weight matroid — is asserted in the abstract but never proved in the body. Closing that gap
-is item A in `PLAN.md`, and `PLAN.md` carries a concrete candidate witness pair to verify.
+weight matroid — is asserted in the abstract but never proved in the body. That gap is now closed: a
+machine-verified witness pair lives in `experiments/counterexample/` — two regular semisimple
+Hessenberg varieties in `Fl(C⁵)` with isomorphic local weight matroids at every fixed point and
+different Betti numbers (see `PLAN.md` Track A and `experiments/counterexample/RESULTS.md`).
 Several background statements (Определения 18, 19, Предложение 3, the Boolean expansion of
 the characteristic polynomial, Теорема 2) are wrong as written and have explicit repairs.

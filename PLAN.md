@@ -10,7 +10,7 @@ and both are prerequisites for everything downstream. Tracks C–F are research;
 
 ---
 
-## Track A — Close the MAJOR GAP: the unproved corollary
+## Track A — Close the MAJOR GAP: the unproved corollary  ✅ **witnesses found and verified**
 
 **Target.** An explicit pair `X₁, X₂` of torus manifolds whose local weight matroids
 `S(X_i)_{⩾p}` are isomorphic at every fixed point — hence with equal `A*(M)` and `OS(M)`,
@@ -24,61 +24,75 @@ the edges of the indifference graph `G_h` on `[n]`. So the local weight matroid 
 graphic matroid `M(G_h)`**, relabelled by `w` — in particular it is the *same* matroid at
 every fixed point, and two Hessenberg varieties have matching local matroids exactly when
 `M(G_{h₁}) ≅ M(G_{h₂})`, i.e. (Whitney) when `G_{h₁}` and `G_{h₂}` are 2-isomorphic. This
-reduces the search to a finite graph-theoretic condition and is what makes the experiment
-a one-afternoon computation rather than a search.
+reduces the search to a finite graph-theoretic condition.
 
-**Candidate witness W1 (to verify, not yet proved).** Both inside `Fl(C⁶)` with the same
-`T⁶`-action and the same 720 fixed points:
+**Status: done for `n ⩽ 6`.** `experiments/counterexample/sweep.py` enumerates all Hessenberg
+functions for `n = 4,5,6`, buckets them by the Tutte polynomial of `M(G_h)`, and compares
+Poincaré polynomials `Σ_{w ∈ Sₙ} q^{2·inv_{G_h}(w)}` (Shareshian–Wachs / Tymoczko). Summing
+over all of `Sₙ` makes the `w`-vs-`w^{-1}` convention irrelevant — `w ↦ w^{-1}` is a bijection
+of the index set, so the generating function is unchanged. `verify_pairs.py` then confirms
+each candidate by an **exhaustive ground-set bijection** between the two cycle matroids, since
+Tutte equality alone is not matroid isomorphism. Both scripts are in the repository and their
+output is in `RESULTS.md`.
+
+### The witness to publish
+
+`X₁ = Hess(M, h₁)` and `X₂ = Hess(M, h₂)` in `Fl(C⁵)`, `M` regular semisimple, same `T⁵`,
+120 fixed points each, both **connected**, both of complex dimension 5:
 
 | | `X₁` | `X₂` |
 |---|---|---|
-| Hessenberg function | `h₁ = (3,3,3,6,6,6)` | `h₂ = (3,3,5,5,5,6)` |
-| `G_h` | two disjoint triangles `{1,2,3}`, `{4,5,6}` | triangles `{1,2,3}`, `{3,4,5}` glued at `3`; vertex `6` isolated |
-| edges / complex dimension | 6 | 6 |
-| graphic matroid | `U_{2,3} ⊕ U_{2,3}` | `U_{2,3} ⊕ U_{2,3}` |
+| `h` | `(2,3,5,5,5)` | `(2,4,4,5,5)` |
+| `G_h` | triangle `{3,4,5}` + path `1–2–3` | triangle `{2,3,4}` + edges `12`, `45` |
+| local weight matroid | `U_{2,3} ⊕ U_{2,2}` | `U_{2,3} ⊕ U_{2,2}` (verified isomorphic, exhaustively) |
+| Betti `(β₀,β₂,…,β₁₀)` | `(1, 17, 42, 42, 17, 1)` | `(1, 12, 47, 47, 12, 1)` |
 
-Vertex identification does not change the cycle matroid, so the two local matroids agree
-(rank 4 on 6 elements, both `U_{2,3} ⊕ U_{2,3}`), hence `A*(M₁) ≅ A*(M₂)` and
-`OS(M₁) ≅ OS(M₂)` at every fixed point. Both actions are GKM (regular semisimple Hessenberg
-varieties are smooth with `H^odd = 0`), so equivariant formality gives
-`H*_T(X) ≅ H*(X) ⊗ Sym(t*)` as a module and it suffices to separate the ordinary Betti
-numbers.
+The matroids are isomorphic at every fixed point, so `A*(M)` and `OS(M)` agree; the Betti
+numbers differ, and equivariant formality (`H*_T ≅ H* ⊗ Sym(t*)` as modules) upgrades that to
+`H*_T(X₁) ≇ H*_T(X₂)`. The local matroid has a circuit, so this is not an artifact of a free
+(locally generic) matroid, and both varieties are connected, so they cannot be separated by
+counting components.
 
-*Hand estimate of the separating invariant.* By Shareshian–Wachs, the Poincaré polynomial of
-a regular semisimple Hessenberg variety is `Σ_{w ∈ Sₙ} q^{2·inv_{G_h}(w)}`, so the top Betti
-number is the number of `w` inverting **every** edge of `G_h`. For `X₁` that means choosing a
-linear order inside each triangle independently: `6!/(3!·3!) = 20`. For `X₂` the two triangles
-share a vertex, so the constraints concatenate into a single chain on 5 vertices with one free
-vertex: `6`. **20 ≠ 6** ⇒ `β_top(X₁) ≠ β_top(X₂)` ⇒ `H*_T(X₁) ≇ H*_T(X₂)`.
+### Correction to the first draft of this plan
 
-This is a pencil computation and must be confirmed by machine before it is written down as a
-theorem; the inversion-counting convention (which of `<`/`>` counts, and the `q` vs `q²`
-grading) is exactly the kind of thing that flips a factor.
+The originally proposed witness **W1** — `h₁ = (3,3,3,6,6,6)` vs `h₂ = (3,3,5,5,5,6)` in
+`Fl(C⁶)` — is valid (matroids exhaustively isomorphic, Betti `(20,80,160,200,160,80,20)` vs
+`(6,48,174,264,174,48,6)`), and the hand-computed `20` and `6` are correct. But both varieties
+are **disconnected**: `h₁` breaks at `3` and `h₂` at `5`, giving `C(6,3) = 20` and `C(6,5) = 6`
+components — which is exactly what those coefficients count. A witness separated by its number
+of connected components is cheap, so W1 is demoted to a remark. The same defect afflicts the
+smallest pair of all, `h = (2,3,3,4)` vs `(2,2,4,4)` in `Fl(C⁴)` (dimension 2, local matroid
+free of rank 2, Betti `(4,16,4)` vs `(6,12,6)`): valid, minimal, and disconnected.
 
-**Atomic experiment.**
-1. Enumerate Hessenberg functions for `n = 4,5,6`; build `G_h`; compute `M(G_h)` and bucket by
-   matroid isomorphism class (`polymake`/`sage`, or a 40-line Python matroid-isomorphism check
-   on such small ground sets).
-2. Within each bucket compute Poincaré polynomials two independent ways: the GKM presentation
-   of Пример 17 (Macaulay2 + `AntonAyzenberg/GKM-homology`) and the chromatic quasisymmetric
-   function / `inv_{G_h}` count. They must agree; disagreement means the convention is wrong,
-   not the mathematics.
-3. Confirm W1 specifically, and report the full matroid-matched / Betti-mismatched table.
+Connected witnesses also exist at `n = 6` — e.g. `(2,3,4,6,6,6)` vs `(2,3,5,5,6,6)`, local
+matroid `U_{2,3} ⊕ U_{3,3}`, Betti `(1,43,179,274,179,43,1)` vs `(1,29,175,310,175,29,1)` —
+so the phenomenon is not special to `n = 5`.
 
-**Kill criterion.** No matroid-matched, Betti-mismatched pair for `n ⩽ 6` (i.e. W1 fails on
-inspection and nothing replaces it) ⇒ fall back to `Gr(2,n)` versus a partial Hessenberg
-variety, or drop equivariant formality; if that also fails, the corollary must be retracted
-from the abstract rather than restated.
+### What remains to be done on this track
 
-**Payoff.** The thesis's second declared result becomes a proved statement, with a witness
-that is small enough to print in full.
+1. **An independent recomputation of the Betti numbers.** Everything above rests on one
+   formula. It passes three sanity checks — `h = (n,…,n)` reproduces `[n]_q!` exactly for
+   `n = 3,4,5`; the totals are `n!` (Euler characteristic = number of fixed points); the
+   polynomials are palindromic (Poincaré duality) — and `β₀` independently matches the
+   predicted component count `C(n,m)` at every break. That is strong but not a proof.
+   Recompute `H*_T` from the GKM presentation of Пример 17 as a graded `Q[t₁,…,t₅]`-module and
+   read off the Hilbert series. **This is the step where Macaulay2 earns its place**; see
+   `RESULTS.md` for the intended computation.
+2. **Write the section.** Statement, the `Fl(C⁵)` pair, the two indifference graphs, the
+   matroid isomorphism, the Betti table, and the deduction. One page.
+3. **Optional.** Push the sweep to `n = 7` to see whether a witness exists with a
+   3-connected local matroid (there, 2-isomorphism forces graph isomorphism, so any witness
+   must come from a genuinely different mechanism).
 
-**Artifact.** `experiments/counterexample/` — enumeration script, `counterexample.m2`, the
-matroid-class table, and a one-page section for the thesis text.
+**Kill criterion.** Superseded — the search succeeded. The remaining risk is item 1 above: if
+the GKM recomputation disagrees with the Shareshian–Wachs count, the sweep's Betti numbers are
+wrong and the witnesses must be re-derived from the GKM side.
 
-**Note for the write-up.** If only a cross-dimensional witness survives (e.g. `h = (3,3,5,5,5)`
-in `Fl(C⁵)` against `h₁` above in `Fl(C⁶)`), it still proves the claim but invites the objection
-that the acting torus differs; prefer the equal-`n` pair W1 and mention the other as a remark.
+**Payoff.** The thesis's second declared result becomes a proved statement with a witness small
+enough to print in full.
+
+**Artifact.** `experiments/counterexample/{sweep.py,verify_pairs.py}` + `RESULTS.md`, and a
+one-page section for the thesis text.
 
 ---
 
@@ -233,7 +247,7 @@ and is fully within reach of current Mathlib.
 
 | Window | Items | Gate to the next window |
 |---|---|---|
-| Days 1–30 | Track A (verify W1 + full table); Track B items 1–8; Track C reframing | A closed or explicitly killed |
+| Days 1–30 | Track A item 1 (GKM recomputation in Macaulay2) + write the section; Track B items 1–8; Track C reframing | GKM Hilbert series agrees with the Shareshian–Wachs count |
 | Days 31–60 | Track B items 9–12 (v2 of the text); Track G Tier 1 | v2 compiles; Lean Tier 1 target stated and proved |
 | Days 61–90 | Track D warm-up + complexity-1 test; Track E examples | Q1 resolved or reformulated |
 | Beyond | Track F; Track G Tier 2; flag-Dressian poset map | Gated on the kill criteria above |
@@ -250,8 +264,8 @@ and matroids of weights of torus actions*. Tracks E and F are the sequel.
 
 | Risk | Where it bites | Mitigation |
 |---|---|---|
-| W1 fails on the convention check | Track A, the whole 30-day window | Two independent computations (GKM presentation vs. `inv_{G_h}`) are mandated in the protocol; full `n ⩽ 6` sweep runs regardless of W1 |
-| Cross-dimensional witness only | Track A write-up | Stated as a remark, not the theorem; equal-`n` pair preferred |
+| The Shareshian–Wachs count is misapplied, invalidating every Betti number in the sweep | Track A | Three sanity checks already pass (`[n]_q!`, totals `= n!`, palindromic, `β₀ =` component count); the GKM recomputation in Macaulay2 is the independent confirmation and is scheduled first |
+| A referee dismisses a disconnected witness | Track A write-up | The published pair is connected (`Fl(C⁵)`, `h = (2,3,5,5,5)` vs `(2,4,4,5,5)`); the disconnected pairs appear only as remarks |
 | Feichtner–Yuzvinsky restatement changes what Теорема 2 is used for downstream | Track B item 3 | Теорема 2 is cited nowhere else in the thesis; the edit is local |
 | Ayzenberg–Cherepanov `[2]` still unpublished at resubmission | Track B item 12 | Re-check for a journal version before the bibliography freeze |
 | Mathlib refactors the `Matroid` API mid-effort | Track G | Pin a Mathlib commit in `lakefile`; the Tier 1 targets touch few files |
