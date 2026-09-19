@@ -1,0 +1,16 @@
+=== CONNECTED n=6 X1 = Hess(h=(2,3,4,6,6,6)): n = 6, h = {2, 3, 4, 6, 6, 6}
+  fixed points = 720, GKM edges = 2160
+                                    2       3       4      5    6
+  Hilbert numerator = 1 + 43T + 179T  + 274T  + 179T  + 43T  + T
+                             6
+  denominator       = (1 - T)
+  Betti (coeffs of T^k, T ~ q^2) = {1, 43, 179, 274, 179, 43, 1}
+
+=== CONNECTED n=6 X2 = Hess(h=(2,3,5,5,6,6)): n = 6, h = {2, 3, 5, 5, 6, 6}
+  fixed points = 720, GKM edges = 2160
+                                    2       3       4      5    6
+  Hilbert numerator = 1 + 29T + 175T  + 310T  + 175T  + 29T  + T
+                             6
+  denominator       = (1 - T)
+  Betti (coeffs of T^k, T ~ q^2) = {1, 29, 175, 310, 175, 29, 1}
+

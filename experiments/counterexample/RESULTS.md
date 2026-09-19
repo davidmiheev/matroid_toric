@@ -48,8 +48,9 @@ the map sending `(f_w)` to `(f_p − f_q mod α_pq)`, with an edge between `w` a
 module and reads the Betti numbers off `hilbertSeries`; the variables have degree 1, so the
 series variable `T` is cohomological degree 2 and `Hilb = (Σ_k β_{2k} T^k)/(1−T)^n`.
 
-Run: `M2 --script gkm.m2` (n = 3,4) and `M2 --script gkm_n5.m2` (n = 5); Macaulay2 1.22,
-well under a minute each.
+Run: the three scripts listed under "Reproducing" below. Macaulay2 1.22; under a minute
+through n = 5, a few minutes for the connected n = 6 pair (720 fixed points, 2160 GKM edges
+over 6 variables).
 
 | case | GKM kernel Hilbert numerator | agrees with `sweep.py` |
 |---|---|---|
@@ -60,6 +61,8 @@ well under a minute each.
 | `h = (2,2,4,4)` | `6 + 12T + 6T²` | ✅ |
 | **`h = (2,3,5,5,5)`** | **`1 + 17T + 42T² + 42T³ + 17T⁴ + T⁵`** | ✅ |
 | **`h = (2,4,4,5,5)`** | **`1 + 12T + 47T² + 47T³ + 12T⁴ + T⁵`** | ✅ |
+| `h = (2,3,4,6,6,6)` | `1 + 43T + 179T² + 274T³ + 179T⁴ + 43T⁵ + T⁶` | ✅ |
+| `h = (2,3,5,5,6,6)` | `1 + 29T + 175T² + 310T³ + 175T⁴ + 29T⁵ + T⁶` | ✅ |
 
 The two computations are independent — one counts `G_h`-inversions over `Sₙ`, the other takes
 a module kernel over a polynomial ring — and they agree on every case, including the three
