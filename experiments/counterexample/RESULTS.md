@@ -72,6 +72,19 @@ full flag varieties whose answers are known in advance. The witness stands:
 > local weight matroids at every fixed point — hence equal `A*(M)` and `OS(M)` — and
 > `H*_T(X₁) ≇ H*_T(X₂)`.**
 
+## Files
+
+| File | What it does |
+|---|---|
+| `sweep.py` | Enumerates Hessenberg functions for `n = 4,5,6`, buckets by Tutte polynomial of `M(G_h)`, compares Poincaré polynomials. Output: `sweep.log`. |
+| `verify_pairs.py` | Exhaustive matroid-isomorphism confirmation for the candidate pairs + the sanity checks on the Poincaré formula. Output: `verify_pairs.log`. |
+| `gkm.m2` | The GKM kernel construction and Hilbert-series reader; runs the `n = 3,4` cases. Output: `gkm_n34.log`. |
+| `gkm_n5.m2` | Same construction, `Fl(C⁵)` validation + the witness pair. Output: `n5.log`. |
+| `gkm_n6.m2` | Same construction, the connected `n = 6` pair. Output: `n6.log`. |
+
+`gkm_n5.m2` and `gkm_n6.m2` reuse the first 58 lines of `gkm.m2` verbatim (the `gkmBetti`,
+`coeffList` and `doCase` definitions) and differ only in the cases they run.
+
 ## Reproducing
 
 ```
