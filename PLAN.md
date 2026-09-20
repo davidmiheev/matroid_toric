@@ -232,11 +232,127 @@ next theorem after Теорема 1: local-to-global matroid invariants on the f
 
 ## Track G — Formal verification (Lean 4 / Mathlib)
 
-Scoped in `docs/lean-formalization-feasibility.md`. Summary of the verdict: the matroid and
-commutative-algebra layers are formalizable today; the equivariant-topology layer is not, and
-will not be for years. The valuable near-term target is **Track B item 8** — the
-unique-factorization step of the main theorem — which is the mathematical heart of Теорема 5
-and is fully within reach of current Mathlib.
+The Mathlib survey behind this track is in `docs/lean-formalization-feasibility.md`; that file
+records what exists today, file by file. This section is the actionable list: what can be
+formalized, in what order, and what each item buys.
+
+**The verdict in one line.** The main theorem *as stated* is out of reach — equivariant
+cohomology, the Borel construction, excision, the LES of a pair, equivariant Euler classes and
+the slice theorem are all absent from Mathlib, and singular cohomology does not exist at all
+(singular *homology* arrived recently and consists of the chain-complex functor, `H₀`, and
+homotopy invariance). But the thesis's main theorem factors into a topological half and an
+algebraic half, and **the algebraic half — the part the thesis itself states loosely — is
+fully formalizable today.** That is the arc worth pursuing: G1 → G2 → G7 gives a
+machine-checked proof of everything in Теорема 5 downstream of the GKM theorem.
+
+### The core arc
+
+**G1 — The linear matroid of a family of vectors.** *(prerequisite for most of the rest)*
+Build `Matroid.ofVectors : (ι → V) → Matroid ι` from `LinearIndepOn`, via the augmentation
+axiom in `Matroid/IndepAxioms.lean`. Mathlib has a mature `Matroid` API but **no vector
+matroid**, which is the one object this whole thesis is about (Определение 19, once repaired
+per Track B item 7). Self-contained, upstreamable, useful far beyond this project.
+*Estimate 300–600 lines. Kill criterion: none — if it turns out to be in flight upstream,
+adopt that version instead (check the Mathlib PR queue first).*
+
+**G2 — The unique-factorization step of Теорема 5.** *(the mathematical heart)* Over a field
+`k`, the principal ideal `(∏ⱼ αⱼ) ⊆ k[t₁,…,t_k]` determines the multiset `{αⱼ}` up to units —
+hence determines the linear matroid of weights **including multiplicities**. This is exactly
+Track B item 8: the thesis detours through a hyperplane arrangement, which loses parallel
+elements, where the ideal itself does not.
+
+```lean
+-- sketch; the statement is the deliverable, the proof follows
+theorem span_prod_eq_iff (α β : Multiset (MvPolynomial σ k))
+    (hα : ∀ p ∈ α, p.totalDegree = 1) (hβ : ∀ p ∈ β, p.totalDegree = 1) :
+    Ideal.span {α.prod} = Ideal.span {β.prod} ↔ Multiset.Rel Associated α β
+```
+
+Ingredients present: `MvPolynomial.uniqueFactorizationMonoid`,
+`UniqueFactorizationMonoid.factors_unique`, `Ideal.span_singleton_eq_span_singleton`. The one
+lemma to prove from scratch is **G2a**: a nonzero form of total degree 1 is irreducible in
+`MvPolynomial σ k` — a short degree argument. With G1, state the corollary in matroid terms:
+the ideal determines `Matroid.ofVectors α` up to isomorphism.
+*Estimate 200–400 lines. Payoff: the vaguest sentence in the thesis becomes machine-checked.*
+
+**G7 — GKM-as-definition, and Предложение 5.** Define, for a finite weighted graph `(G, α)`
+over `R = k[t₁,…,t_k]`, the module of graph functions
+
+```lean
+def gkmRing (G : SimpleGraph V) (α : G.edgeSet → R) : Submodule R (V → R) :=
+  { f | ∀ e ∈ G.edgeSet, f e.1 - f e.2 ∈ Ideal.span {α e} }
+```
+
+and prove Предложение 5 in that setting: for the two-vertex, `n`-edge graph (the compactified
+tangent representation `S^{2n}`), the relative object is the principal ideal `(∏ⱼ αⱼ)`. This is
+pure module theory over a polynomial ring — precisely what the Macaulay2 computation in
+`experiments/counterexample/` did numerically. Composed with G2 it yields: **the local
+equivariant cohomology of a GKM manifold at a fixed point determines the weight matroid with
+multiplicities**, formally, with the GKM theorem (Теорема 4) as an explicit axiom rather than a
+verified result. *Estimate 400–800 lines. The boundary must be labelled in the write-up: what
+is verified is the algebra, not that this ring is the equivariant cohomology of a manifold.*
+
+### Formalizing the repaired background section
+
+These three correspond one-to-one with Track B repairs, which is the honest place for formal
+verification to add value here — the background section is where the thesis's actual errors are.
+
+**G3 — Lattice of flats; geometric lattices.** Put a `Lattice` (ideally `CompleteLattice`)
+instance on `{F // M.IsFlat F}`; define `GeometricLattice` (graded, atomistic, semimodular) and
+instantiate it on the flats of a finite matroid. Mathlib has `Matroid.IsFlat` as a *predicate*
+only — no lattice instance — plus `Order/Atoms` and `IsModularLattice` to build on. This is the
+prerequisite for G4, G5 and G6, and is upstreamable on its own. *Estimate 400–800 lines.*
+
+**G4 — Characteristic polynomial and Whitney's Boolean expansion.** *(repairs Track B item 5)*
+Define `χ_M(t) = Σ_{F ∈ ℒ_M} µ(0̂,F) t^{r(E)−r(F)}` using `IncidenceAlgebra.mu` on the flat
+lattice from G3, then prove `χ_M(t) = Σ_{A ⊆ E} (−1)^{|A|} t^{r(E)−r(A)}` for loopless `M` by
+Möbius inversion along the closure map. The thesis's version sums `µ(0̂,A)` over arbitrary
+subsets, which is ill-formed — `µ` lives on flats. *Estimate 300–600 lines on top of G3.*
+
+**G5 — Philip Hall, combinatorial form.** *(repairs Track B item 4)* Prove
+`µ(0̂,1̂) = Σ_i (−1)^i cᵢ`, where `cᵢ` counts `i`-chains in `ℒ∖{0̂,1̂}`. This is a Möbius-algebra
+identity, formalizable today, and it delivers the corrected Предложение 3 — `χ̃ = µ(0̂,1̂)` with
+the sign `(−1)^r` — **without** needing the topological reading. The wedge-of-spheres route
+needs shellability and simplicial homology and stays out of scope. *Estimate 300–500 lines on
+top of G3. Kill criterion: none; the combinatorial route is known to work.*
+
+### Reach
+
+**G6 — The combinatorial core of Теорема 7.** Stated linear-algebraically, with the slice
+theorem as a hypothesis rather than a goal: for weights `α : ι → Qᵏ`, the poset of subspaces
+`{V^H}` ordered by inclusion is isomorphic to the lattice of flats `ℒ_α` via orthogonal
+complement. Replacing closed subgroups of `T` by subspaces of the character lattice makes this
+formalizable, and it is the honest way to verify Теорема 7, whose geometric input is entirely
+in the slice theorem. *Depends on G1 and G3. Estimate 600–1000 lines.*
+
+**G8 — The Track A counterexample in Lean.** *(stretch; do not schedule)* With G7 the Betti
+numbers of the witness pair are *definable* as the Hilbert function of the GKM module, so the
+counterexample becomes a statement Lean can express: two explicit weighted graphs with
+isomorphic local matroids and different Hilbert functions. Expressing it is not proving it —
+Mathlib has no Gröbner bases and no Hilbert-series machinery, and a 120-vertex kernel dimension
+count is not going to fall to `decide`. The matroid half (an explicit bijection between two
+6-element ground sets, checked finitely) is reachable; the Hilbert-function half is not.
+*Kill criterion: if the `n = 4` pair (24 vertices, 24 edges) cannot be evaluated, abandon —
+do not build Gröbner bases for this.*
+
+### Explicitly out of scope
+
+Теорема 1/5/8 as stated, Предложение 4 (equivariant formality), Лемма 1 (Chang–Skjelbred), the
+GKM theorem itself, and the topological reading of Предложение 3. Each needs foundations that
+do not exist: singular cohomology with cup products, relative cohomology and the LES of a pair,
+excision, the Borel construction, equivariant Euler classes, Bredon's slice theorem. That is a
+multi-year, multi-person foundational program on the scale of the Liquid Tensor Experiment, and
+attaching it to this thesis would be a category error.
+
+### Ordering and setup
+
+`G1 → G2` first (small, self-contained, closes the thesis's own exposition gap), then `G3 → G4,
+G5` (the repaired background section), then `G7` (which needs only G2), then `G6`. Pin Mathlib
+to a fixed commit in `lakefile.lean` — the `Matroid` API is under active development — and work
+in a `lean/` subdirectory. State every target as `theorem … := by sorry` first, so the
+*statements* can be reviewed independently of the proofs; a wrong statement proved correctly is
+the standard failure mode of a formalization project. G1 and G3 should be offered upstream
+rather than kept local.
 
 ---
 
@@ -245,9 +361,9 @@ and is fully within reach of current Mathlib.
 | Window | Items | Gate to the next window |
 |---|---|---|
 | Days 1–30 | Track A: write the counterexample section (computation done); Track B items 1–8; Track C reframing | section drafted; v2 errata applied |
-| Days 31–60 | Track B items 9–12 (v2 of the text); Track G Tier 1 | v2 compiles; Lean Tier 1 target stated and proved |
+| Days 31–60 | Track B items 9–12 (v2 of the text); Track G items G1, G2 | v2 compiles; `span_prod_eq_iff` proved, `Matroid.ofVectors` offered upstream |
 | Days 61–90 | Track D warm-up + complexity-1 test; Track E examples | Q1 resolved or reformulated |
-| Beyond | Track F; Track G Tier 2; flag-Dressian poset map | Gated on the kill criteria above |
+| Beyond | Track F; Track G items G3–G5 (then G7, G6); flag-Dressian poset map | Gated on the kill criteria above |
 
 ## Paperability
 

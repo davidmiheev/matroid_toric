@@ -138,3 +138,25 @@ GKM, this is an honest and useful boundary — but it must be labelled as such.
 API is under active development and has moved recently); work in a `lean/` subdirectory of this
 repository with `lake exe cache get` in CI; state each target as a `theorem … := by sorry`
 skeleton first so that the statement can be reviewed independently of the proof.
+
+---
+
+## Mapping to `PLAN.md` Track G
+
+`PLAN.md` carries the scheduled, actionable version of this list; this file is the Mathlib
+survey it rests on. The identifiers correspond as follows.
+
+| Here | `PLAN.md` | Item |
+|---|---|---|
+| T1.1 | **G2** (+ **G2a**) | Unique-factorization step of Теорема 5 |
+| T1.2 | **G1** | Linear matroid of a family of vectors |
+| T1.3 | **G4** | Characteristic polynomial, Whitney's expansion |
+| T2.1 | **G3** | Lattice of flats, geometric lattices |
+| T2.2 | **G6** | Combinatorial core of Теорема 7 |
+| T2.3(a) | **G5** | Philip Hall, combinatorial form |
+| GKM-as-definition escape (§2, Tier 3) | **G7** | `gkmRing`, Предложение 5 |
+| — | **G8** | The Track A counterexample in Lean (stretch; expressible, not provable) |
+| Tier 3 | out of scope | Теорема 1/5/8 as stated, Лемма 1, GKM theorem, Предложение 4 |
+
+If one file is edited, edit the other: the survey moves when Mathlib moves, the plan moves when
+priorities move.
