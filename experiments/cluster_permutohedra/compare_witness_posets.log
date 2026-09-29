@@ -1,0 +1,3 @@
+Cl(Gamma_h1 = (2,3,5,5,5)): elements by rank = [120, 300, 200, 35, 1]
+Cl(Gamma_h2 = (2,4,4,5,5)): elements by rank = [120, 300, 190, 35, 1]
+rank counts equal: False => face posets are NOT isomorphic

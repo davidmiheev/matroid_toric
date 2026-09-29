@@ -10,20 +10,22 @@ program derived from its audit.
 |---|---|
 | `docs/thesis_matroid_invariants_torus_actions.pdf` | The thesis as submitted (20 pp., 18 refs). |
 | `audit/matroid_torus_thesis_audit.md` | Checkpoint audit (CP0–CP4): reference pins, mathematical audit, priority fix table, development program. |
+| `docs/thesis-v2/` | **Revised English edition** of the thesis (`thesis_en.pdf`, 22 pp.): all errata applied, counterexample proved in §4.5. `CHANGES.md` logs every change against the audit, including where the audit itself was wrong. |
+| `experiments/cluster_permutohedra/` | Homology of cluster-permutohedra behind the corrected Examples 4.29–4.30, and the global-poset comparison for the witness pair. |
 | `experiments/counterexample/` | The Track A sweep: scripts, verified witness pairs, and what is left to confirm in Macaulay2. |
 | `PLAN.md` | Development plan built from the audit: tracks, milestones, atomic experiments, kill criteria, artifacts. |
 | `docs/lean-formalization-feasibility.md` | Feasibility study for formally verifying the results in Lean 4 / Mathlib, with a tiered target list checked against the current Mathlib tree. |
 
 ## Status in one paragraph
 
-The main theorem (Теорема 1 = 5 = 8: local equivariant cohomology `H*_T(X, X∖pt)` determines
-the linear matroid of weights `S(X)_{⩾pt}`) is sound; its proof is the slice theorem plus
-excision plus a GKM computation for the compactified tangent representation, and it agrees
-with Ayzenberg–Cherepanov (arXiv:2203.06282). The advertised *corollary* — that equivariant
-cohomology is not determined by the Chow ring and the Orlik–Solomon algebra of the local
-weight matroid — is asserted in the abstract but never proved in the body. That gap is now closed: a
-machine-verified witness pair lives in `experiments/counterexample/` — two regular semisimple
-Hessenberg varieties in `Fl(C⁵)` with isomorphic local weight matroids at every fixed point and
-different Betti numbers (see `PLAN.md` Track A and `experiments/counterexample/RESULTS.md`).
-Several background statements (Определения 18, 19, Предложение 3, the Boolean expansion of
-the characteristic polynomial, Теорема 2) are wrong as written and have explicit repairs.
+The main theorem (local equivariant cohomology `H*_T(X, X∖pt)`, viewed as an ideal of
+`H*_T(pt)`, determines the linear matroid of weights with multiplicities, and hence
+`S(X)_{⩾pt}`) is sound. v2 gives it a correct general proof: the Thom isomorphism plus unique
+factorization. The original's GKM-based proof of the key proposition needed pairwise
+independent weights. The advertised corollary, that local weight matroids and hence their Chow
+rings and Orlik–Solomon algebras do not determine `H*_T`, was unproved in the original and is
+now **Theorem 4.35** of v2. The witness is two connected regular semisimple Hessenberg
+varieties in `Fl(C⁵)`, confirmed by exhaustive matroid isomorphism and by two independent
+Betti-number computations. All errata are applied in the English v2 (`docs/thesis-v2/`).
+Verifying them against the primary sources also showed that the audit itself was wrong in a
+few places (see `docs/thesis-v2/CHANGES.md`).
