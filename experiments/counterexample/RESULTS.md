@@ -85,6 +85,20 @@ full flag varieties whose answers are known in advance. The witness stands:
 `gkm_n5.m2` and `gkm_n6.m2` reuse the first 58 lines of `gkm.m2` verbatim (the `gkmBetti`,
 `coeffList` and `doCase` definitions) and differ only in the cases they run.
 
+## The matrix `M`
+
+**Choice of `M`.** `M` is any regular semisimple matrix (distinct eigenvalues); take
+`M = diag(1,2,3,4,5)`. Nothing depends on the choice: `Hess(gDg⁻¹,h) = g·Hess(D,h)` reduces to the
+diagonal case, and regular semisimple Hessenberg varieties with fixed `h` form a smooth proper
+family over the connected set of regular diagonal matrices, so their topology is independent of
+the eigenvalues. The computations never choose `M` at all — they use only the GKM data (fixed
+points = coordinate flags `w ∈ S₅`, weights `t_{w(i)} − t_{w(j)}`), and the only property of `M`
+behind that data is that a diagonal `M` preserves every coordinate subspace. Explicitly, with
+flags `V₁ ⊂ ⋯ ⊂ V₄ ⊂ C⁵`: `X₁ = {MV₁ ⊂ V₂, MV₂ ⊂ V₃}` and `X₂ = {MV₁ ⊂ V₂, MV₂ ⊂ V₄, MV₃ ⊂ V₄}`.
+The diagonal torus `T⁵` acts with the scalars acting trivially, so the effective torus has rank 4
+(the weights lie in the sum-zero hyperplane) and both actions have **complexity `5 − 4 = 1`** —
+the positive-complexity setting of the thesis, not the toric case.
+
 ## Reproducing
 
 ```
