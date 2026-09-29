@@ -1,8 +1,22 @@
 \documentclass[11pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
+% Compile with XeLaTeX. Fonts reproduce the 2022 original: TeX Gyre Pagella text;
+% Euler math letters (Latin and Greek, eulervm's zeur); newpx symbols and
+% extension fonts; Latin Modern math operators and digits; bbold blackboard bold;
+% Euler fraktur. The load order eulervm -> newpxmath -> Euler letters matches the
+% set of fonts embedded in the original PDF.
 \usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{eulervm}
+\usepackage{newpxmath}
+\DeclareSymbolFont{letters}{U}{zeur}{m}{n}
+\SetSymbolFont{letters}{bold}{U}{zeur}{b}{n}
+% eulervm routes these to its own fonts; newpxmath does not re-declare them.
+\DeclareMathSymbol{:}{\mathrel}{operators}{"3A}
+\DeclareMathSymbol{\infty}{\mathord}{symbols}{"31}
+\DeclareMathAlphabet{\mathfrak}{U}{euf}{m}{n}
+\SetMathAlphabet{\mathfrak}{bold}{U}{euf}{b}{n}
+\usepackage{bbold}
+\usepackage[no-math]{fontspec}
+\setmainfont{TeX Gyre Pagella}
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{enumitem,booktabs,array}
 \usepackage{tikz}
@@ -51,6 +65,7 @@
 \DeclareMathOperator{\OS}{OS}
 
 \emergencystretch=3em
+\hyphenation{Ay-zen-berg Che-re-pa-nov Bu-chs-ta-ber So-lo-ma-din equi-vari-antly}
 \begin{document}
 
 \begin{titlepage}
@@ -807,7 +822,7 @@ We have examined the face poset $S(X)$ and described it for important examples: 
 
 Several questions remain open. The first is whether the face poset determines the Betti numbers of an equivariantly formal torus manifold (Question~\ref{q:betti}). The second is how the face poset of the flag variety relates to the flag Dressian (Question~\ref{q:trop2}). Finally, the signs of the weights played no role in this work. When $X$ carries a $T$-invariant stably complex structure, the weights have well-defined signs, and $S(X)_{\geqslant pt}$ refines to an \emph{oriented} matroid; the resulting constructions remain to be developed.
 
-Combinatorial constructions make it possible to compute topological invariants by computer. For the computations in this work the author used the repository \texttt{AntonAyzenberg/GKM-homology} of A.~Ayzenberg, the system Macaulay2 of D.~Grayson and M.~Stillman~\cite{M2}, and the program polymake of E.~Gawrilow and M.~Joswig~\cite{GJ00}. The programs behind the computations of this edition are described in Appendix~\ref{app:computations}.
+Combinatorial constructions make it possible to compute topological invariants by computer. For the computations in this work the author used the repository \nolinkurl{AntonAyzenberg/GKM-homology} of A.~Ayzenberg, the system Macaulay2 of D.~Grayson and M.~Stillman~\cite{M2}, and the program polymake of E.~Gawrilow and M.~Joswig~\cite{GJ00}. The programs behind the computations of this edition are described in Appendix~\ref{app:computations}.
 
 \appendix
 \section{Computations}\label{app:computations}
@@ -817,7 +832,7 @@ All programs are in the directory \texttt{experiments/} of the repository \url{h
 \paragraph{Hessenberg varieties (\nolinkurl{experiments/counterexample/}).}
 The script \texttt{sweep.py} enumerates all Hessenberg functions for $n=4,5,6$. It groups them by the Tutte polynomial of $M(\Gamma_h)$ and compares the Poincaré polynomials $\sum_wq^{2\ell_h(w)}$. The script \texttt{verify\_pairs.py} confirms each candidate pair by an exhaustive search for a bijection of the ground sets preserving independent sets, since equality of Tutte polynomials does not imply isomorphism. It also checks that $h=(n,\dots,n)$ gives $[n]_q!$ for $n=3,4,5$, that the Betti numbers sum to $n!$, and that the polynomials are palindromic. The Macaulay2 scripts \texttt{gkm.m2}, \texttt{gkm\_n5.m2} and \texttt{gkm\_n6.m2} compute $\HT(\Hess(M,h))$ as the kernel of
 \[
-\bigoplus_{w\in S_n}\Q[t_1,\dots,t_n]\longrightarrow\bigoplus_{\text{edges }\{p,q\}}\Q[t_1,\dots,t_n]/(\alpha_{pq}),\qquad(f_w)\mapsto(f_p-f_q),
+\bigoplus_{w\in S_n}\Q[t_1,\dots,t_n]\to\bigoplus_{\text{edges }\{p,q\}}\Q[t_1,\dots,t_n]/(\alpha_{pq}),\qquad(f_w)\mapsto(f_p-f_q),
 \]
 and read the Betti numbers off its Hilbert series. The two computations share no input and agree in all cases:
 

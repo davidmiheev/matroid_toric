@@ -6,8 +6,17 @@ source of the original was not available, so this is a fresh source. It is a
 faithful translation with corrections, not a new paper: the section structure,
 examples and scope are kept.
 
-Build: `pdflatex thesis_en.tex` twice (needs `tikz`, `microtype`, `xurl`,
-`enumitem`, `booktabs`). The figure is generated into `fig_u45.tex`.
+Build: `xelatex thesis_en.tex` twice (needs `fontspec`, `eulervm`, `newpx`, `bbold`,
+`tikz`, `microtype`, `xurl`, `enumitem`, `booktabs`; on Debian/Ubuntu:
+`texlive-xetex texlive-fonts-extra`). The figure is generated into `fig_u45.tex`.
+
+Typography reproduces the original, which was built with XeLaTeX: TeX Gyre Pagella text,
+Euler math letters (Latin and Greek), newpx symbol and extension fonts, Latin Modern math
+operators and digits, `bbold` blackboard bold, Euler fraktur. The configuration was derived
+by comparing the fonts embedded in the two PDFs (`pdffonts`). It has to work around
+`eulervm`, which under XeLaTeX's `TU` encoding leaves the math accents undefined and routes
+`:` and `\infty` to fonts that are no longer loaded; the preamble comments say where. The
+page size is A4; the original was US letter.
 
 Every claim that was changed was checked against its primary source (arXiv full
 text or Crossref metadata), not taken from the audit on trust. Audit item IDs refer
