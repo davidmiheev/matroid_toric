@@ -1,0 +1,55 @@
+_application fan
+_version 2.2
+_type SymmetricFan
+
+AMBIENT_DIM
+6
+
+DIM
+5
+
+LINEALITY_DIM
+4
+
+RAYS
+-2 1 1 1 1 -2	# 0
+1 -2 1 1 -2 1	# 1
+1 1 -2 -2 1 1	# 2
+
+N_RAYS
+3
+
+LINEALITY_SPACE
+1 0 0 0 0 -1
+0 1 0 0 -1 0
+0 0 1 0 1 1
+0 0 0 1 1 1
+
+ORTH_LINEALITY_SPACE
+1 0 -1 -1 0 1
+0 1 -1 -1 1 0
+
+F_VECTOR
+1 3
+
+SIMPLICIAL
+1
+
+PURE
+1
+
+CONES
+{}	# Dimension 4
+{0}	# Dimension 5
+{1}
+{2}
+
+MAXIMAL_CONES
+{0}	# Dimension 5
+{1}
+{2}
+
+MULTIPLICITIES
+1	# Dimension 5
+1
+1
