@@ -853,7 +853,7 @@ $h=(2,3,5,5,6,6)$ & $(1,29,175,310,175,29,1)$ & both methods\\
 \end{center}
 
 \paragraph{Cluster-permutohedra (\nolinkurl{experiments/cluster_permutohedra/}).}
-The script \texttt{cl\_homology.py} builds $\Cl_\Gamma$ from Construction~\ref{con:cluster} and the order complex of $\Cl_\Gamma\setminus\{\hat1\}$. It computes the Betti numbers over $\mathbb F_p$ for two large primes and checks them against the Euler characteristic.
+The script \texttt{cl\_homology.py} builds $\Cl_\Gamma$ from Construction~\ref{con:cluster} and the order complex of $\Cl_\Gamma\setminus\{\hat1\}$. It computes the Betti numbers over $\mathbb F_p$ for two large primes and checks them against the Euler characteristic. As an independent check, the maximal chains are exported (\texttt{export\_facets.py}) and the integral homology is computed with polymake~\cite{GJ00} (\texttt{topaz}). It agrees in every case and is torsion-free.
 
 \begin{center}
 \begin{tabular}{@{}llll@{}}
