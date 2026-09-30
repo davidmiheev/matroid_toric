@@ -180,10 +180,15 @@ mapping every change to its audit item.
 
 ---
 
-## Track C — Reframe Вопрос 2 (tropical flags)  ◐ **text done; experiment open**
+## Track C — Reframe Вопрос 2 (tropical flags)  ⏸ **frozen: kill criterion met**
 
-*Status:* the reframed question is in v2 §5 (Question 3), with Brandt–Eur–Zhang and Boretsky
-checked against their abstracts. The `n = 3, 4` polymake experiment below has not been run.
+*Status:* the reframed question is in v2 §5 (Question 3). The experiment was run, with gfan
+instead of polymake (`experiments/tropical_flags/`), and hit the kill criterion. Modulo
+lineality, `trop Flₙ` has dimension `(n−1)(n−2)/2`, the complexity of the action, while
+`Cl(Kₙ)` has rank `n−1`, the torus rank, so no rank-preserving map exists for n ≠ 4. At
+n = 4 (f-vector (1,20,79,78) against (24,72,34,1)) the counts rule out injections and
+surjections in both orientations. A meaningful version needs a geometric correspondence;
+see `RESULTS.md` there.
 
 **Target.** Replace the literal question («is there a reasonable description of
 `trop Fl(Cⁿ)`?»), which was already answered before the thesis was written, by a question this
@@ -210,7 +215,13 @@ and freeze the track. **Artifact.** Revised Вопрос 2 plus a literature par
 
 ---
 
-## Track D — Вопрос 1: does `S(X)` determine the Betti numbers?
+## Track D — Вопрос 1: does `S(X)` determine the Betti numbers?  ◐ **Hessenberg family done (yes, n ≤ 7); partial Hessenberg next**
+
+*Status:* for regular semisimple Hessenberg varieties with n ≤ 7 (714 functions) the answer is
+**yes**, rigorously: the face poset `Cl(Γ_h)` determines `Γ_h` up to isomorphism (its cover
+invariants separate all 151 graph classes at n = 7), and isomorphic graphs give equal Betti
+numbers (`experiments/question1/`). The family is too rigid to produce a counterexample. Next
+is partial Hessenberg varieties, which include `Gr(2,4)`; see `RESULTS.md` there.
 
 **Target.** Theorem or counterexample for: `H^odd(X_i) = 0` and `S(X₁) ≅ S(X₂)` ⇒
 `β_j(X₁) = β_j(X₂)`. **Prerequisite:** Track A, whose data answers the *local* version; Вопрос 1
