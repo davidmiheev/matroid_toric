@@ -215,13 +215,17 @@ and freeze the track. **Artifact.** Revised Вопрос 2 plus a literature par
 
 ---
 
-## Track D — Вопрос 1: does `S(X)` determine the Betti numbers?  ◐ **Hessenberg family done (yes, n ≤ 7); partial Hessenberg next**
+## Track D — Вопрос 1: does `S(X)` determine the Betti numbers?  ◐ **type A done: yes for full (n ≤ 7) and partial (n ≤ 6) Hessenberg**
 
 *Status:* for regular semisimple Hessenberg varieties with n ≤ 7 (714 functions) the answer is
 **yes**, rigorously: the face poset `Cl(Γ_h)` determines `Γ_h` up to isomorphism (its cover
 invariants separate all 151 graph classes at n = 7), and isomorphic graphs give equal Betti
-numbers (`experiments/question1/`). The family is too rigid to produce a counterexample. Next
-is partial Hessenberg varieties, which include `Gr(2,4)`; see `RESULTS.md` there.
+numbers (`experiments/question1/`). Partial Hessenberg varieties (722 cases with n ≤ 6,
+including `Gr(2,4)`, `Gr(2,5)`, `Gr(3,6)` and all partial flag varieties) also answer yes.
+That family is far less rigid (542 cases at n = 6 share only 175 invariant classes), but
+the Betti numbers still agree in every class. A counterexample would have to come from
+outside type A; alternatively, the evidence suggests trying to *prove* that the face poset
+determines the Betti numbers.
 
 **Target.** Theorem or counterexample for: `H^odd(X_i) = 0` and `S(X₁) ≅ S(X₂)` ⇒
 `β_j(X₁) = β_j(X₂)`. **Prerequisite:** Track A, whose data answers the *local* version; Вопрос 1
@@ -275,7 +279,13 @@ next theorem after Теорема 1: local-to-global matroid invariants on the f
 
 ---
 
-## Track G — Formal verification (Lean 4 / Mathlib)
+## Track G — Formal verification (Lean 4 / Mathlib)  ◐ **G1 and G2 proved (`formal/`)**
+
+*Status:* Lean 4.36.0-rc1 with Mathlib `625d8914` (2026-10-16). **G1** (`vectorMatroid`, the
+linear matroid of a finite family of vectors) and **G2** (`span_prod_eq_iff`) are proved, with
+no `sorry` and only the standard axioms. The re-survey found that Mathlib now has
+`MvPolynomial.irreducible_of_totalDegree_eq_one`, which is exactly G2a, so G2 took about 40
+lines. Next: G3 (lattice of flats) toward G4/G5, and G7.
 
 The Mathlib survey behind this track is in `docs/lean-formalization-feasibility.md`; that file
 records what exists today, file by file. This section is the actionable list: what can be

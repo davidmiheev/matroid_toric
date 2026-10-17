@@ -13,6 +13,9 @@ program derived from its audit.
 | `docs/thesis-v2/` | **Revised English edition** of the thesis (`thesis_en.pdf`, 22 pp.): all errata applied, counterexample proved in §4.5. `CHANGES.md` logs every change against the audit, including where the audit itself was wrong. |
 | `experiments/cluster_permutohedra/` | Homology of cluster-permutohedra behind the corrected Examples 4.29–4.30, and the global-poset comparison for the witness pair. |
 | `experiments/counterexample/` | The Track A sweep: scripts, verified witness pairs, and what is left to confirm in Macaulay2. |
+| `engine/` | **mtengine**: one interface (Python API, `mte` CLI, MCP server) to Macaulay2, gfan, polymake, Singular, nauty and Lean, with a provenance-tracking result cache. Destined for its own repository. |
+| `formal/` | Lean 4 / Mathlib project: G1 (vector matroid) and G2 (the unique-factorization step of the main theorem), both proved. |
+| `experiments/question1/`, `experiments/tropical_flags/` | Track D (Question 1 for full and partial Hessenberg varieties) and Track C (frozen). |
 | `PLAN.md` | Development plan built from the audit: tracks, milestones, atomic experiments, kill criteria, artifacts. |
 | `docs/lean-formalization-feasibility.md` | Feasibility study for formally verifying the results in Lean 4 / Mathlib, with a tiered target list checked against the current Mathlib tree. |
 
