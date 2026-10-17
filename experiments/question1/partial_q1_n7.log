@@ -1,0 +1,3 @@
+n=3: 9 cases, 6 invariant classes, 0 classes with differing Betti numbers  (0s)
+n=4: 35 cases, 19 invariant classes, 0 classes with differing Betti numbers  (0s)
+n=5: 136 cases, 54 invariant classes, 0 classes with differing Betti numbers  (3s)
