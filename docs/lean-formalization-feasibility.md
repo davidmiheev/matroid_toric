@@ -160,3 +160,19 @@ survey it rests on. The identifiers correspond as follows.
 
 If one file is edited, edit the other: the survey moves when Mathlib moves, the plan moves when
 priorities move.
+
+---
+
+## Re-survey, 2026-10-17 (Mathlib `625d8914`)
+
+Checked against the Mathlib checked out in `formal/`.
+
+- **New:** `MvPolynomial.irreducible_of_totalDegree_eq_one`
+  (`Mathlib/RingTheory/MvPolynomial/IrreducibleQuadratic.lean`). This was the one lemma G2
+  needed from scratch, so G2 became a short proof. **G2 and G1 are now proved** in
+  `formal/Formal/` (see `formal/README.md`).
+- **Unchanged:** still no vector or representable matroid (now supplied by G1 here), no
+  lattice instance on flats, no geometric lattices, no characteristic polynomial, order
+  complex or shellability, no Chow rings or Orlik–Solomon algebras. Singular homology is
+  still the four files listed above, and there is still no cohomology, cup product,
+  Borel construction, Euler class or slice theorem. Tier 3 remains blocked.
