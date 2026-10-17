@@ -1,0 +1,12 @@
+[PASS] Gr(2,4) faces by rank: got [6, 12, 11, 1]
+[PASS] Gr(2,4) Betti: got (1, 1, 2, 1, 1)
+[PASS] Gr(2,5) Betti: got (1, 1, 2, 2, 2, 1, 1)
+[info] full-flag case n=3,4,5: rank counts vs Cl(Gamma_h) and Betti vs DPS checked for all h
+[PASS] local posets = Flats(inflated graph), n=4 kbar=(2, 2) h=(2, 2): got 0
+[PASS] local posets = Flats(inflated graph), n=5 kbar=(2, 3) h=(2, 2): got 0
+[PASS] local posets = Flats(inflated graph), n=5 kbar=(1, 2, 2) h=(2, 3, 3): got 0
+[PASS] local posets = Flats(inflated graph), n=5 kbar=(2, 1, 2) h=(3, 3, 3): got 0
+[PASS] local posets = Flats(inflated graph), n=6 kbar=(2, 2, 2) h=(2, 3, 3): got 0
+[PASS] cover counts vs brute force, n=4 kbar=(2, 2): got 0
+[PASS] cover counts vs brute force, n=5 kbar=(1, 2, 2): got 0
+ALL PASS
