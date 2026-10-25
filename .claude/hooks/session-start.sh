@@ -45,7 +45,8 @@ if [ -f "$ROOT/formal/lakefile.toml" ]; then
   cd "$ROOT/formal"
   if [ ! -d .lake/packages/mathlib/.lake/build ]; then
     log "fetching Mathlib cache (first run only; several minutes)"
-    lake exe cache get >/dev/null
+    # quiet on success (its progress bar floods the log); on failure retry with output shown
+    lake exe cache get >/dev/null 2>&1 || lake exe cache get
   fi
   log "building formal/"
   lake build >/dev/null
