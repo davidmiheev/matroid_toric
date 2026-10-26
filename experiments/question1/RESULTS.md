@@ -50,7 +50,7 @@ equal face posets *and* equal Betti numbers.
 
 ## Partial Hessenberg varieties (`partial_hessenberg.py`, `partial_q1.py`)
 
-**Result: yes again, for all n ≤ 6 (722 cases: every composition `k̄` with at least two parts
+**Result: yes again, for all n ≤ 7 (2,940 cases: every composition `k̄` with at least two parts
 and every Hessenberg function `h` on its parts).** This family includes the Grassmannians
 `Gr(2,4)` (complexity one), `Gr(2,5)`, `Gr(3,6)`, all partial flag varieties, and the full
 Hessenberg varieties as the case `k̄ = (1,…,1)`.
@@ -61,11 +61,20 @@ Hessenberg varieties as the case `k̄ = (1,…,1)`.
 | 4 | 35 | 19 | 0 |
 | 5 | 136 | 54 | 0 |
 | 6 | 542 | 175 | 0 |
+| 7 | 2,218 | 577 | 0 |
 
 This family is genuinely less rigid than the full one: at n = 6, 542 cases share only 175
 invariant classes, so many different `(k̄, h)` cannot be told apart by the invariant. Yet the
 Betti numbers agree inside every class. Since isomorphic posets have equal invariants, the
-statement "`S(X₁) ≅ S(X₂)` ⇒ equal Betti numbers" holds for all pairs in this family with n ≤ 6.
+statement "`S(X₁) ≅ S(X₂)` ⇒ equal Betti numbers" holds for all pairs in this family with n ≤ 7.
+
+n ≤ 6 comes from `partial_q1.py` (`partial_q1.log`). n = 7 comes from `partial_q1_resumable.py`
+(`partial_q1_n7.jsonl`, one line per case, and `partial_q1_n7_run.log`), which checkpoints every
+case, runs in parallel and computes the invariant once per mirror pair
+`(k̄, h) ↔ (k̄ reversed, h*)`. That symmetry is verified on all cases with n ≤ 5 at the start of
+each run. The run survived a container restart by resuming from its checkpoint (1,764 of
+2,218 cases were already done). It reproduces the n = 6 row exactly. `partial_q1_n7.log` is
+the earlier, non-resumable attempt, which was lost to a container reset after n = 6.
 
 ### How the face poset is computed
 

@@ -215,14 +215,14 @@ and freeze the track. **Artifact.** Revised Вопрос 2 plus a literature par
 
 ---
 
-## Track D — Вопрос 1: does `S(X)` determine the Betti numbers?  ◐ **type A done: yes for full (n ≤ 7) and partial (n ≤ 6) Hessenberg**
+## Track D — Вопрос 1: does `S(X)` determine the Betti numbers?  ◐ **type A done: yes for full (n ≤ 7) and partial (n ≤ 7) Hessenberg**
 
 *Status:* for regular semisimple Hessenberg varieties with n ≤ 7 (714 functions) the answer is
 **yes**, rigorously: the face poset `Cl(Γ_h)` determines `Γ_h` up to isomorphism (its cover
 invariants separate all 151 graph classes at n = 7), and isomorphic graphs give equal Betti
-numbers (`experiments/question1/`). Partial Hessenberg varieties (722 cases with n ≤ 6,
+numbers (`experiments/question1/`). Partial Hessenberg varieties (2,940 cases with n ≤ 7,
 including `Gr(2,4)`, `Gr(2,5)`, `Gr(3,6)` and all partial flag varieties) also answer yes.
-That family is far less rigid (542 cases at n = 6 share only 175 invariant classes), but
+That family is far less rigid (2,218 cases at n = 7 share only 577 invariant classes), but
 the Betti numbers still agree in every class. A counterexample would have to come from
 outside type A; alternatively, the evidence suggests trying to *prove* that the face poset
 determines the Betti numbers.
