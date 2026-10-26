@@ -5,14 +5,32 @@
 #   - Lean 4 (elan) + prebuilt Mathlib cache for formal/
 #   - engine/.venv with mtengine installed, so the mtengine MCP server in .mcp.json starts
 # Idempotent: every step is skipped when already done, so cached containers start fast.
+# Runs asynchronously; see the echo below.
 set -euo pipefail
 
 if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
   exit 0
 fi
 
+# Async: the session starts at once and this script keeps running in the background
+# (up to 30 min; a cold install takes ~10-15). Until it finishes, tools may be missing.
+echo '{"async": true, "asyncTimeout": 1800000}'
+
 ROOT="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "$0")/../.." && pwd)}"
 log() { echo "[session-start] $*" >&2; }
+
+# ---- 0. engine virtualenv (first: only needs python3, and the MCP server needs it)
+if [ -f "$ROOT/engine/pyproject.toml" ]; then
+  cd "$ROOT/engine"
+  if [ ! -x .venv/bin/mtengine-mcp ]; then
+    log "creating engine/.venv"
+    python3 -m venv .venv
+    .venv/bin/pip install -q --upgrade pip
+    .venv/bin/pip install -q -e ".[test]"
+  else
+    log "engine/.venv present"
+  fi
+fi
 
 # ---- 1. apt packages --------------------------------------------------------------
 APT_PKGS=(macaulay2 gfan polymake singular nauty poppler-utils texlive-xetex texlive-fonts-extra)
@@ -50,19 +68,6 @@ if [ -f "$ROOT/formal/lakefile.toml" ]; then
   fi
   log "building formal/"
   lake build >/dev/null
-fi
-
-# ---- 3. engine virtualenv ----------------------------------------------------------
-if [ -f "$ROOT/engine/pyproject.toml" ]; then
-  cd "$ROOT/engine"
-  if [ ! -x .venv/bin/mtengine-mcp ]; then
-    log "creating engine/.venv"
-    python3 -m venv .venv
-    .venv/bin/pip install -q --upgrade pip
-    .venv/bin/pip install -q -e ".[test]"
-  else
-    log "engine/.venv present"
-  fi
 fi
 
 log "done"
