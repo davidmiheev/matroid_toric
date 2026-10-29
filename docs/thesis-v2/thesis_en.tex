@@ -694,11 +694,32 @@ In complexity zero the answer is positive: for a quasitoric manifold over a simp
 In type~A the answer is positive. The reason is rigidity: the face poset determines the graph~$\Gamma$, and the graph determines the manifold. The definition of $\Cl_\Gamma$ in Construction~\ref{con:cluster} makes sense for any simple graph~$\Gamma$ on~$[n]$, connected or not. For $y=(C,A)\in\Cl_\Gamma$ let $\nu(y)$ be the number of minimal elements below~$y$. Since $y$ lies above the minimal element $p$ exactly when $p$ maps every cluster $V_i$ onto its label set, $\nu(y)=\prod_i|V_i|!$.
 
 \begin{lemma}\label{lem:atoms-nu}
-Let $x\in\Cl_\Gamma$ be minimal. The atoms of $(\Cl_\Gamma)_{\geqslant x}\cong\Flats(\Gamma)$ correspond to the edges of~$\Gamma$. The join of the atoms of a set $S$ of edges has rank $n-c(S)$, where $c(S)$ is the number of connected components of $([n],S)$. For distinct edges $e,f$, the join of their atoms has $\nu=6$ if $e$ and $f$ share a vertex, and $\nu=4$ otherwise.
+Let $x\in\Cl_\Gamma$ be minimal. The atoms of $(\Cl_\Gamma)_{\geqslant x}\cong\Flats(\Gamma)$ correspond to the edges of~$\Gamma$. The join of the atoms of a set $S$ of edges has rank $n-c(S)$, where $c(S)$ is the number of connected components of $([n],S)$. For distinct edges $e,f$, the join of their atoms has $\nu=6$ if $e$ and $f$ share a vertex, and $\nu=4$ otherwise. Three pairwise adjacent edges either form a triangle, and then the join of their atoms has rank~$2$, or share a vertex, and then it has rank~$3$.
 \end{lemma}
 
 \begin{proof}
-Above $x$ the assignment is determined by the clustering, and the join of the atoms of $S$ is the clustering by the components of $([n],S)$. In the two cases this clustering has one cluster of size~$3$, or two clusters of size~$2$.
+Above $x$ the assignment is determined by the clustering, and the join of the atoms of $S$ is the clustering by the components of $([n],S)$. For two edges this clustering has one cluster of size~$3$, or two clusters of size~$2$. Three pairwise adjacent edges span $3$ vertices if they form a triangle and $4$ otherwise.
+\end{proof}
+
+Call a set $F$ of edges of a simple graph a \emph{star family} if any two edges of $F$ share a vertex and no three edges of $F$ form a triangle. Let $E(v)$ denote the set of edges at a vertex~$v$.
+
+\begin{lemma}\label{lem:stars}
+\begin{enumerate}[nosep,label=(\arabic*)]
+\item All edges of a star family with at least two edges contain a common vertex.
+\item The maximal star families with at least two edges are exactly the sets $E(v)$ for the vertices $v$ of degree at least~$2$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) Let $uv$ and $vw$ be two edges of the family. A third edge meets both; if it does not contain $v$, it is $uw$, and the three edges form a triangle. (2) If $\deg v\geqslant2$, then $E(v)$ is a star family. An edge $g\notin E(v)$ meeting every edge of $E(v)$ meets each of them at its other endpoint; these endpoints are distinct, so $E(v)=\{vu,vw\}$ and $g=uw$, a triangle. Hence $E(v)$ is maximal. Conversely, by~(1) a maximal star family with at least two edges is contained in some $E(v)$, hence equal to it.
+\end{proof}
+
+\begin{proposition}\label{prop:edge-iso}
+Let $\varphi\colon E(\Gamma)\to E(\Gamma')$ be a bijection between the edge sets of two simple graphs such that $\varphi$ and $\varphi^{-1}$ preserve adjacency of edges and send triangles to triangles. Then $\varphi$ is induced by a bijection $\psi$ between the non-isolated vertices of $\Gamma$ and~$\Gamma'$, i.e.\ $\varphi(uv)=\psi(u)\psi(v)$ for every edge $uv$.
+\end{proposition}
+
+\begin{proof}
+The maps $\varphi^{\pm1}$ preserve star families and their sizes. By Lemma~\ref{lem:stars}, for every vertex $v$ of degree at least $2$ there is a unique vertex $\psi(v)$ of degree at least $2$ with $\varphi(E(v))=E(\psi(v))$, and $\psi$ is a bijection between the vertices of degree at least~$2$. Let $uv$ be an edge. If $\deg u,\deg v\geqslant2$, then $\varphi(uv)\in E(\psi(u))\cap E(\psi(v))$, so $\varphi(uv)=\psi(u)\psi(v)$. If $\deg u\geqslant2$ and $\deg v=1$, then $\varphi(uv)=\psi(u)v'$; if $v'$ had degree at least $2$, then $v'=\psi(w)$ with $uv\in E(w)$, so $w=v$, which is impossible. Put $\psi(v)=v'$; this is well defined, as $v$ lies on one edge only. If $\deg u=\deg v=1$, then $uv$ is a component $K_2$, and by the previous cases applied to $\varphi^{-1}$ so is $\varphi(uv)$; map $u,v$ to its endpoints. The same construction applied to $\varphi^{-1}$ gives the inverse of~$\psi$.
 \end{proof}
 
 \begin{theorem}\label{thm:cl-rigid}
@@ -706,8 +727,12 @@ Let $\Gamma$, $\Gamma'$ be simple graphs on $[n]$ and $[n']$ with $n,n'\geqslant
 \end{theorem}
 
 \begin{proof}
-Let $\Phi$ be an isomorphism. The numbers of minimal elements give $n!=n'!$, so $n=n'$. Fix a minimal $x$. Then $\Phi$ restricts to an isomorphism of lattices $(\Cl_\Gamma)_{\geqslant x}\to(\Cl_{\Gamma'})_{\geqslant\Phi(x)}$, which induces a bijection $\varphi\colon E_\Gamma\to E_{\Gamma'}$ on atoms. The isomorphism $\Phi$ preserves joins in these intervals, ranks and~$\nu$. By Lemma~\ref{lem:atoms-nu}, $\varphi$ is therefore an isomorphism of line graphs $L(\Gamma)\to L(\Gamma')$, and it preserves the rank of every set of edges. The components of $L(\Gamma)$ are the line graphs of the components $\Gamma_1,\dots,\Gamma_r$ of $\Gamma$ that have an edge. So $\varphi$ matches them with the components $\Gamma'_1,\dots,\Gamma'_r$ of~$\Gamma'$, and $L(\Gamma_i)\cong L(\Gamma'_i)$. By Whitney's theorem~\cite{Whi32}, $\Gamma_i\cong\Gamma'_i$, unless one of the two is $K_3$ and the other is $K_{1,3}$. This exception does not occur: the three edges of $K_3$ span an element of rank~$2$, and the three edges of $K_{1,3}$ an element of rank~$3$. Both graphs have $n-\sum_i|V(\Gamma_i)|$ isolated vertices, so $\Gamma\cong\Gamma'$.
+Let $\Phi$ be an isomorphism. The numbers of minimal elements give $n!=n'!$, so $n=n'$. Fix a minimal $x$. Then $\Phi$ restricts to an isomorphism of lattices $(\Cl_\Gamma)_{\geqslant x}\to(\Cl_{\Gamma'})_{\geqslant\Phi(x)}$, which induces a bijection $\varphi\colon E_\Gamma\to E_{\Gamma'}$ on atoms. The isomorphism $\Phi$ preserves joins in these intervals, ranks and~$\nu$, so by Lemma~\ref{lem:atoms-nu} the maps $\varphi^{\pm1}$ preserve adjacency of edges and triangles. By Proposition~\ref{prop:edge-iso}, $\Gamma$ and $\Gamma'$ are isomorphic after removing isolated vertices, and both have $n$ vertices.
 \end{proof}
+
+\begin{remark}
+Adjacency of edges alone is the line graph $L(\Gamma)$. By Whitney's theorem~\cite{Whi32} it determines a connected graph up to isomorphism except for $K_3$ and $K_{1,3}$, and by Jung's strengthening~\cite{Jun66} an isomorphism of line graphs of connected graphs with more than $4$ vertices is induced by a graph isomorphism. The exceptions $K_{1,3}+e$, $K_4-e$ and $K_4$ have line-graph automorphisms that do not come from vertices. Because the face poset also sees triangles, the elementary Proposition~\ref{prop:edge-iso}, which has no exceptions, suffices here. A computer check confirms it for all automorphisms of graphs with at most $6$ vertices.
+\end{remark}
 
 A computer check confirms Theorem~\ref{thm:cl-rigid} for all $208$ graphs with at most $6$ vertices. It compares the exact isomorphism classes of the posets $\Cl_\Gamma$, computed as canonical forms with nauty's Traces (Appendix~\ref{app:computations}).
 
@@ -764,11 +789,9 @@ Let $G$ be the inflation $\Gamma_h(\bar k)$, regarded as a graph on $[n]$ togeth
 \begin{proof}
 By Example~\ref{ex:partial-faces}, a face is a set $\{(W_j,c_j)\}$ of blocks $W_j$ partitioning $[n]$ with part counts $c_j$; its rank is $n$ minus the number of blocks; the minimal faces are the fixed points; and for a fixed point $J$ the interval $S(X)_{\geqslant J}$ is isomorphic to $\Flats(G_J)$, where $G_J\cong G$ is the inflation on the coordinates, $x\in J_a$ being a copy of~$a$. The number of fixed points below a face is $\nu=\prod_j|W_j|!/\prod_a c_j(a)!$. For two edges $uv$, $vw$ of $G_J$, the join of their atoms has the single block $\{u,v,w\}$, so $\nu=3$ if $u$ and $w$ lie in one part and $\nu=6$ otherwise (adjacent vertices lie in different parts). Two disjoint edges give $\nu=4$.
 
-Let $\Phi\colon S(X)\to S(X')$ be an isomorphism. It preserves the number of minimal elements, rank, joins in upper intervals and~$\nu$. Fix a fixed point $J$. As in the proof of Theorem~\ref{thm:cl-rigid}, $\Phi$ induces a bijection $\varphi\colon E(G_J)\to E(G'_{\Phi(J)})$ that preserves rank and $\nu$ of the join of every set of edges. In particular $\varphi$ is an isomorphism of line graphs. The components of $G_J$ with an edge are the inflations $G_Q$ of the components $Q$ of $\Gamma_h$ with at least two parts; copies of a part forming a component of $\Gamma_h$ by itself are isolated vertices. So $\varphi$ matches these components. Let $G_Q$ and $G'_{Q'}$ be matched.
+Let $\Phi\colon S(X)\to S(X')$ be an isomorphism. It preserves the number of minimal elements, rank, joins in upper intervals and~$\nu$. Fix a fixed point $J$. As in the proof of Theorem~\ref{thm:cl-rigid}, $\Phi$ induces a bijection $\varphi\colon E(G_J)\to E(G'_{\Phi(J)})$ that preserves rank and $\nu$ of the join of every set of edges. By the values of $\nu$, the maps $\varphi^{\pm1}$ preserve adjacency of edges, and since the rank statement of Lemma~\ref{lem:atoms-nu} holds verbatim for $\Flats(G_J)$, they preserve triangles. By Proposition~\ref{prop:edge-iso}, $\varphi$ is induced by a bijection $\psi$ between the non-isolated vertices.
 
-If $G_Q$ has more than $4$ vertices, then so has $G'_{Q'}\cong G_Q$, and by the theorem of Jung~\cite{Jun66} (a strengthening of Whitney's theorem~\cite{Whi32}) $\varphi|_{E(G_Q)}$ is induced by a graph isomorphism $\psi\colon G_Q\to G'_{Q'}$. Two distinct vertices $u,w$ of $G_Q$ lie in one part iff they have a common neighbour $v$ with $\nu(a_{uv}\vee a_{vw})=3$: copies of a part $a$ have a common neighbour, since $Q$ is connected with at least two parts. As $\psi$ preserves adjacency and $\varphi$ preserves~$\nu$, $\psi$ maps parts to parts.
-
-If $G_Q$ has at most $4$ vertices, then so has $G'_{Q'}$, because by Whitney's theorem the two are isomorphic or are $K_3$ and $K_{1,3}$. Every such component is the inflation of a connected Hessenberg graph with $n\leqslant4$. A computer check over all of them (there are $13$ up to isomorphism of graphs with parts) shows that whenever an edge bijection between two of them preserves rank and $\nu$ of the joins of all edge sets, the two are isomorphic as graphs with parts.
+The map $\psi$ preserves parts. Two distinct non-isolated vertices $u,w$ of $G_J$ lie in one part iff they have a common neighbour $v$ with $\nu(a_{uv}\vee a_{vw})=3$. Indeed, a non-isolated vertex is a copy of a part $a$ of a component $Q$ of $\Gamma_h$ with at least two parts, so the copies of $a$ have a common neighbour; and $\nu=3$ forces $u$ and $w$ into one part. Since $\psi$ preserves adjacency and $\varphi$ preserves~$\nu$, $\psi$ preserves this relation. Finally, the components of $G_J$ with an edge are the inflations $G_Q$ of the components $Q$ of $\Gamma_h$ with at least two parts, and copies of the remaining parts are isolated vertices. Hence $\psi$ matches these components, as graphs with parts.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:q1-partial}]
@@ -956,7 +979,7 @@ $C_5$ & $120,300,250,75,1$ & $745,6750,13200,7200$ & $1,4,6,8$\\
 \end{center}
 
 \paragraph{Question~\ref{q:betti} (\nolinkurl{experiments/question1/}).}
-The scripts \texttt{hessenberg\_q1.py} and \texttt{partial\_q1\_resumable.py} compare an invariant of the face poset with the Betti numbers for all full ($n\leqslant7$, $714$ Hessenberg functions) and partial ($n\leqslant7$, $2\,940$ cases) regular semisimple Hessenberg varieties; no class of the invariant contains different Betti numbers. The script \texttt{reconstruction\_check.py} enumerates all graphs with at most $6$ vertices with nauty~\cite{MP14}, builds $\Cl_\Gamma$, and computes the exact isomorphism class of each poset as a canonical form with Traces; the $208$ graphs give $208$ pairwise non-isomorphic posets, as Theorem~\ref{thm:cl-rigid} predicts. The script \texttt{fibration\_check.py} verifies the identity $P_{\Hess(M,\tilde h)}=P_X\prod_a[k_a]_q!$ used in Theorem~\ref{thm:q1-partial} for all $2\,949$ pairs $(\bar k,h)$ with $n\leqslant7$, and \texttt{partial\_small\_components.py} performs the check of the small components in its proof. The file \texttt{PROOF.md} contains the complete proofs.
+The scripts \texttt{hessenberg\_q1.py} and \texttt{partial\_q1\_resumable.py} compare an invariant of the face poset with the Betti numbers for all full ($n\leqslant7$, $714$ Hessenberg functions) and partial ($n\leqslant7$, $2\,940$ cases) regular semisimple Hessenberg varieties; no class of the invariant contains different Betti numbers. The script \texttt{reconstruction\_check.py} enumerates all graphs with at most $6$ vertices with nauty~\cite{MP14}, builds $\Cl_\Gamma$, and computes the exact isomorphism class of each poset as a canonical form with Traces; the $208$ graphs give $208$ pairwise non-isomorphic posets, as Theorem~\ref{thm:cl-rigid} predicts. The script \texttt{fibration\_check.py} verifies the identity $P_{\Hess(M,\tilde h)}=P_X\prod_a[k_a]_q!$ used in Theorem~\ref{thm:q1-partial} for all $2\,949$ pairs $(\bar k,h)$ with $n\leqslant7$, \texttt{star\_reconstruction\_check.py} checks Proposition~\ref{prop:edge-iso} for all automorphisms of graphs with at most $6$ vertices, and \texttt{partial\_small\_components.py} independently confirms Lemma~\ref{lem:reconstruct} for components with at most $4$ vertices. The file \texttt{PROOF.md} contains the complete proofs.
 
 \begin{thebibliography}{99}\small
 

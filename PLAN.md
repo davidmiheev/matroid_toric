@@ -88,8 +88,8 @@ so the phenomenon is not special to `n = 5`.
    numerator agrees with the Shareshian–Wachs count on every case, including the three full
    flag varieties, which reproduce `[n]_q!` exactly for `n = 3,4,5`. The two routes share no
    input. See `experiments/counterexample/{gkm.m2,gkm_n5.m2}` and `RESULTS.md`.
-2. ~~**Write the section.**~~ **Done** — §4.5 of `docs/thesis-v2/thesis_en.pdf` (Theorem 4.42,
-   with Lemmas 4.39–4.40 and Proposition 4.41). Originally planned as: statement, the `Fl(C⁵)` pair, the two indifference graphs, the
+2. ~~**Write the section.**~~ **Done** — §4.5 of `docs/thesis-v2/thesis_en.pdf` (Theorem 4.45,
+   with Lemmas 4.42–4.43 and Proposition 4.44). Originally planned as: statement, the `Fl(C⁵)` pair, the two indifference graphs, the
    matroid isomorphism, the Betti table, and the deduction. One page.
 3. **Optional.** Push the sweep to `n = 7` to see whether a witness exists with a
    3-connected local matroid (there, 2-isomorphism forces graph isomorphism, so any witness
@@ -217,18 +217,22 @@ and freeze the track. **Artifact.** Revised Вопрос 2 plus a literature par
 
 ## Track D — Вопрос 1: does `S(X)` determine the Betti numbers?  ✅ **proved for type A: all full and partial regular semisimple Hessenberg varieties, all n**
 
-*Status (proof):* `experiments/question1/PROOF.md`, written into thesis v2 as Theorems 4.33 and 4.35 (full proof of 4.35 in Lemmas 4.36–4.38)
-and Corollary 4.34. **Theorem A:** `Cl_Γ ≅ Cl_Γ'` ⇒ `Γ ≅ Γ'` for all simple graphs. The number of
-minimal elements below the join of two atoms is 6 for adjacent edges and 4 for disjoint ones, so
-the poset recovers the line graph, and Whitney's theorem recovers `Γ`. Rank separates `K_3` from
-`K_{1,3}`. Conjugation by a permutation matrix then gives `M_{Γ,λ} ≅ M_{Γ',λ}`, so Вопрос 1 is
-answered **yes** for isospectral manifolds and for all regular semisimple Hessenberg varieties,
-even without `H^odd = 0`. **Partial flags:** the same count gives 3 vs 6, which recovers the
-inflated graph together with its parts (Whitney–Jung for components with ≥ 5 vertices, a finite
-check for the rest). The fibration `Hess(h̃) → Hess_k̄(h)` with fibre `∏ Fl(k_a)` reduces the
-Betti numbers to the full case. Machine checks: exact poset isomorphism classes (nauty Traces) for all 208
-graphs with n ≤ 6, the fibration identity for 2,949 cases with n ≤ 7, and the small components.
-Open: other Lie types, and a Lean proof of Theorem A (needs Whitney's line-graph theorem).
+*Status (proof):* `experiments/question1/PROOF.md`, written into thesis v2 as Theorems 4.35 and
+4.38 and Corollary 4.37 (full proof of 4.38 in Lemmas 4.39–4.41). **Theorem A:**
+`Cl_Γ ≅ Cl_Γ'` ⇒ `Γ ≅ Γ'` for all simple graphs. Above a minimal element, the number of minimal
+elements below the join of two atoms is 6 for adjacent edges and 4 for disjoint ones, and the
+rank of the join of three pairwise adjacent edges is 2 for a triangle and 3 for a star. An edge
+bijection preserving adjacency and triangles maps stars to stars, so it is induced by a vertex
+bijection (thesis Lemma 4.33 and Proposition 4.34). This is elementary and has no exceptions;
+Whitney's line-graph theorem is not needed. Conjugation by a permutation matrix then gives
+`M_{Γ,λ} ≅ M_{Γ',λ}`, so Вопрос 1 is answered **yes** for isospectral manifolds and for all regular
+semisimple Hessenberg varieties, even without `H^odd = 0`. **Partial flags:** the same count gives
+3 vs 6, which recovers the inflated graph together with its parts, again by Proposition 4.34. The
+fibration `Hess(h̃) → Hess_k̄(h)` with fibre `∏ Fl(k_a)` reduces the Betti numbers to the full case.
+Machine checks: exact poset isomorphism classes (nauty Traces) for all 208 graphs with n ≤ 6; the
+fibration identity for 2,949 cases with n ≤ 7; Proposition 4.34 for all automorphisms of graphs
+with n ≤ 6. Open: other Lie types, and a Lean proof of Theorem A (estimate 1,500–2,500 lines;
+first milestone: Proposition 4.34 alone, 500–900 lines).
 
 *Status (computations, before the proof):* for regular semisimple Hessenberg varieties with n ≤ 7 (714 functions) the answer is
 **yes**, rigorously: the face poset `Cl(Γ_h)` determines `Γ_h` up to isomorphism (its cover
@@ -446,7 +450,7 @@ rather than kept local.
 
 ## Paperability
 
-**Update (draft written: `docs/paper/paper.tex`, 9 pp.).** With Question 1 answered for type A,
+**Update (draft written: `docs/paper/paper.tex`, 10 pp.).** With Question 1 answered for type A,
 the core is now a short research article rather than a note. It has three results: Theorem A
 (local equivariant cohomology determines the weights with multiplicities), Theorem B (the
 `Fl(C⁵)` counterexample), and Theorem C (the face poset determines the Betti numbers for

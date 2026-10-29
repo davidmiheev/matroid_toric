@@ -10,7 +10,7 @@ program derived from its audit.
 |---|---|
 | `docs/thesis_matroid_invariants_torus_actions.pdf` | The thesis as submitted (20 pp., 18 refs). |
 | `audit/matroid_torus_thesis_audit.md` | Checkpoint audit (CP0–CP4): reference pins, mathematical audit, priority fix table, development program. |
-| `docs/thesis-v2/` | **Revised English edition** of the thesis (`thesis_en.pdf`, 25 pp.): all errata applied, counterexample proved in §4.5, Question 1 answered for type A in §4.4. `CHANGES.md` logs every change against the audit, including where the audit itself was wrong. |
+| `docs/thesis-v2/` | **Revised English edition** of the thesis (`thesis_en.pdf`, 26 pp.): all errata applied, counterexample proved in §4.5, Question 1 answered for type A in §4.4. `CHANGES.md` logs every change against the audit, including where the audit itself was wrong. |
 | `experiments/cluster_permutohedra/` | Homology of cluster-permutohedra behind the corrected Examples 4.29–4.30, and the global-poset comparison for the witness pair. |
 | `experiments/counterexample/` | The Track A sweep: scripts, verified witness pairs, and what is left to confirm in Macaulay2. |
 | `engine/` | **mtengine**: one interface (Python API, `mte` CLI, MCP server) to Macaulay2, gfan, polymake, Singular, nauty and Lean, with a provenance-tracking result cache. A git submodule pointing at [davidmiheev/mtengine](https://github.com/davidmiheev/mtengine); clone with `--recurse-submodules` or run `git submodule update --init`. |
@@ -27,7 +27,7 @@ The main theorem (local equivariant cohomology `H*_T(X, X∖pt)`, viewed as an i
 factorization. The original's GKM-based proof of the key proposition needed pairwise
 independent weights. The advertised corollary, that local weight matroids and hence their Chow
 rings and Orlik–Solomon algebras do not determine `H*_T`, was unproved in the original and is
-now **Theorem 4.42** of v2. The witness is two connected regular semisimple Hessenberg
+now **Theorem 4.45** of v2. The witness is two connected regular semisimple Hessenberg
 varieties in `Fl(C⁵)`, confirmed by exhaustive matroid isomorphism and by two independent
 Betti-number computations. All errata are applied in the English v2 (`docs/thesis-v2/`).
 Verifying them against the primary sources also showed that the audit itself was wrong in a
@@ -36,4 +36,5 @@ few places (see `docs/thesis-v2/CHANGES.md`).
 The thesis's Question 1 asks whether the face poset determines the Betti numbers. It now has a
 positive answer for isospectral manifolds and for all full and partial regular semisimple
 Hessenberg varieties. The reason is rigidity: the cluster-permutohedron `Cl_Γ` determines the
-graph `Γ`, via the line graph and Whitney's theorem (v2 Theorems 4.33 and 4.35).
+graph `Γ`: the poset sees which edges meet and which form triangles, and that determines the
+graph by an elementary star argument (v2 Theorems 4.35 and 4.38).

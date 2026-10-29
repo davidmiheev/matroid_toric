@@ -3,7 +3,7 @@
 **Question 1 (thesis v2, §4.4):** for torus manifolds with `H^odd = 0`, does `S(X₁) ≅ S(X₂)`
 imply equal Betti numbers?
 
-> **Update: now proved for all n** (`PROOF.md`; thesis v2, Theorems 4.33 and 4.35). The
+> **Update: now proved for all n** (`PROOF.md`; thesis v2, Theorems 4.35 and 4.38). The
 > computations below came first and motivated the proof. They remain as independent evidence.
 
 **Result: yes, within this family, for all n ≤ 7 (714 Hessenberg functions).** Partial
