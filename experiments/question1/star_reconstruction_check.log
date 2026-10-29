@@ -1,0 +1,7 @@
+n=1: 1 graphs, 1 adjacency+triangle preserving edge maps, all induced; edge maps preserving adjacency only and not induced (graphs with <= 6 edges): 0
+n=2: 2 graphs, 2 adjacency+triangle preserving edge maps, all induced; edge maps preserving adjacency only and not induced (graphs with <= 6 edges): 0
+n=3: 4 graphs, 10 adjacency+triangle preserving edge maps, all induced; edge maps preserving adjacency only and not induced (graphs with <= 6 edges): 0
+n=4: 11 graphs, 58 adjacency+triangle preserving edge maps, all induced; edge maps preserving adjacency only and not induced (graphs with <= 6 edges): 30
+n=5: 34 graphs, 308 adjacency+triangle preserving edge maps, all induced; edge maps preserving adjacency only and not induced (graphs with <= 6 edges): 30
+n=6: 156 graphs, 2102 adjacency+triangle preserving edge maps, all induced; edge maps preserving adjacency only and not induced (graphs with <= 6 edges): 36
+counterexamples to the star lemma: 0

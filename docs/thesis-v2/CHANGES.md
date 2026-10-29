@@ -129,7 +129,7 @@ is left unchanged as the user's document; `PLAN.md` has been corrected.
 | Пример 20 cycles | corrected (see above) | C4 |
 | Предложение 7 | exact AMS23 Thm 1 (Q; Z with connected stabilizers); non-formality consequence added | — |
 | Вопрос 1 | "⟺" → "⟹"; complexity-zero case and the counterexample to "⟸" recorded | new |
-| — | **§4.5 new: the counterexample** (Theorem 4.42; it was 4.35 before the Question 1 addition), plus remarks on the minimal disconnected pair, the n = 6 pair, and why it does not bear on Вопрос 1 (Cl posets differ: 200 vs 190 rank-2 elements) | A1 |
+| — | **§4.5 new: the counterexample** (Theorem 4.45; it was 4.35 before the Question 1 addition), plus remarks on the minimal disconnected pair, the n = 6 pair, and why it does not bear on Вопрос 1 (Cl posets differ: 200 vs 190 rank-2 elements) | A1 |
 
 ### §5–6 and appendix
 | Original | Change | Audit |
@@ -155,8 +155,8 @@ Moot: the text is newly written in English, and theorem numbering is automatic.
 ### Addition after v2: Question 1 answered for type A
 | Place | Change | Track |
 |---|---|---|
-| §4.4, after Question 1 | New paragraph *Isospectral manifolds and Hessenberg varieties*: Lemma 4.32, Theorem 4.33 (`Cl_Γ` determines `Γ`), Corollary 4.34 (Question 1 holds for isospectral manifolds and regular semisimple Hessenberg varieties), Theorem 4.35 (partial Hessenberg varieties) with a full proof in Lemmas 4.36–4.38 (splitting, fibration, reconstruction). Jung 1966 checked: every line-graph isomorphism between connected graphs with more than 4 vertices is induced by a unique graph isomorphism | D |
-| Remark after Theorem 4.42 | "which remains open" replaced: Question 1 holds for these varieties by Corollary 4.34 | D |
+| §4.4, after Question 1 | New paragraph *Isospectral manifolds and Hessenberg varieties*: Lemma 4.32, Lemma 4.33 (star families), Proposition 4.34 (edge bijections preserving adjacency and triangles are induced by vertex bijections), Theorem 4.35 (`Cl_Γ` determines `Γ`), Remark 4.36 (relation to Whitney's and Jung's theorems), Corollary 4.37 (Question 1 holds for isospectral manifolds and regular semisimple Hessenberg varieties), Theorem 4.38 (partial Hessenberg varieties) with a full proof in Lemmas 4.39–4.41 (splitting, fibration, reconstruction). The proofs are elementary: an earlier version used Whitney's theorem, Jung's strengthening (checked: Math. Ann. 164 (1966), 270–271) and a finite computer check, all now superseded by Proposition 4.34 | D |
+| Remark after Theorem 4.45 | "which remains open" replaced: Question 1 holds for these varieties by Corollary 4.37 | D |
 | Conclusion | open-question paragraph updated | D |
 | Appendix A | paragraph on `experiments/question1/` | D |
 | Bibliography | added Whitney 1932, Jung 1966, McKay–Piperno 2014 | D |

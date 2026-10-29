@@ -11,8 +11,11 @@ poset determines the inflated graph with its parts (Theorem D, step 3), and a fi
 the Betti numbers to the full case.
 
 Cited inputs, all already used in thesis v2: the face-poset theorems of Ayzenberg–Buchstaber
-([AB24, Thm. 1, Cor. 2.43, Thm. 2], thesis Thm. 4.25, Examples 4.27–4.28), the twin theorem
-[AB21, Thm. 3.11], and Whitney's line-graph theorem.
+([AB24, Thm. 1, Cor. 2.43, Thm. 2], thesis Thm. 4.25, Examples 4.27–4.28) and the twin theorem
+[AB21, Thm. 3.11]. The graph theory is self-contained (Lemma 2 and Proposition 3). An earlier
+version used Whitney's line-graph theorem, Jung's strengthening of it and a finite computer check;
+none of these is needed, because the poset sees triangles as well as adjacency (see the remark
+after Theorem A).
 
 ## 1. Setup
 
@@ -32,10 +35,55 @@ The definition makes sense for disconnected `Γ` as well. The following facts ar
 **Lemma 1.** Fix a minimal `x`. The atoms of `(Cl_Γ)_{≥x}` correspond to the edges of `Γ`. For a
 set `S` of edges, the join of the corresponding atoms has rank `n − #components(V, S)`, which is the
 rank of `S` in the graphic matroid. For two distinct edges `e`, `f`, the join `a_e ∨ a_f` has
-`ν = 3! = 6` if `e` and `f` share a vertex, and `ν = 2!·2! = 4` otherwise.
+`ν = 3! = 6` if `e` and `f` share a vertex, and `ν = 2!·2! = 4` otherwise. Three pairwise adjacent
+edges either form a triangle, and then their join has rank 2, or share a common vertex, and then
+it has rank 3.
 
 *Proof.* By (F2), the join of a set of atoms is the partition into the components of `(V, S)`.
-The rest is (F3). ∎
+The rest is (F3). Three pairwise adjacent edges span 3 vertices if they form a triangle and 4 if
+they form a star. ∎
+
+Call a set `F` of edges of a simple graph a **star family** if any two edges of `F` share a vertex
+and no three edges of `F` form a triangle. Let `E(v)` be the set of edges at `v`.
+
+**Lemma 2 (stars).** (a) If a star family has at least two edges, all of its edges contain one
+common vertex. (b) The maximal star families with at least two edges are exactly the sets `E(v)`
+for the vertices `v` of degree at least 2.
+
+*Proof.* (a) Let `e = uv` and `f = vw` be two edges of the family (they share a vertex, say `v`).
+Any third edge `g` meets both `e` and `f`. If `v ∉ g`, then `g = uw`, and `e, f, g` form a
+triangle, which is excluded. So every edge contains `v`.
+(b) If `deg v ≥ 2`, then `E(v)` is a star family. Suppose an edge `g ∉ E(v)` meets every edge of
+`E(v)`. It must meet each at its other endpoint, and these endpoints are distinct, so `deg v = 2`,
+`E(v) = {vu, vw}` and `g = uw`, which makes a triangle. Hence `E(v)` is maximal. Conversely, a
+maximal star family with at least two edges lies in some `E(v)` by (a), and `E(v)` is a star
+family, so it equals `E(v)`. ∎
+
+**Proposition 3 (reconstruction).** Let `φ : E(Γ) → E(Γ')` be a bijection between the edge sets
+of two simple graphs that preserves adjacency of edges and the property that three edges form a
+triangle, in both directions. Then `φ` is induced by a bijection `ψ` between the non-isolated
+vertices: `φ(uv) = ψ(u)ψ(v)` for every edge `uv`. In particular the graphs are isomorphic once
+isolated vertices are discarded.
+
+*Proof.* `φ` and `φ⁻¹` map star families to star families, preserving inclusion and size. By
+Lemma 2, for each vertex `v` of degree at least 2 there is a unique vertex `ψ(v)` of degree at least
+2 with `φ(E(v)) = E(ψ(v))`. This `ψ` is a bijection between the vertices of degree at least 2, with
+inverse obtained in the same way from `φ⁻¹`. Let `e = uv` be an edge.
+- If both `u` and `v` have degree at least 2, then `φ(e) ∈ E(ψ(u)) ∩ E(ψ(v))` and
+  `ψ(u) ≠ ψ(v)`, so `φ(e) = ψ(u)ψ(v)`.
+- If `deg u ≥ 2` and `deg v = 1`, then `φ(e) = ψ(u)v'` for some `v'`. If `v'` had degree at least 2,
+  then `v' = ψ(w)` with `e ∈ E(w)`, so `w = v` and `deg v ≥ 2`, a contradiction. Put `ψ(v) = v'`.
+  This is well defined because `v` lies on the single edge `e`.
+- If `deg u = deg v = 1`, then `e` is a component `K_2`. By the previous two cases applied to
+  `φ⁻¹`, both endpoints of `φ(e)` have degree 1. Map `u` and `v` to them in either order.
+The resulting `ψ` is a bijection between the non-isolated vertices: its inverse is constructed in
+the same way from `φ⁻¹`. By construction it induces `φ`. ∎
+
+`star_reconstruction_check.py` (`star_reconstruction_check.log`) checks Proposition 3 exhaustively
+for automorphisms: for all 208 graphs with at most 6 vertices, each of the 2,470 edge permutations
+preserving adjacency and triangles is induced by a vertex permutation. Without the triangle
+condition there are 96 that are not induced, all on graphs with a component `K_{1,3}+e`, `K_4−e`
+or `K_4`, the exceptions in Jung's form of Whitney's theorem.
 
 ## 2. The cluster-permutohedron determines the graph
 
@@ -45,19 +93,16 @@ The rest is (F3). ∎
 restricts to an isomorphism of lattices `(Cl_Γ)_{≥x} → (Cl_{Γ'})_{≥Φ(x)}`. It sends atoms to
 atoms, giving a bijection `φ : E(Γ) → E(Γ')`. The map `Φ` commutes with joins in these intervals
 and preserves rank and `ν`, since `ν(y)` is the number of minimal elements below `y` and so is
-defined by the order. By Lemma 1, `φ` preserves adjacency of edges, so it is an isomorphism of line
-graphs `L(Γ) → L(Γ')`. It also preserves the graphic rank of every edge set.
+defined by the order. By Lemma 1, `φ` preserves adjacency of edges (`ν = 6` or `4`) and the property
+of forming a triangle (rank 2 or 3), in both directions. By Proposition 3, `Γ` and `Γ'` are
+isomorphic after discarding isolated vertices, and both have `n` vertices. ∎
 
-The connected components of `L(Γ)` are the line graphs of the components `Γ_1, …, Γ_r` of `Γ` that
-have at least one edge. So `φ` matches them with the components `Γ'_1, …, Γ'_r` of `Γ'`, and
-`L(Γ_i) ≅ L(Γ'_i)`. By Whitney's theorem [Whi32; Harary, *Graph Theory*, Thm. 8.3],
-`Γ_i ≅ Γ'_i` unless one of them is `K_3` and the other is `K_{1,3}`. That case cannot occur. The
-three edges of `K_3` span a rank-2 element (one block of size 3), while the three edges of
-`K_{1,3}` span a rank-3 element, and `φ` preserves rank. Finally, both graphs have
-`n − Σ|V(Γ_i)|` isolated vertices. ∎
-
-`φ` also preserves the rank of every edge set, so it is an isomorphism of graphic matroids. This is
-not needed for the proof.
+*Remark.* Adjacency alone is the line graph, and Whitney's theorem [Whi32] says it determines a
+connected graph except for `K_3` versus `K_{1,3}`. Jung's strengthening [Jun66] says a line-graph
+isomorphism between connected graphs with more than 4 vertices is induced by a graph isomorphism.
+The poset also sees triangles, and that makes the elementary Proposition 3 enough; it has no
+exceptions. `φ` even preserves the rank of every edge set, so it is an isomorphism of graphic
+matroids, but this is not needed.
 
 **Computational cross-check** (`reconstruction_check.py`, `reconstruction_check.log`). All graphs
 with at most 6 vertices are enumerated, one per isomorphism class, with nauty `geng`. For each one,
@@ -148,24 +193,23 @@ determined by `(G_Q, parts)` up to isomorphism.
 **Step 3 (reconstruction).** Let `Φ : S(X) → S(X')` be an isomorphism. By (P1),
 `#Fix(X) = #Fix(X')`. As in Theorem A, fix a fixed point `J`. Then `Φ` gives a bijection
 `φ : E(G_J) → E(G'_{Φ(J)})` that preserves rank and `ν` of the join of every edge set. By the
-values of `ν` above, `φ` is an isomorphism of line graphs. The components of `G_J` with an edge are
-exactly the inflations `G_Q` of the components `Q` with at least two parts. Copies of isolated
-parts are isolated vertices. So `φ` matches these components. Take a matched pair `G_Q`, `G'_{Q'}`.
+values of `ν` above, `φ` preserves adjacency of edges (`ν ∈ {3, 6}` versus `ν = 4`), and by rank
+it preserves triangles (Lemma 1, whose rank statement holds verbatim here). By Proposition 3, `φ`
+is induced by a bijection `ψ` between the non-isolated vertices of `G_J` and `G'_{Φ(J)}`.
 
-- If `G_Q` has at least 5 vertices, then by Whitney's theorem in the form of Jung
-  [Jun66; Hemminger–Beineke 1978] `φ` is induced by a graph isomorphism `ψ`. Two distinct vertices
-  `u`, `w` of `G_Q` lie in the same part iff they have a common neighbour `v` with
-  `ν(a_{uv} ∨ a_{vw}) = 3`. Copies of a part `a` always have a common neighbour, because `Q` is
-  connected with at least two parts. So `ψ` preserves parts.
-- If `G_Q` has at most 4 vertices, then so does `G'_{Q'}`, since by Whitney the two are isomorphic
-  or are `K_3` and `K_{1,3}`. The finite check `partial_small_components.py`
-  (`partial_small_components.log`) covers this case. It takes all connected inflated components
-  with at most 4 vertices: 19 of them, 13 up to isomorphism of graphs with parts. It shows that
-  whenever an edge bijection preserves `(rank, ν)` on all edge sets, the two components are
-  isomorphic as graphs with parts.
+`ψ` maps parts to parts. Two distinct non-isolated vertices `u`, `w` lie in the same part iff they
+have a common neighbour `v` with `ν(a_{uv} ∨ a_{vw}) = 3`. Indeed, a non-isolated vertex is a copy of
+a part `a` in a component `Q` of `Γ_h` with at least two parts, so all copies of `a` share a
+neighbour; conversely `ν = 3` forces `u` and `w` into one part. Since `ψ` preserves adjacency and
+`φ` preserves `ν`, `ψ` preserves this relation.
 
-So the multiset of isomorphism classes of `(G_Q, parts)` over the components is the same for `X`
-and `X'`. By Steps 1 and 2, `P_X = P_{X'}`. ∎
+The components of `G_J` with an edge are exactly the inflations `G_Q` of the components `Q` of
+`Γ_h` with at least two parts, and copies of the other parts are isolated. So `ψ` matches these
+components, as graphs with parts, with those of `G'_{Φ(J)}`. By Steps 1 and 2, `P_X = P_{X'}`. ∎
+
+An earlier version of this step used Jung's theorem for components with more than 4 vertices and
+a computer check (`partial_small_components.py`) for the rest. Both are now superseded; the check
+remains as an independent confirmation.
 
 Theorem D contains Corollary C's Hessenberg case as `k̄ = (1, …, 1)`. It also covers Grassmannians
 and partial flag varieties: in those cases `Γ_h = K_s` and the statement is classical.
@@ -179,9 +223,9 @@ torus manifolds. Natural next questions:
 
 1. **Other Lie types.** Is there a rigidity statement like Theorem A for the face posets of
    regular semisimple Hessenberg varieties in types B, C and D?
-2. **Formalisation.** Theorem A is elementary apart from Whitney's theorem, and it is a good Lean
-   target once G3 (lattice of flats, `formal/Formal/FlatLattice.lean`) is in place. Mathlib has
-   line graphs (`SimpleGraph.lineGraph`), but not Whitney's theorem.
+2. **Formalisation.** Theorem A is now fully elementary (Lemma 2, Proposition 3), which makes it a
+   realistic Lean target on top of G3 (`formal/Formal/FlatLattice.lean`). Proposition 3 alone is a
+   self-contained graph-theory lemma, a natural first milestone and a candidate for Mathlib.
 
 ## References
 
