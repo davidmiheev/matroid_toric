@@ -40,14 +40,16 @@ variable {α : Type*}
 
 /-- The flats of a matroid `M`, as the closed elements of the closure operator
 `M.subtypeClosure` on subsets of the ground set. -/
-abbrev Flats (M : Matroid α) : Type _ := M.subtypeClosure.Closeds
+def Flats (M : Matroid α) : Type _ := M.subtypeClosure.Closeds
 
 namespace Flats
 
 variable {M : Matroid α} {X : Set α} {e : α}
 
+/- `Flats M` is a `def`, not an `abbrev`, so that its only order structure is this lattice
+(otherwise the subtype order and the lattice order would form an instance diamond). -/
 noncomputable instance : CompleteLattice (Flats M) :=
-  M.subtypeClosure.gi.liftCompleteLattice
+  (M.subtypeClosure.gi.liftCompleteLattice : CompleteLattice M.subtypeClosure.Closeds)
 
 /-- The underlying set of a flat. -/
 def toSet (F : Flats M) : Set α := F.1.1

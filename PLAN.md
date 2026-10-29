@@ -88,8 +88,8 @@ so the phenomenon is not special to `n = 5`.
    numerator agrees with the Shareshian–Wachs count on every case, including the three full
    flag varieties, which reproduce `[n]_q!` exactly for `n = 3,4,5`. The two routes share no
    input. See `experiments/counterexample/{gkm.m2,gkm_n5.m2}` and `RESULTS.md`.
-2. ~~**Write the section.**~~ **Done** — §4.5 of `docs/thesis-v2/thesis_en.pdf` (Theorem 4.39,
-   with Lemmas 4.36–4.37 and Proposition 4.38). Originally planned as: statement, the `Fl(C⁵)` pair, the two indifference graphs, the
+2. ~~**Write the section.**~~ **Done** — §4.5 of `docs/thesis-v2/thesis_en.pdf` (Theorem 4.42,
+   with Lemmas 4.39–4.40 and Proposition 4.41). Originally planned as: statement, the `Fl(C⁵)` pair, the two indifference graphs, the
    matroid isomorphism, the Betti table, and the deduction. One page.
 3. **Optional.** Push the sweep to `n = 7` to see whether a witness exists with a
    3-connected local matroid (there, 2-isomorphism forces graph isomorphism, so any witness
@@ -217,7 +217,7 @@ and freeze the track. **Artifact.** Revised Вопрос 2 plus a literature par
 
 ## Track D — Вопрос 1: does `S(X)` determine the Betti numbers?  ✅ **proved for type A: all full and partial regular semisimple Hessenberg varieties, all n**
 
-*Status (proof):* `experiments/question1/PROOF.md`, written into thesis v2 as Theorems 4.33 and 4.35
+*Status (proof):* `experiments/question1/PROOF.md`, written into thesis v2 as Theorems 4.33 and 4.35 (full proof of 4.35 in Lemmas 4.36–4.38)
 and Corollary 4.34. **Theorem A:** `Cl_Γ ≅ Cl_Γ'` ⇒ `Γ ≅ Γ'` for all simple graphs. The number of
 minimal elements below the join of two atoms is 6 for adjacent edges and 4 for disjoint ones, so
 the poset recovers the line graph, and Whitney's theorem recovers `Γ`. Rank separates `K_3` from
@@ -292,7 +292,7 @@ next theorem after Теорема 1: local-to-global matroid invariants on the f
 
 ---
 
-## Track G — Formal verification (Lean 4 / Mathlib)  ◐ **G1, G2, G3 proved (`formal/`)**
+## Track G — Formal verification (Lean 4 / Mathlib)  ◐ **G1–G4 proved (`formal/`)**
 
 *Status:* Lean 4.36.0-rc1 with Mathlib `625d8914` (2026-10-16). **G1** (`vectorMatroid`, the
 linear matroid of a finite family of vectors) and **G2** (`span_prod_eq_iff`) are proved, with
@@ -303,8 +303,13 @@ type, with no finiteness assumption. `Flats M` is a `CompleteLattice`, in which 
 intersection, join is the closure of the union, `⊥` is the set of loops and `⊤` is the ground
 set. Rank is submodular. `F ⋖ G` iff `G = cl(F ∪ {e})` for some `e ∉ F`, and covers raise the
 rank by exactly 1. The lattice has `IsUpperModularLattice` and `IsAtomistic` instances, which
-makes it geometric in finite rank. Next: G4 (characteristic polynomial via `IncidenceAlgebra.mu`
-on `Flats M`), G5, and G7. G3 is a candidate for upstreaming to Mathlib.
+makes it geometric in finite rank. **G4** (`formal/Formal/CharPoly.lean`) is done too. It defines
+`charPoly M = ∑_F μ(⊥,F) X^{r(E)−r(F)}` with Mathlib's `IncidenceAlgebra.mu` on `Flats M`, and
+proves Whitney's Boolean expansion for loopless matroids on a finite type by grouping subsets by
+their closure and applying Möbius inversion. This repairs Track B item 5 in machine-checked form.
+`Flats M` is now a `def` rather than an `abbrev`, so the subtype order no longer competes with the
+lattice order. Next: G5 (Philip Hall) and G7. G3 and G4 are candidates for upstreaming to
+Mathlib.
 
 The Mathlib survey behind this track is in `docs/lean-formalization-feasibility.md`; that file
 records what exists today, file by file. This section is the actionable list: what can be
@@ -441,19 +446,19 @@ rather than kept local.
 
 ## Paperability
 
-After the 30-day items the publishable core is: Теорема 1, now with a correct proof that
-covers weight multiplicities (Thom isomorphism plus unique factorization), and the
-counterexample (Track A).
+**Update (draft written: `docs/paper/paper.tex`, 9 pp.).** With Question 1 answered for type A,
+the core is now a short research article rather than a note. It has three results: Theorem A
+(local equivariant cohomology determines the weights with multiplicities), Theorem B (the
+`Fl(C⁵)` counterexample), and Theorem C (the face poset determines the Betti numbers for
+isospectral manifolds and all full and partial regular semisimple Hessenberg varieties,
+through the rigidity `Cl_Γ ≅ Cl_Γ' ⇒ Γ ≅ Γ'`). Working title: *Face posets, local weight
+matroids and Betti numbers of torus actions*. Remaining: author details, choice of venue, and an
+independent read of the partial-flag proof.
 
-*Correction to the first draft of this section:* Пример 18 (partial Hessenberg
-cluster-permutohedra) is **not** new. Ayzenberg–Buchstaber already cover it in
-arXiv:2203.14133 / IMRN 2024, §5 (Construction 5.13, Theorem 2), and their Cor. 3.2 covers full
-Hessenberg varieties. The audit's "appears to be new" was wrong, and v2 attributes it.
-
-The core is therefore thinner than first estimated: one theorem, whose substance is a careful
-version of a standard argument, and one computer-verified example. It reads as a short note
-rather than a paper. Working title: *Local equivariant cohomology and matroids of weights of
-torus actions*. Tracks E and F are what would make it a paper.
+*Earlier assessment, kept for the record:* the core was one theorem, a careful version of a
+standard argument, plus one computer-verified example, and it read as a short note. Пример 18
+(partial Hessenberg cluster-permutohedra) is **not** new: Ayzenberg–Buchstaber cover it in
+arXiv:2203.14133 / IMRN 2024, §5. Tracks E and F would still add a further layer.
 
 ## Risk register
 

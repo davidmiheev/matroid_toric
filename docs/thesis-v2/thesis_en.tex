@@ -725,17 +725,57 @@ The corollary does not use $H^{\mathrm{odd}}=0$: in these families the face pose
 Let $X$ and $X'$ be partial regular semisimple Hessenberg varieties (Remark~\ref{rem:partial-hess}) with $S(X)\cong S(X')$. Then $\beta_j(X)=\beta_j(X')$ for all~$j$.
 \end{theorem}
 
-\begin{proof}[Sketch of proof]
-Let $X$ correspond to $\bar k=(k_1,\dots,k_s)$ and~$h$, and put $K_b=k_1+\dots+k_b$.
+The proof occupies the rest of this paragraph. Let $X$ correspond to $\bar k=(k_1,\dots,k_s)$ and~$h$, and put $K_b=k_1+\dots+k_b$. We write $P_X(q)=\sum_j\beta_{2j}(X)q^j$; all odd Betti numbers vanish. By the Białynicki-Birula decomposition for a generic one-parameter subgroup of~$T$ (cf.~\cite{DPS92}) and the tangent weights of Section~\ref{sec:GKM},
+\[
+P_X(q)=\sum_Jq^{\operatorname{ind}(J)},\qquad \operatorname{ind}(J)=\#\{(x,y)\mid x\in J_a,\ y\in J_b,\ a<b\leqslant h(a),\ x>y\},
+\]
+where $J=(J_1,\dots,J_s)$ runs over the fixed points.
 
-\emph{Splitting.} By the Białynicki-Birula decomposition for a generic one-parameter subgroup (cf.~\cite{DPS92}), $P_X=\sum_Jq^{\operatorname{ind}(J)}$, where $J$ runs over the fixed points and $\operatorname{ind}(J)$ is the number of pairs $x\in J_a$, $y\in J_b$ with $a<b\leqslant h(a)$ and $x>y$. The index $\operatorname{ind}(J)$ is a sum over the connected components $Q$ of $\Gamma_h$. Each summand depends only on the relative order of the coordinates in the parts of~$Q$. Hence $P_X=\#X^T\cdot\prod_QP_Q(q)/P_Q(1)$, where $P_Q$ is the Poincaré polynomial of the partial Hessenberg variety of~$Q$, and isolated parts contribute~$1$.
+\begin{lemma}[Splitting]\label{lem:split}
+Let $Q_1,\dots,Q_r$ be the connected components of $\Gamma_h$ and $P_{Q_i}$ the Poincaré polynomial of the partial Hessenberg variety of the restriction of $(\bar k,h)$ to~$Q_i$. Then
+\[
+P_X(q)=\#X^T\cdot\prod_{i=1}^r\frac{P_{Q_i}(q)}{P_{Q_i}(1)}.
+\]
+A component consisting of one part contributes the factor~$1$.
+\end{lemma}
 
-\emph{Fibration.} Put $\tilde h(i)=K_{h(a)}$ for $i$ in part~$a$. The preimage of $X$ under $\Fl(\C^n)\to\Fl_{\bar k}$ is $\Hess(M,\tilde h)$, a bundle over $X$ with fibre $\prod_a\Fl(\C^{k_a})$. So $P_{\Hess(M,\tilde h)}=P_X\cdot\prod_a[k_a]_q!$, and $\Gamma_{\tilde h}$ is the inflation $\Gamma_h(\bar k)$ with every part made a clique. Applied to a component $Q$ with at least two parts, Corollary~\ref{cor:q1-hess} shows that $P_Q$ depends only on the inflated component $\Gamma_Q(\bar k)$ together with its partition into parts, up to isomorphism.
-
-\emph{Reconstruction.} At a fixed point~$J$, $S(X)_{\geqslant J}\cong\Flats(\Gamma_h(\bar k))$. The number of fixed points below a face is $\nu=\prod_j|W_j|!/\prod_a c_j(a)!$, where $W_j$ are its blocks and $c_j$ their part counts. For two edges $uv,vw$, the join of their atoms has $\nu=3$ if $u$ and $w$ lie in one part, and $\nu=6$ otherwise; two disjoint edges give $\nu=4$. As in Theorem~\ref{thm:cl-rigid}, an isomorphism $S(X)\cong S(X')$ induces an isomorphism of line graphs of the inflated graphs that preserves ranks and~$\nu$. A component with at least $5$ vertices is handled by the Whitney--Jung theorem~\cite{Jun66}: the edge isomorphism is induced by a vertex isomorphism. That isomorphism preserves parts, because two vertices lie in one part exactly when they have a common neighbour $v$ with $\nu=3$. Components with at most $4$ vertices, which include all exceptions to Whitney's theorem, are checked by computer: there are $13$ such inflated components up to isomorphism, and rank and $\nu$ separate them. The splitting formula then gives $P_X=P_{X'}$.
+\begin{proof}
+The components of the indifference graph $\Gamma_h$ are intervals of parts, and every pair counted in $\operatorname{ind}(J)$ lies in one component. Let $U_i=\bigcup_{a\in Q_i}J_a$. The pairs counted inside $Q_i$ depend only on the relative order of the elements of~$U_i$, i.e.\ on the fixed point of the variety of $Q_i$ obtained by renumbering $U_i$ increasingly. A fixed point $J$ is the same as a choice of the sets $U_1,\dots,U_r$ together with a fixed point of each component variety. Summing over these choices gives $P_X=\binom{n}{|U_1|,\dots,|U_r|}\prod_iP_{Q_i}$, and evaluating at $q=1$ gives $\#X^T=\binom{n}{|U_1|,\dots,|U_r|}\prod_iP_{Q_i}(1)$. A single part has one fixed point and index~$0$.
 \end{proof}
 
-The full proofs, together with a check of the fibration identity for all $2\,949$ pairs $(\bar k,h)$ with $n\leqslant7$, are in \nolinkurl{experiments/question1/PROOF.md} (Appendix~\ref{app:computations}). Theorems~\ref{thm:cl-rigid} and~\ref{thm:q1-partial} answer Question~\ref{q:betti} positively for all regular semisimple Hessenberg varieties of type~A, full and partial. They also explain the computational evidence: in these families the face poset remembers the whole graph. A counterexample would have to come from outside type~A.
+\begin{lemma}[Fibration]\label{lem:fibration}
+Put $\tilde h(i)=K_{h(a)}$ for $K_{a-1}<i\leqslant K_a$. Let $\pi\colon\Fl(\C^n)\to\Fl_{\bar k}$ forget the subspaces of dimensions other than $K_1,\dots,K_s$. Then $\pi^{-1}(X)=\Hess(M,\tilde h)$, and $\pi$ restricts to a fibre bundle $\Hess(M,\tilde h)\to X$ with fibre $\prod_a\Fl(\C^{k_a})$. Consequently
+\[
+P_{\Hess(M,\tilde h)}(q)=P_X(q)\cdot\prod_{a=1}^s[k_a]_q!,
+\]
+and $\Gamma_{\tilde h}$ is the inflation $\Gamma_h(\bar k)$ in which every part is made a clique.
+\end{lemma}
+
+\begin{proof}
+A full flag $F_\bullet$ lies in $\Hess(M,\tilde h)$ iff $MF_i\subset F_{\tilde h(i)}$ for all~$i$. For $i$ in part $a$ we have $F_i\subset F_{K_a}$ and $\tilde h(i)=\tilde h(K_a)$, so the condition at $i$ follows from the condition at~$K_a$. The conditions at $i=K_1,\dots,K_s$ say exactly that $\pi(F_\bullet)\in X$. Hence $\pi^{-1}(X)=\Hess(M,\tilde h)$. The map $\pi$ is a holomorphic fibre bundle whose fibre over $V_\bullet$ is $\prod_a\Fl(V_{K_a}/V_{K_{a-1}})$, so its restriction to $X$ is a bundle with fibre $\prod_a\Fl(\C^{k_a})$. The cohomology of the fibre is generated by the Chern classes of the tautological quotient bundles, which are defined on the total space, and all spaces involved have cohomology only in even degrees. The Leray--Hirsch theorem gives the product formula, with $P_{\Fl(\C^k)}=[k]_q!$. Finally, $i<j$ is an edge of $\Gamma_{\tilde h}$ iff $j\leqslant K_{h(a)}$ for the part $a$ of~$i$, i.e.\ iff $j$ lies in part $a$ or in a part $b$ with $a<b\leqslant h(a)$.
+\end{proof}
+
+Lemma~\ref{lem:fibration} was also checked numerically, from the formula for $\operatorname{ind}$, for all $2\,949$ pairs $(\bar k,h)$ with $n\leqslant7$.
+
+\begin{lemma}[Reconstruction]\label{lem:reconstruct}
+Let $G$ be the inflation $\Gamma_h(\bar k)$, regarded as a graph on $[n]$ together with its partition into parts. The face poset $S(X)$ determines $\#X^T$ and the multiset of isomorphism classes, as graphs with a vertex partition, of the connected components of $G$ that have an edge.
+\end{lemma}
+
+\begin{proof}
+By Example~\ref{ex:partial-faces}, a face is a set $\{(W_j,c_j)\}$ of blocks $W_j$ partitioning $[n]$ with part counts $c_j$; its rank is $n$ minus the number of blocks; the minimal faces are the fixed points; and for a fixed point $J$ the interval $S(X)_{\geqslant J}$ is isomorphic to $\Flats(G_J)$, where $G_J\cong G$ is the inflation on the coordinates, $x\in J_a$ being a copy of~$a$. The number of fixed points below a face is $\nu=\prod_j|W_j|!/\prod_a c_j(a)!$. For two edges $uv$, $vw$ of $G_J$, the join of their atoms has the single block $\{u,v,w\}$, so $\nu=3$ if $u$ and $w$ lie in one part and $\nu=6$ otherwise (adjacent vertices lie in different parts). Two disjoint edges give $\nu=4$.
+
+Let $\Phi\colon S(X)\to S(X')$ be an isomorphism. It preserves the number of minimal elements, rank, joins in upper intervals and~$\nu$. Fix a fixed point $J$. As in the proof of Theorem~\ref{thm:cl-rigid}, $\Phi$ induces a bijection $\varphi\colon E(G_J)\to E(G'_{\Phi(J)})$ that preserves rank and $\nu$ of the join of every set of edges. In particular $\varphi$ is an isomorphism of line graphs. The components of $G_J$ with an edge are the inflations $G_Q$ of the components $Q$ of $\Gamma_h$ with at least two parts; copies of a part forming a component of $\Gamma_h$ by itself are isolated vertices. So $\varphi$ matches these components. Let $G_Q$ and $G'_{Q'}$ be matched.
+
+If $G_Q$ has more than $4$ vertices, then so has $G'_{Q'}\cong G_Q$, and by the theorem of Jung~\cite{Jun66} (a strengthening of Whitney's theorem~\cite{Whi32}) $\varphi|_{E(G_Q)}$ is induced by a graph isomorphism $\psi\colon G_Q\to G'_{Q'}$. Two distinct vertices $u,w$ of $G_Q$ lie in one part iff they have a common neighbour $v$ with $\nu(a_{uv}\vee a_{vw})=3$: copies of a part $a$ have a common neighbour, since $Q$ is connected with at least two parts. As $\psi$ preserves adjacency and $\varphi$ preserves~$\nu$, $\psi$ maps parts to parts.
+
+If $G_Q$ has at most $4$ vertices, then so has $G'_{Q'}$, because by Whitney's theorem the two are isomorphic or are $K_3$ and $K_{1,3}$. Every such component is the inflation of a connected Hessenberg graph with $n\leqslant4$. A computer check over all of them (there are $13$ up to isomorphism of graphs with parts) shows that whenever an edge bijection between two of them preserves rank and $\nu$ of the joins of all edge sets, the two are isomorphic as graphs with parts.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:q1-partial}]
+By Lemma~\ref{lem:split} it suffices to show that $\#X^T$ and the product $\prod_QP_Q(q)/P_Q(1)$ over the components $Q$ of $\Gamma_h$ with at least two parts are determined by $S(X)$. For such a component, Lemma~\ref{lem:fibration} gives $P_Q=P_{\Hess(M_Q,\tilde h_Q)}/\prod_{a\in Q}[k_a]_q!$. The graph $\Gamma_{\tilde h_Q}$ is connected and is obtained from the inflated component $G_Q$ by making every part a clique, so by Corollary~\ref{cor:q1-hess} its Poincaré polynomial depends only on $G_Q$ with its parts up to isomorphism; so do the part sizes~$k_a$. By Lemma~\ref{lem:reconstruct}, $S(X)$ determines $\#X^T$ and the multiset of these components with their parts.
+\end{proof}
+
+Theorems~\ref{thm:cl-rigid} and~\ref{thm:q1-partial} answer Question~\ref{q:betti} positively for all regular semisimple Hessenberg varieties of type~A, full and partial. They also explain the computational evidence (Appendix~\ref{app:computations}): in these families the face poset remembers the whole graph. A counterexample would have to come from outside type~A.
 
 \subsection{Local weight matroids do not determine equivariant cohomology}\label{sec:counterexample}
 

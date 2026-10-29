@@ -19,7 +19,14 @@ echo '{"async": true, "asyncTimeout": 1800000}'
 ROOT="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "$0")/../.." && pwd)}"
 log() { echo "[session-start] $*" >&2; }
 
-# ---- 0. engine virtualenv (first: only needs python3, and the MCP server needs it)
+# ---- 0. engine (git submodule davidmiheev/mtengine) and its virtualenv
+# First, because it only needs python3 and the MCP server needs it. The submodule is private:
+# a cloud session can fetch it only if mtengine is among the environment's repositories.
+if [ ! -f "$ROOT/engine/pyproject.toml" ]; then
+  log "fetching the engine submodule"
+  git -C "$ROOT" submodule update --init engine >&2 \
+    || log "WARNING: could not fetch engine/ (add davidmiheev/mtengine to this environment's repositories)"
+fi
 if [ -f "$ROOT/engine/pyproject.toml" ]; then
   cd "$ROOT/engine"
   if [ ! -x .venv/bin/mtengine-mcp ]; then
