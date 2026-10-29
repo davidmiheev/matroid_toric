@@ -33,7 +33,7 @@ if [ -f "$ROOT/engine/pyproject.toml" ]; then
 fi
 
 # ---- 1. apt packages --------------------------------------------------------------
-APT_PKGS=(macaulay2 gfan polymake singular nauty poppler-utils texlive-xetex texlive-fonts-extra)
+APT_PKGS=(macaulay2 gfan polymake singular nauty poppler-utils texlive-xetex texlive-fonts-extra texlive-plain-generic tex-gyre fonts-texgyre texlive-fonts-recommended texlive-latex-recommended texlive-latex-extra lmodern)
 missing=()
 for p in "${APT_PKGS[@]}"; do
   dpkg -s "$p" >/dev/null 2>&1 || missing+=("$p")

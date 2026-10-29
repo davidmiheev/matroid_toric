@@ -3,6 +3,9 @@
 **Question 1 (thesis v2, §4.4):** for torus manifolds with `H^odd = 0`, does `S(X₁) ≅ S(X₂)`
 imply equal Betti numbers?
 
+> **Update: now proved for all n** (`PROOF.md`; thesis v2, Theorems 4.33 and 4.35). The
+> computations below came first and motivated the proof. They remain as independent evidence.
+
 **Result: yes, within this family, for all n ≤ 7 (714 Hessenberg functions).** Partial
 Hessenberg varieties are treated in the second half of this file. In this family
 the face poset determines the graph `Γ_h` up to isomorphism, and the graph determines the
@@ -11,7 +14,7 @@ Betti numbers.
 ## Setup
 
 Regular semisimple Hessenberg varieties all have `H^odd = 0`, and
-`S(Hess(M,h)) ≅ Cl(Γ_h)` (v2 Example 4.26, via the twin argument of Ayzenberg–Buchstaber).
+`S(Hess(M,h)) ≅ Cl(Γ_h)` (v2 Example 4.27, via the twin argument of Ayzenberg–Buchstaber).
 So Question 1 in this family asks whether `Cl(Γ_{h₁}) ≅ Cl(Γ_{h₂})` forces
 `P_{h₁} = P_{h₂}`, where `P_h = Σ_w q^{2ℓ_h(w)}`.
 

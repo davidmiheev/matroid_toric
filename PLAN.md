@@ -88,8 +88,8 @@ so the phenomenon is not special to `n = 5`.
    numerator agrees with the Shareshian–Wachs count on every case, including the three full
    flag varieties, which reproduce `[n]_q!` exactly for `n = 3,4,5`. The two routes share no
    input. See `experiments/counterexample/{gkm.m2,gkm_n5.m2}` and `RESULTS.md`.
-2. ~~**Write the section.**~~ **Done** — §4.5 of `docs/thesis-v2/thesis_en.pdf` (Theorem 4.35,
-   with Lemmas 4.32–4.33 and Proposition 4.34). Originally planned as: statement, the `Fl(C⁵)` pair, the two indifference graphs, the
+2. ~~**Write the section.**~~ **Done** — §4.5 of `docs/thesis-v2/thesis_en.pdf` (Theorem 4.39,
+   with Lemmas 4.36–4.37 and Proposition 4.38). Originally planned as: statement, the `Fl(C⁵)` pair, the two indifference graphs, the
    matroid isomorphism, the Betti table, and the deduction. One page.
 3. **Optional.** Push the sweep to `n = 7` to see whether a witness exists with a
    3-connected local matroid (there, 2-isomorphism forces graph isomorphism, so any witness
@@ -215,9 +215,22 @@ and freeze the track. **Artifact.** Revised Вопрос 2 plus a literature par
 
 ---
 
-## Track D — Вопрос 1: does `S(X)` determine the Betti numbers?  ◐ **type A done: yes for full (n ≤ 7) and partial (n ≤ 7) Hessenberg**
+## Track D — Вопрос 1: does `S(X)` determine the Betti numbers?  ✅ **proved for type A: all full and partial regular semisimple Hessenberg varieties, all n**
 
-*Status:* for regular semisimple Hessenberg varieties with n ≤ 7 (714 functions) the answer is
+*Status (proof):* `experiments/question1/PROOF.md`, written into thesis v2 as Theorems 4.33 and 4.35
+and Corollary 4.34. **Theorem A:** `Cl_Γ ≅ Cl_Γ'` ⇒ `Γ ≅ Γ'` for all simple graphs. The number of
+minimal elements below the join of two atoms is 6 for adjacent edges and 4 for disjoint ones, so
+the poset recovers the line graph, and Whitney's theorem recovers `Γ`. Rank separates `K_3` from
+`K_{1,3}`. Conjugation by a permutation matrix then gives `M_{Γ,λ} ≅ M_{Γ',λ}`, so Вопрос 1 is
+answered **yes** for isospectral manifolds and for all regular semisimple Hessenberg varieties,
+even without `H^odd = 0`. **Partial flags:** the same count gives 3 vs 6, which recovers the
+inflated graph together with its parts (Whitney–Jung for components with ≥ 5 vertices, a finite
+check for the rest). The fibration `Hess(h̃) → Hess_k̄(h)` with fibre `∏ Fl(k_a)` reduces the
+Betti numbers to the full case. Machine checks: exact nauty poset isomorphism classes for all 52
+graphs with n ≤ 5, the fibration identity for 2,949 cases with n ≤ 7, and the small components.
+Open: other Lie types, and a Lean proof of Theorem A (needs Whitney's line-graph theorem).
+
+*Status (computations, before the proof):* for regular semisimple Hessenberg varieties with n ≤ 7 (714 functions) the answer is
 **yes**, rigorously: the face poset `Cl(Γ_h)` determines `Γ_h` up to isomorphism (its cover
 invariants separate all 151 graph classes at n = 7), and isomorphic graphs give equal Betti
 numbers (`experiments/question1/`). Partial Hessenberg varieties (2,940 cases with n ≤ 7,
@@ -279,13 +292,19 @@ next theorem after Теорема 1: local-to-global matroid invariants on the f
 
 ---
 
-## Track G — Formal verification (Lean 4 / Mathlib)  ◐ **G1 and G2 proved (`formal/`)**
+## Track G — Formal verification (Lean 4 / Mathlib)  ◐ **G1, G2, G3 proved (`formal/`)**
 
 *Status:* Lean 4.36.0-rc1 with Mathlib `625d8914` (2026-10-16). **G1** (`vectorMatroid`, the
 linear matroid of a finite family of vectors) and **G2** (`span_prod_eq_iff`) are proved, with
 no `sorry` and only the standard axioms. The re-survey found that Mathlib now has
 `MvPolynomial.irreducible_of_totalDegree_eq_one`, which is exactly G2a, so G2 took about 40
-lines. Next: G3 (lattice of flats) toward G4/G5, and G7.
+lines. **G3** (`formal/Formal/FlatLattice.lean`, about 260 lines) is done for matroids on any
+type, with no finiteness assumption. `Flats M` is a `CompleteLattice`, in which meet is
+intersection, join is the closure of the union, `⊥` is the set of loops and `⊤` is the ground
+set. Rank is submodular. `F ⋖ G` iff `G = cl(F ∪ {e})` for some `e ∉ F`, and covers raise the
+rank by exactly 1. The lattice has `IsUpperModularLattice` and `IsAtomistic` instances, which
+makes it geometric in finite rank. Next: G4 (characteristic polynomial via `IncidenceAlgebra.mu`
+on `Flats M`), G5, and G7. G3 is a candidate for upstreaming to Mathlib.
 
 The Mathlib survey behind this track is in `docs/lean-formalization-feasibility.md`; that file
 records what exists today, file by file. This section is the actionable list: what can be

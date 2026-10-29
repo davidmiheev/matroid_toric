@@ -129,7 +129,7 @@ is left unchanged as the user's document; `PLAN.md` has been corrected.
 | Пример 20 cycles | corrected (see above) | C4 |
 | Предложение 7 | exact AMS23 Thm 1 (Q; Z with connected stabilizers); non-formality consequence added | — |
 | Вопрос 1 | "⟺" → "⟹"; complexity-zero case and the counterexample to "⟸" recorded | new |
-| — | **§4.5 new: the counterexample** (Theorem 4.35), plus remarks on the minimal disconnected pair, the n = 6 pair, and why it does not bear on Вопрос 1 (Cl posets differ: 200 vs 190 rank-2 elements) | A1 |
+| — | **§4.5 new: the counterexample** (Theorem 4.39; it was 4.35 before the Question 1 addition), plus remarks on the minimal disconnected pair, the n = 6 pair, and why it does not bear on Вопрос 1 (Cl posets differ: 200 vs 190 rank-2 elements) | A1 |
 
 ### §5–6 and appendix
 | Original | Change | Audit |
@@ -151,3 +151,14 @@ Milnor–Stasheff, Tymoczko, Macaulay2. Every pin was checked against Crossref.
 
 ### Typos (audit C9, C10)
 Moot: the text is newly written in English, and theorem numbering is automatic.
+
+### Addition after v2: Question 1 answered for type A
+| Place | Change | Track |
+|---|---|---|
+| §4.4, after Question 1 | New paragraph *Isospectral manifolds and Hessenberg varieties*: Lemma 4.32, Theorem 4.33 (`Cl_Γ` determines `Γ`), Corollary 4.34 (Question 1 holds for isospectral manifolds and regular semisimple Hessenberg varieties), Theorem 4.35 (partial Hessenberg varieties, proof sketch) | D |
+| Remark after Theorem 4.39 | "which remains open" replaced: Question 1 holds for these varieties by Corollary 4.34 | D |
+| Conclusion | open-question paragraph updated | D |
+| Appendix A | paragraph on `experiments/question1/` | D |
+| Bibliography | added Whitney 1932, Jung 1966, McKay–Piperno 2014 | D |
+
+Full proofs: `experiments/question1/PROOF.md`.

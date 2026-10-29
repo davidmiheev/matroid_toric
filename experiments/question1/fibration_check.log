@@ -1,0 +1,8 @@
+n=1: 1 (kbar, h) cases, identity holds
+n=2: 3 (kbar, h) cases, identity holds
+n=3: 10 (kbar, h) cases, identity holds
+n=4: 36 (kbar, h) cases, identity holds
+n=5: 137 (kbar, h) cases, identity holds
+n=6: 543 (kbar, h) cases, identity holds
+n=7: 2219 (kbar, h) cases, identity holds
+all 2949 cases with n <= 7: P(h~) = P(kbar,h) * prod [k_a]_q!

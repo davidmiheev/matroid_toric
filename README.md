@@ -10,12 +10,12 @@ program derived from its audit.
 |---|---|
 | `docs/thesis_matroid_invariants_torus_actions.pdf` | The thesis as submitted (20 pp., 18 refs). |
 | `audit/matroid_torus_thesis_audit.md` | Checkpoint audit (CP0–CP4): reference pins, mathematical audit, priority fix table, development program. |
-| `docs/thesis-v2/` | **Revised English edition** of the thesis (`thesis_en.pdf`, 22 pp.): all errata applied, counterexample proved in §4.5. `CHANGES.md` logs every change against the audit, including where the audit itself was wrong. |
+| `docs/thesis-v2/` | **Revised English edition** of the thesis (`thesis_en.pdf`, 24 pp.): all errata applied, counterexample proved in §4.5, Question 1 answered for type A in §4.4. `CHANGES.md` logs every change against the audit, including where the audit itself was wrong. |
 | `experiments/cluster_permutohedra/` | Homology of cluster-permutohedra behind the corrected Examples 4.29–4.30, and the global-poset comparison for the witness pair. |
 | `experiments/counterexample/` | The Track A sweep: scripts, verified witness pairs, and what is left to confirm in Macaulay2. |
 | `engine/` | **mtengine**: one interface (Python API, `mte` CLI, MCP server) to Macaulay2, gfan, polymake, Singular, nauty and Lean, with a provenance-tracking result cache. Destined for its own repository. |
-| `formal/` | Lean 4 / Mathlib project: G1 (vector matroid) and G2 (the unique-factorization step of the main theorem), both proved. |
-| `experiments/question1/`, `experiments/tropical_flags/` | Track D (Question 1 for full and partial Hessenberg varieties) and Track C (frozen). |
+| `formal/` | Lean 4 / Mathlib project: G1 (vector matroid), G2 (the unique-factorization step of the main theorem) and G3 (the lattice of flats: complete, semimodular, atomistic), all proved. |
+| `experiments/question1/`, `experiments/tropical_flags/` | Track D: Question 1 for full and partial Hessenberg varieties, proved in `question1/PROOF.md` and checked by computer for n ≤ 7. Track C is frozen. |
 | `PLAN.md` | Development plan built from the audit: tracks, milestones, atomic experiments, kill criteria, artifacts. |
 | `docs/lean-formalization-feasibility.md` | Feasibility study for formally verifying the results in Lean 4 / Mathlib, with a tiered target list checked against the current Mathlib tree. |
 
@@ -27,8 +27,13 @@ The main theorem (local equivariant cohomology `H*_T(X, X∖pt)`, viewed as an i
 factorization. The original's GKM-based proof of the key proposition needed pairwise
 independent weights. The advertised corollary, that local weight matroids and hence their Chow
 rings and Orlik–Solomon algebras do not determine `H*_T`, was unproved in the original and is
-now **Theorem 4.35** of v2. The witness is two connected regular semisimple Hessenberg
+now **Theorem 4.39** of v2. The witness is two connected regular semisimple Hessenberg
 varieties in `Fl(C⁵)`, confirmed by exhaustive matroid isomorphism and by two independent
 Betti-number computations. All errata are applied in the English v2 (`docs/thesis-v2/`).
 Verifying them against the primary sources also showed that the audit itself was wrong in a
 few places (see `docs/thesis-v2/CHANGES.md`).
+
+The thesis's Question 1 asks whether the face poset determines the Betti numbers. It now has a
+positive answer for isospectral manifolds and for all full and partial regular semisimple
+Hessenberg varieties. The reason is rigidity: the cluster-permutohedron `Cl_Γ` determines the
+graph `Γ`, via the line graph and Whitney's theorem (v2 Theorems 4.33 and 4.35).
