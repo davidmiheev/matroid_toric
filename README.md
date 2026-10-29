@@ -13,7 +13,7 @@ program derived from its audit.
 | `docs/thesis-v2/` | **Revised English edition** of the thesis (`thesis_en.pdf`, 25 pp.): all errata applied, counterexample proved in §4.5, Question 1 answered for type A in §4.4. `CHANGES.md` logs every change against the audit, including where the audit itself was wrong. |
 | `experiments/cluster_permutohedra/` | Homology of cluster-permutohedra behind the corrected Examples 4.29–4.30, and the global-poset comparison for the witness pair. |
 | `experiments/counterexample/` | The Track A sweep: scripts, verified witness pairs, and what is left to confirm in Macaulay2. |
-| `engine/` | **mtengine**: one interface (Python API, `mte` CLI, MCP server) to Macaulay2, gfan, polymake, Singular, nauty and Lean, with a provenance-tracking result cache. Destined for its own repository. |
+| `engine/` | **mtengine**: one interface (Python API, `mte` CLI, MCP server) to Macaulay2, gfan, polymake, Singular, nauty and Lean, with a provenance-tracking result cache. A git submodule pointing at [davidmiheev/mtengine](https://github.com/davidmiheev/mtengine); clone with `--recurse-submodules` or run `git submodule update --init`. |
 | `formal/` | Lean 4 / Mathlib project: G1 (vector matroid), G2 (the unique-factorization step of the main theorem) and G3 (the lattice of flats: complete, semimodular, atomistic), all proved. |
 | `experiments/question1/`, `experiments/tropical_flags/` | Track D: Question 1 for full and partial Hessenberg varieties, proved in `question1/PROOF.md` and checked by computer for n ≤ 7. Track C is frozen. |
 | `PLAN.md` | Development plan built from the audit: tracks, milestones, atomic experiments, kill criteria, artifacts. |
