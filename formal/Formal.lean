@@ -2,4 +2,6 @@ import Formal.LocalCohomologyIdeal
 import Formal.VectorMatroid
 import Formal.FlatLattice
 import Formal.CharPoly
+import Formal.PhilipHall
+import Formal.GKM
 import Formal.EdgeReconstruction
