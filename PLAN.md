@@ -322,8 +322,11 @@ multigraphs, `gkmRing` as a subalgebra of `V → R`). For the GKM sphere with pa
 non-associated linear weights, the relative part is `⋂ⱼ (αⱼ) = (∏ⱼ αⱼ)`, and with G2 it determines
 the weights. A formal counterpoint shows that the weights `(X₀, X₀)` give `(X₀) ≠ (X₀²)`, which is
 why the thesis proves its main theorem through the Thom isomorphism. Boundary: the GKM theorem
-(ring = `H*_T`) is not formalized. Next: the Lean proof of Theorem A (`Cl_Γ ≅ Cl_Γ'` ⇒ `Γ ≅ Γ'`),
-starting with the edge-reconstruction proposition; then G6. G3, G4 and G5 are candidates for
+(ring = `H*_T`) is not formalized. **Theorem A, step 1** (`formal/Formal/EdgeReconstruction.lean`,
+about 410 lines) is done: an edge bijection preserving meeting and triangles is induced by a
+vertex bijection, and finite graphs with equally many vertices are then isomorphic. Next: step 2,
+the cluster-permutohedron `Cl_Γ` as a poset and the dictionary from the poset to meeting and
+triangles of edges; then G6. G3, G4 and G5 are candidates for
 upstreaming to Mathlib; G5 is stated for general posets and is not in Mathlib.
 
 The Mathlib survey behind this track is in `docs/lean-formalization-feasibility.md`; that file
