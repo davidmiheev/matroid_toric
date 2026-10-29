@@ -59,12 +59,13 @@ three edges of `K_3` span a rank-2 element (one block of size 3), while the thre
 `φ` also preserves the rank of every edge set, so it is an isomorphism of graphic matroids. This is
 not needed for the proof.
 
-**Computational cross-check** (`reconstruction_check.py`, `reconstruction_check_n5.log`; the n ≤ 6 run goes to `reconstruction_check.log`). All graphs
-with at most N vertices are enumerated, one per isomorphism class, with nauty `geng`. For each one,
-`Cl_Γ` is built from the definition and its exact isomorphism class is computed as the nauty
-canonical form of the rank-coloured Hasse diagram. Graphs with different `n` are compared too.
-For N = 5 (52 graphs), the result is 52 distinct posets and no clashes. The script also checks that
-relabelled copies of a graph give identical forms.
+**Computational cross-check** (`reconstruction_check.py`, `reconstruction_check.log`). All graphs
+with at most 6 vertices are enumerated, one per isomorphism class, with nauty `geng`. For each one,
+`Cl_Γ` is built from the definition and its exact isomorphism class is computed as the canonical
+form of the rank-coloured Hasse diagram, using nauty's Traces. Graphs with different `n` are
+compared too. Result: 208 graphs, 208 pairwise non-isomorphic posets (the largest, for n = 6, has
+about 10⁴ elements). Before the sweep, a self-check confirms that randomly relabelled copies of
+every graph with at most 4 vertices, with the poset elements shuffled, give identical forms.
 
 ## 3. The graph determines the manifold
 

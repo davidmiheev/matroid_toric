@@ -8,7 +8,7 @@ Graphs with different n are compared too (the forms record the cell sizes).
 
 Usage: engine/.venv/bin/python reconstruction_check.py N
 """
-import subprocess, sys
+import random, subprocess, sys, time
 from collections import defaultdict
 from itertools import permutations
 from pathlib import Path
@@ -72,15 +72,37 @@ def cluster_permutohedron(n, E):
     return len(elems), ranks, hasse
 
 
+def relabelled_form(n, E, seed):
+    """Canonical form of Cl for a randomly relabelled copy of the graph, with the poset's
+    elements also listed in a shuffled order."""
+    rng = random.Random(seed)
+    p = list(range(n)); rng.shuffle(p)
+    size, ranks, hasse = cluster_permutohedron(n, [(p[a], p[b]) for a, b in E])
+    q = list(range(size)); rng.shuffle(q)
+    hasse = [(q[a], q[b]) for a, b in hasse]
+    cells = [[q[i] for i, r in enumerate(ranks) if r == k] for k in range(max(ranks) + 1)]
+    return canonical_form(size, hasse, cells, algorithm="traces")
+
+
 N = int(sys.argv[1]) if len(sys.argv) > 1 else 5
+# Non-vacuity: isomorphic inputs must give equal forms (all graphs with n <= 4, 3 relabellings).
+for n in range(1, 5):
+    for E in graphs(n):
+        forms0 = {relabelled_form(n, E, seed) for seed in range(3)}
+        assert len(forms0) == 1, (n, E)
+print("self-check passed: relabelled copies give identical canonical forms (n <= 4)", flush=True)
 forms = defaultdict(list)
 for n in range(1, N + 1):
     count = 0
     for E in graphs(n):
+        t0 = time.time()
         size, ranks, hasse = cluster_permutohedron(n, E)
         cells = [[i for i, r in enumerate(ranks) if r == k] for k in range(max(ranks) + 1)]
-        forms[canonical_form(size, hasse, cells)].append((n, E))
+        forms[canonical_form(size, hasse, cells, algorithm="traces")].append((n, E))
         count += 1
+        if n >= 6:
+            print(f"  n={n} graph {count}: {len(E)} edges, {size} elements, {time.time() - t0:.1f}s",
+                  file=sys.stderr, flush=True)
     print(f"n={n}: {count} graphs (all isomorphism classes)", flush=True)
 clashes = [v for v in forms.values() if len(v) > 1]
 print(f"total {sum(len(v) for v in forms.values())} graphs, {len(forms)} distinct Cl posets, "

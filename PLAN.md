@@ -226,8 +226,8 @@ answered **yes** for isospectral manifolds and for all regular semisimple Hessen
 even without `H^odd = 0`. **Partial flags:** the same count gives 3 vs 6, which recovers the
 inflated graph together with its parts (Whitney–Jung for components with ≥ 5 vertices, a finite
 check for the rest). The fibration `Hess(h̃) → Hess_k̄(h)` with fibre `∏ Fl(k_a)` reduces the
-Betti numbers to the full case. Machine checks: exact nauty poset isomorphism classes for all 52
-graphs with n ≤ 5, the fibration identity for 2,949 cases with n ≤ 7, and the small components.
+Betti numbers to the full case. Machine checks: exact poset isomorphism classes (nauty Traces) for all 208
+graphs with n ≤ 6, the fibration identity for 2,949 cases with n ≤ 7, and the small components.
 Open: other Lie types, and a Lean proof of Theorem A (needs Whitney's line-graph theorem).
 
 *Status (computations, before the proof):* for regular semisimple Hessenberg varieties with n ≤ 7 (714 functions) the answer is
