@@ -88,8 +88,8 @@ so the phenomenon is not special to `n = 5`.
    numerator agrees with the Shareshian–Wachs count on every case, including the three full
    flag varieties, which reproduce `[n]_q!` exactly for `n = 3,4,5`. The two routes share no
    input. See `experiments/counterexample/{gkm.m2,gkm_n5.m2}` and `RESULTS.md`.
-2. ~~**Write the section.**~~ **Done** — §4.5 of `docs/thesis-v2/thesis_en.pdf` (Theorem 4.39,
-   with Lemmas 4.36–4.37 and Proposition 4.38). Originally planned as: statement, the `Fl(C⁵)` pair, the two indifference graphs, the
+2. ~~**Write the section.**~~ **Done** — §4.5 of `docs/thesis-v2/thesis_en.pdf` (Theorem 4.42,
+   with Lemmas 4.39–4.40 and Proposition 4.41). Originally planned as: statement, the `Fl(C⁵)` pair, the two indifference graphs, the
    matroid isomorphism, the Betti table, and the deduction. One page.
 3. **Optional.** Push the sweep to `n = 7` to see whether a witness exists with a
    3-connected local matroid (there, 2-isomorphism forces graph isomorphism, so any witness
@@ -217,7 +217,7 @@ and freeze the track. **Artifact.** Revised Вопрос 2 plus a literature par
 
 ## Track D — Вопрос 1: does `S(X)` determine the Betti numbers?  ✅ **proved for type A: all full and partial regular semisimple Hessenberg varieties, all n**
 
-*Status (proof):* `experiments/question1/PROOF.md`, written into thesis v2 as Theorems 4.33 and 4.35
+*Status (proof):* `experiments/question1/PROOF.md`, written into thesis v2 as Theorems 4.33 and 4.35 (full proof of 4.35 in Lemmas 4.36–4.38)
 and Corollary 4.34. **Theorem A:** `Cl_Γ ≅ Cl_Γ'` ⇒ `Γ ≅ Γ'` for all simple graphs. The number of
 minimal elements below the join of two atoms is 6 for adjacent edges and 4 for disjoint ones, so
 the poset recovers the line graph, and Whitney's theorem recovers `Γ`. Rank separates `K_3` from
