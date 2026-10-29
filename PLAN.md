@@ -292,7 +292,7 @@ next theorem after Теорема 1: local-to-global matroid invariants on the f
 
 ---
 
-## Track G — Formal verification (Lean 4 / Mathlib)  ◐ **G1, G2, G3 proved (`formal/`)**
+## Track G — Formal verification (Lean 4 / Mathlib)  ◐ **G1–G4 proved (`formal/`)**
 
 *Status:* Lean 4.36.0-rc1 with Mathlib `625d8914` (2026-10-16). **G1** (`vectorMatroid`, the
 linear matroid of a finite family of vectors) and **G2** (`span_prod_eq_iff`) are proved, with
@@ -303,8 +303,13 @@ type, with no finiteness assumption. `Flats M` is a `CompleteLattice`, in which 
 intersection, join is the closure of the union, `⊥` is the set of loops and `⊤` is the ground
 set. Rank is submodular. `F ⋖ G` iff `G = cl(F ∪ {e})` for some `e ∉ F`, and covers raise the
 rank by exactly 1. The lattice has `IsUpperModularLattice` and `IsAtomistic` instances, which
-makes it geometric in finite rank. Next: G4 (characteristic polynomial via `IncidenceAlgebra.mu`
-on `Flats M`), G5, and G7. G3 is a candidate for upstreaming to Mathlib.
+makes it geometric in finite rank. **G4** (`formal/Formal/CharPoly.lean`) is done too. It defines
+`charPoly M = ∑_F μ(⊥,F) X^{r(E)−r(F)}` with Mathlib's `IncidenceAlgebra.mu` on `Flats M`, and
+proves Whitney's Boolean expansion for loopless matroids on a finite type by grouping subsets by
+their closure and applying Möbius inversion. This repairs Track B item 5 in machine-checked form.
+`Flats M` is now a `def` rather than an `abbrev`, so the subtype order no longer competes with the
+lattice order. Next: G5 (Philip Hall) and G7. G3 and G4 are candidates for upstreaming to
+Mathlib.
 
 The Mathlib survey behind this track is in `docs/lean-formalization-feasibility.md`; that file
 records what exists today, file by file. This section is the actionable list: what can be

@@ -7,6 +7,7 @@ Lean `v4.36.0-rc1`, Mathlib pinned in `lake-manifest.json` (commit `625d8914`, 2
 | `Formal/LocalCohomologyIdeal.lean` | **G2** — over a field, `span {∏α} = span {∏β} ↔ Multiset.Rel Associated α β` for linear forms: the local equivariant cohomology ideal determines the weights up to scalars, with multiplicities (thesis v2, Theorem 4.15(2)) | ✅ proved |
 | `Formal/VectorMatroid.lean` | **G1** — `vectorMatroid v : Matroid ι`, the linear matroid of a finite family of vectors, with the exchange axiom `linearIndepOn_augment` | ✅ proved |
 | `Formal/FlatLattice.lean` | **G3** — `Flats M`, the complete lattice of flats of any matroid: meet = `∩`, join = closure of `∪`, `sSup`/`sInf`, `⊥` = loops, `⊤` = ground set; submodular rank; `F ⋖ G ↔ G = cl(insert e F)`; covers raise rank by 1; `IsUpperModularLattice` and `IsAtomistic` instances | ✅ proved |
+| `Formal/CharPoly.lean` | **G4** — `charPoly M = ∑_F μ(⊥,F) X^{r(E)−r(F)}` via Mathlib's `IncidenceAlgebra.mu` on `Flats M`; `sum_closure_eq_mu` (signed count of spanning sets of a flat = `μ(⊥,F)`, loopless) and **Whitney's Boolean expansion** `charPoly_eq_sum_subsets` (`χ_M = ∑_{A⊆E} (−1)^{|A|} X^{r(E)−r(A)}`, loopless, finite type) | ✅ proved |
 
 Both depend only on `propext`, `Classical.choice`, `Quot.sound` (no `sorry`); the engine test
 `engine/tests/test_backends.py::test_lean_g2_is_sorry_free` re-checks this.
