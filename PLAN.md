@@ -296,7 +296,7 @@ next theorem after Теорема 1: local-to-global matroid invariants on the f
 
 ---
 
-## Track G — Formal verification (Lean 4 / Mathlib)  ◐ **G1–G4 proved (`formal/`)**
+## Track G — Formal verification (Lean 4 / Mathlib)  ◐ **G1–G5 proved (`formal/`)**
 
 *Status:* Lean 4.36.0-rc1 with Mathlib `625d8914` (2026-10-16). **G1** (`vectorMatroid`, the
 linear matroid of a finite family of vectors) and **G2** (`span_prod_eq_iff`) are proved, with
@@ -312,8 +312,13 @@ makes it geometric in finite rank. **G4** (`formal/Formal/CharPoly.lean`) is don
 proves Whitney's Boolean expansion for loopless matroids on a finite type by grouping subsets by
 their closure and applying Möbius inversion. This repairs Track B item 5 in machine-checked form.
 `Flats M` is now a `def` rather than an `abbrev`, so the subtype order no longer competes with the
-lattice order. Next: G5 (Philip Hall) and G7. G3 and G4 are candidates for upstreaming to
-Mathlib.
+lattice order. **G5** (`formal/Formal/PhilipHall.lean`) is done: Philip Hall's theorem
+`μ(a, b) = χ̃(ord(a, b))` for `a < b` in any locally finite partial order. Here `χ̃` is defined
+combinatorially as `∑ (−1)^{|C|+1}` over the chains `C` of the open interval, the empty chain
+included. The proof splits a chain at its greatest element and inducts on the interval. The
+corollary for flats is the corrected thesis Предложение 3 (Track B item 4), sign included and with
+no topology. Next: G7. G3, G4 and G5 are candidates for upstreaming to Mathlib; G5 is stated for
+general posets and is not in Mathlib.
 
 The Mathlib survey behind this track is in `docs/lean-formalization-feasibility.md`; that file
 records what exists today, file by file. This section is the actionable list: what can be
