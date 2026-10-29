@@ -446,19 +446,19 @@ rather than kept local.
 
 ## Paperability
 
-After the 30-day items the publishable core is: Теорема 1, now with a correct proof that
-covers weight multiplicities (Thom isomorphism plus unique factorization), and the
-counterexample (Track A).
+**Update (draft written: `docs/paper/paper.tex`, 9 pp.).** With Question 1 answered for type A,
+the core is now a short research article rather than a note. It has three results: Theorem A
+(local equivariant cohomology determines the weights with multiplicities), Theorem B (the
+`Fl(C⁵)` counterexample), and Theorem C (the face poset determines the Betti numbers for
+isospectral manifolds and all full and partial regular semisimple Hessenberg varieties,
+through the rigidity `Cl_Γ ≅ Cl_Γ' ⇒ Γ ≅ Γ'`). Working title: *Face posets, local weight
+matroids and Betti numbers of torus actions*. Remaining: author details, choice of venue, and an
+independent read of the partial-flag proof.
 
-*Correction to the first draft of this section:* Пример 18 (partial Hessenberg
-cluster-permutohedra) is **not** new. Ayzenberg–Buchstaber already cover it in
-arXiv:2203.14133 / IMRN 2024, §5 (Construction 5.13, Theorem 2), and their Cor. 3.2 covers full
-Hessenberg varieties. The audit's "appears to be new" was wrong, and v2 attributes it.
-
-The core is therefore thinner than first estimated: one theorem, whose substance is a careful
-version of a standard argument, and one computer-verified example. It reads as a short note
-rather than a paper. Working title: *Local equivariant cohomology and matroids of weights of
-torus actions*. Tracks E and F are what would make it a paper.
+*Earlier assessment, kept for the record:* the core was one theorem, a careful version of a
+standard argument, plus one computer-verified example, and it read as a short note. Пример 18
+(partial Hessenberg cluster-permutohedra) is **not** new: Ayzenberg–Buchstaber cover it in
+arXiv:2203.14133 / IMRN 2024, §5. Tracks E and F would still add a further layer.
 
 ## Risk register
 
