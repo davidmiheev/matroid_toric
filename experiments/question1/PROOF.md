@@ -223,9 +223,14 @@ torus manifolds. Natural next questions:
 
 1. **Other Lie types.** Is there a rigidity statement like Theorem A for the face posets of
    regular semisimple Hessenberg varieties in types B, C and D?
-2. **Formalisation.** Theorem A is now fully elementary (Lemma 2, Proposition 3), which makes it a
-   realistic Lean target on top of G3 (`formal/Formal/FlatLattice.lean`). Proposition 3 alone is a
-   self-contained graph-theory lemma, a natural first milestone and a candidate for Mathlib.
+2. **Formalisation: done for Theorem A.** `formal/Formal/EdgeReconstruction.lean` proves
+   Proposition 3 (and Lemma 2). `formal/Formal/ClusterPermutohedron.lean` proves Theorem A itself,
+   `Cluster.cl_rigid : Cl_Γ ≃o Cl_Γ' → Nonempty (Γ ≃g Γ')` for graphs on nonempty finite types.
+   There an element of `Cl_Γ` is the map sending each vertex to the label set of its block, ordered
+   pointwise; `ν` is the number of minimal elements below an element. Both files contain no
+   `sorry` and use only the standard axioms. Theorem D and Corollary C are not formalized: they
+   rest on the face-poset and twin theorems of Ayzenberg–Buchstaber and on the topology of
+   Hessenberg varieties.
 
 ## References
 

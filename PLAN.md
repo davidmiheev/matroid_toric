@@ -231,8 +231,7 @@ semisimple Hessenberg varieties, even without `H^odd = 0`. **Partial flags:** th
 fibration `Hess(h̃) → Hess_k̄(h)` with fibre `∏ Fl(k_a)` reduces the Betti numbers to the full case.
 Machine checks: exact poset isomorphism classes (nauty Traces) for all 208 graphs with n ≤ 6; the
 fibration identity for 2,949 cases with n ≤ 7; Proposition 4.34 for all automorphisms of graphs
-with n ≤ 6. Open: other Lie types, and a Lean proof of Theorem A (estimate 1,500–2,500 lines;
-first milestone: Proposition 4.34 alone, 500–900 lines).
+with n ≤ 6. Open: other Lie types. Theorem A is formally verified in Lean (`formal/Formal/ClusterPermutohedron.lean`).
 
 *Status (computations, before the proof):* for regular semisimple Hessenberg varieties with n ≤ 7 (714 functions) the answer is
 **yes**, rigorously: the face poset `Cl(Γ_h)` determines `Γ_h` up to isomorphism (its cover
@@ -296,7 +295,7 @@ next theorem after Теорема 1: local-to-global matroid invariants on the f
 
 ---
 
-## Track G — Formal verification (Lean 4 / Mathlib)  ◐ **G1–G7 proved, Theorem A step 1 proved (`formal/`)**
+## Track G — Formal verification (Lean 4 / Mathlib)  ◐ **G1–G7 and Theorem A proved (`formal/`)**
 
 *Status:* Lean 4.36.0-rc1 with Mathlib `625d8914` (2026-10-16). **G1** (`vectorMatroid`, the
 linear matroid of a finite family of vectors) and **G2** (`span_prod_eq_iff`) are proved, with
@@ -324,9 +323,12 @@ the weights. A formal counterpoint shows that the weights `(X₀, X₀)` give `(
 why the thesis proves its main theorem through the Thom isomorphism. Boundary: the GKM theorem
 (ring = `H*_T`) is not formalized. **Theorem A, step 1** (`formal/Formal/EdgeReconstruction.lean`,
 about 410 lines) is done: an edge bijection preserving meeting and triangles is induced by a
-vertex bijection, and finite graphs with equally many vertices are then isomorphic. Next: step 2,
-the cluster-permutohedron `Cl_Γ` as a poset and the dictionary from the poset to meeting and
-triangles of edges. **G6** (`formal/Formal/FixedSubspaces.lean`) is done: in a vector matroid
+vertex bijection, and finite graphs with equally many vertices are then isomorphic. **Theorem A,
+step 2** (`formal/Formal/ClusterPermutohedron.lean`, about 940 lines) is done:
+`Cluster.cl_rigid : Cl_Γ ≃o Cl_Γ' → Nonempty (Γ ≃g Γ')`. The minimal elements are the
+permutations, the covers of the base point are the atoms of edges, and `ν` of joins of atoms
+detects meeting and triangles. Not formalized: the face-poset and twin theorems that connect
+`Cl_Γ` to the manifolds. **G6** (`formal/Formal/FixedSubspaces.lean`) is done: in a vector matroid
 `cl X = {j | vⱼ ∈ span v(X)}`, flats are preimages of subspaces, and the fixed index sets of
 subspaces of the dual (Lie algebras of subtori) are exactly the flats; ordered by inclusion they
 are isomorphic to `Flats` (G3). The slice theorem and `V^H = ⊕_{j∈F(H)} V(α_j)` remain the

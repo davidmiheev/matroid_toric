@@ -6,3 +6,4 @@ import Formal.PhilipHall
 import Formal.GKM
 import Formal.EdgeReconstruction
 import Formal.FixedSubspaces
+import Formal.ClusterPermutohedron
