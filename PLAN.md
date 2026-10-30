@@ -296,7 +296,7 @@ next theorem after Теорема 1: local-to-global matroid invariants on the f
 
 ---
 
-## Track G — Formal verification (Lean 4 / Mathlib)  ◐ **G1–G5 and G7 proved (`formal/`)**
+## Track G — Formal verification (Lean 4 / Mathlib)  ◐ **G1–G7 proved, Theorem A step 1 proved (`formal/`)**
 
 *Status:* Lean 4.36.0-rc1 with Mathlib `625d8914` (2026-10-16). **G1** (`vectorMatroid`, the
 linear matroid of a finite family of vectors) and **G2** (`span_prod_eq_iff`) are proved, with
@@ -326,7 +326,11 @@ why the thesis proves its main theorem through the Thom isomorphism. Boundary: t
 about 410 lines) is done: an edge bijection preserving meeting and triangles is induced by a
 vertex bijection, and finite graphs with equally many vertices are then isomorphic. Next: step 2,
 the cluster-permutohedron `Cl_Γ` as a poset and the dictionary from the poset to meeting and
-triangles of edges; then G6. G3, G4 and G5 are candidates for
+triangles of edges. **G6** (`formal/Formal/FixedSubspaces.lean`) is done: in a vector matroid
+`cl X = {j | vⱼ ∈ span v(X)}`, flats are preimages of subspaces, and the fixed index sets of
+subspaces of the dual (Lie algebras of subtori) are exactly the flats; ordered by inclusion they
+are isomorphic to `Flats` (G3). The slice theorem and `V^H = ⊕_{j∈F(H)} V(α_j)` remain the
+unformalized geometric input. G3, G4 and G5 are candidates for
 upstreaming to Mathlib; G5 is stated for general posets and is not in Mathlib.
 
 The Mathlib survey behind this track is in `docs/lean-formalization-feasibility.md`; that file
