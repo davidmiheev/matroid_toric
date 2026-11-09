@@ -26,12 +26,26 @@ Computations run through [mtengine](https://github.com/davidmiheev/mtengine) (su
 | `audit/matroid_torus_thesis_audit.md` | Checkpoint audit (CP0–CP4): reference pins, mathematical audit, priority fix table, development program. |
 | `docs/thesis-v2/` | **Revised English edition** of the thesis (`thesis_en.pdf`, 26 pp.): all errata applied, counterexample proved in §4.5, Question 1 answered for type A in §4.4. `CHANGES.md` logs every change against the audit, including where the audit itself was wrong. |
 | `experiments/cluster_permutohedra/` | Homology of cluster-permutohedra behind the corrected Examples 4.29–4.30, and the global-poset comparison for the witness pair. |
-| `experiments/counterexample/` | The Track A sweep: scripts, verified witness pairs, and what is left to confirm in Macaulay2. |
+| `experiments/counterexample/` | The Track A sweep: scripts, verified witness pairs, and the independent Macaulay2 (GKM) recomputation of their Betti numbers. |
 | `engine/` | **mtengine**, the computational engine for the experiments: one interface (Python API, `mte` CLI, MCP server) to Macaulay2, gfan, polymake, Singular, nauty, Lean and Regina, with a provenance-tracking result cache. A git submodule pointing at [davidmiheev/mtengine](https://github.com/davidmiheev/mtengine), a standalone engine for computational experiments in topology and geometry; clone with `--recurse-submodules` or run `git submodule update --init`. |
-| `formal/` | Lean 4 / Mathlib project: G1 (vector matroid), G2 (the unique-factorization step of the main theorem) and G3 (the lattice of flats: complete, semimodular, atomistic), all proved. |
+| `formal/` | Lean 4 / Mathlib project: G1–G7 (vector matroids, the unique-factorization step of Theorem A, the lattice of flats, characteristic polynomial, Philip Hall, fixed subspaces, GKM rings) and the rigidity `Cl_Γ ≅ Cl_Γ' ⇒ Γ ≅ Γ'` behind Theorem C. No `sorry`; see `formal/README.md`. |
 | `experiments/question1/`, `experiments/tropical_flags/` | Track D: Question 1 for full and partial Hessenberg varieties, proved in `question1/PROOF.md` and checked by computer for n ≤ 7. Track C is frozen. |
-| `PLAN.md` | Development plan built from the audit: tracks, milestones, atomic experiments, kill criteria, artifacts. |
+| `PLAN.md` | Development plan built from the audit: a status table for every track, then tracks, milestones, atomic experiments, kill criteria, artifacts. |
 | `docs/lean-formalization-feasibility.md` | Feasibility study for formally verifying the results in Lean 4 / Mathlib, with a tiered target list checked against the current Mathlib tree. |
+
+## Setup
+
+```sh
+git submodule update --init engine                       # mtengine
+(cd engine && python3 -m venv .venv && .venv/bin/pip install -e ".[test]")
+(cd formal && lake exe cache get && lake build)          # prebuilt Mathlib, then the project
+```
+
+The `mtengine` MCP server in `.mcp.json` runs from `engine/.venv`. Its Lean backend
+(`lean_check`) compiles in `formal/`, which it finds as the sibling of `engine/`; an mtengine
+installed elsewhere needs `export MTENGINE_LEAN_PROJECT=$PWD/formal`. In Claude Code cloud
+sessions, `.claude/hooks/session-start.sh` does all of this and sets that variable. The
+toolchain is pinned in `formal/lean-toolchain` (Lean 4.36.0-rc1, Mathlib `625d8914`).
 
 ## Status in one paragraph
 
