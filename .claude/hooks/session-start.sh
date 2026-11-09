@@ -2,7 +2,7 @@
 # SessionStart hook for Claude Code cloud sessions: installs the matroid_toric toolchain.
 #   - CAS / combinatorics: Macaulay2, gfan, polymake, Singular, nauty   (apt)
 #   - typesetting: XeLaTeX + fonts for docs/thesis-v2, poppler-utils    (apt)
-#   - Lean 4 (elan) + prebuilt Mathlib cache for formal/
+#   - Lean 4 (elan) + prebuilt Mathlib cache for formal/, built; MTENGINE_LEAN_PROJECT points there
 #   - engine/.venv with mtengine installed, so the mtengine MCP server in .mcp.json starts
 # Idempotent: every step is skipped when already done, so cached containers start fast.
 # Runs asynchronously; see the echo below.
@@ -75,6 +75,11 @@ if [ -f "$ROOT/formal/lakefile.toml" ]; then
   fi
   log "building formal/"
   lake build >/dev/null
+  # mtengine's Lean backend (lean_check) compiles in this project. engine/ finds it as its
+  # sibling; an mtengine installed elsewhere (e.g. by the cloud environment) needs the variable.
+  if [ -n "${CLAUDE_ENV_FILE:-}" ] && ! grep -q 'MTENGINE_LEAN_PROJECT' "$CLAUDE_ENV_FILE" 2>/dev/null; then
+    echo "export MTENGINE_LEAN_PROJECT=\"$ROOT/formal\"" >> "$CLAUDE_ENV_FILE"
+  fi
 fi
 
 log "done"
