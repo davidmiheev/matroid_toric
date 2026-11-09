@@ -2,3 +2,8 @@ import Formal.LocalCohomologyIdeal
 import Formal.VectorMatroid
 import Formal.FlatLattice
 import Formal.CharPoly
+import Formal.PhilipHall
+import Formal.GKM
+import Formal.EdgeReconstruction
+import Formal.FixedSubspaces
+import Formal.ClusterPermutohedron
