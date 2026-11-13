@@ -3,6 +3,12 @@
 Scripts: `lie_types.py` (log `lie_types.log`) and `coincidences.py` (log `coincidences.log`).
 Run: `../../engine/.venv/bin/python lie_types.py A1 A2 A3 A4 A5 B2 G2 B3 C3 D4 B4 C4 F4 D5 B5 C5`.
 
+**Update: proved for simply-laced types.** `PROOF.md` proves that for types `A`, `D`, `E` (all ranks,
+including `E₆–E₈`, connected or not) the face poset determines the configuration of lines of `I`
+together with `W` up to isometry, hence the GKM graph and the Betti numbers. The key lemma is
+checked in `simply_laced_check.py`. For `B`, `C`, `F₄`, `G₂` the statement remains a conjecture
+supported by the sweep below.
+
 ## Question
 
 Regular semisimple Hessenberg varieties exist in every Lie type: for a root system `Φ` with Weyl
