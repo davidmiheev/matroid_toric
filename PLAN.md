@@ -12,7 +12,7 @@ and both are prerequisites for everything downstream. Tracks C–F are research;
 
 | Track | State | Checked how | Next |
 |---|---|---|---|
-| Paper | Draft, 11 pp. (`docs/paper/`) | PDF builds; §5.2 read independently, with its citations checked in the sources and its statements recomputed (`docs/paper/REVIEW-5.2.md`): Theorem 5.8 stands, one overstated claim in Corollary 5.6 corrected, Lemma 5.7 added | author details, venue; a read by a specialist |
+| Paper | Draft, 15 pp., now with Theorems D (simply-laced types) and E (formula over the face poset). (`docs/paper/`) | PDF builds; §5.2 read independently, with its citations checked in the sources and its statements recomputed (`docs/paper/REVIEW-5.2.md`): Theorem 5.8 stands, one overstated claim in Corollary 5.6 corrected, Lemma 5.7 added | author details, venue; a read by a specialist |
 | A — counterexample | ✅ done (Theorem B / v2 Theorem 4.45) | mtengine test suite recomputes the Betti numbers by GKM; `matroid_invariants` gives equal Tutte polynomials for both local matroids | optional: sweep `n = 7` for a 3-connected witness |
 | B — errata | ✅ done (v2, 26 pp.) | `CHANGES.md` | — |
 | C — tropical flags | ⏸ frozen (kill criterion met) | `experiments/tropical_flags/RESULTS.md` | only with a geometric correspondence |
