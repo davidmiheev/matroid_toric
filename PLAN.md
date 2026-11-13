@@ -8,6 +8,19 @@ Ordering principle: Track A closes the one `MAJOR GAP`, Track B makes the text d
 and both are prerequisites for everything downstream. Tracks C–F are research; Track G
 (formalization) runs in parallel and is scoped in `docs/lean-formalization-feasibility.md`.
 
+## Status at a glance (checked 2026-11-09)
+
+| Track | State | Checked how | Next |
+|---|---|---|---|
+| Paper | Draft, 10 pp. (`docs/paper/`) | PDF builds; cross-references to thesis v2 checked against the compiled PDF | author details, venue, independent read of §5.2 |
+| A — counterexample | ✅ done (Theorem B / v2 Theorem 4.45) | mtengine test suite recomputes the Betti numbers by GKM; `matroid_invariants` gives equal Tutte polynomials for both local matroids | optional: sweep `n = 7` for a 3-connected witness |
+| B — errata | ✅ done (v2, 26 pp.) | `CHANGES.md` | — |
+| C — tropical flags | ⏸ frozen (kill criterion met) | `experiments/tropical_flags/RESULTS.md` | only with a geometric correspondence |
+| D — Question 1 | ✅ proved for type A (Theorem C / v2 Theorems 4.35, 4.38) | Theorem A (`Cl_Γ` determines `Γ`) machine-checked in Lean | other Lie types |
+| E — oriented matroids | not started | — | atomic experiment: chirotopes of `CPⁿ`, `Fl(C³)` (mtengine `matroid_invariants` with `oriented=true`) |
+| F — Chow-ring direction | not started | — | atomic experiment: augmented Chow ring / `IH` for the Track A pair; `orlik_solomon` covers the OS side |
+| G — Lean | ◐ G1–G7 and Theorem A proved; G8 not started (stretch) | `lake build` clean (18130 jobs); all 183 theorems in `MatroidToric` use only `propext`, `Classical.choice`, `Quot.sound`; no `sorry` | offer G1, G3, G5 upstream; G8 only if the `n = 4` pair evaluates |
+
 ---
 
 ## Track A — Close the MAJOR GAP: the unproved corollary  ✅ **witnesses found and verified**
@@ -109,7 +122,7 @@ one-page section for the thesis text.
 ## Track B — Errata pass (thesis v2)  ✅ **done — applied in the English v2**
 
 **Status.** All twelve items are applied in `docs/thesis-v2/thesis_en.tex` (English rewrite,
-22 pp.), and every change is logged against its audit item in `docs/thesis-v2/CHANGES.md`.
+26 pp.), and every change is logged against its audit item in `docs/thesis-v2/CHANGES.md`.
 Verifying the items against their primary sources turned up **two items below that were
 wrong in the audit** (3 and 6, corrected in place) and **seven further errors the audit
 missed**. The biggest of those: the isospectral-manifold condition is reversed in Пример 9;
@@ -463,10 +476,10 @@ rather than kept local.
 
 | Window | Items | Gate to the next window |
 |---|---|---|
-| Days 1–30 | ✅ Track A section; ✅ Track B (all 12 items, in the English v2); ◐ Track C (text done, experiment open) | done |
-| Days 31–60 | Track B items 9–12 (v2 of the text); Track G items G1, G2 | v2 compiles; `span_prod_eq_iff` proved, `Matroid.ofVectors` offered upstream |
-| Days 61–90 | Track D warm-up + complexity-1 test; Track E examples | Q1 resolved or reformulated |
-| Beyond | Track F; Track G items G3–G5 (then G7, G6); flag-Dressian poset map | Gated on the kill criteria above |
+| Days 1–30 | ✅ Track A section; ✅ Track B (all 12 items, in the English v2); ⏸ Track C (text done, experiment hit the kill criterion) | done |
+| Days 31–60 | ✅ Track B items 9–12 (v2 of the text); ✅ Track G items G1, G2 | v2 compiles ✅; `span_prod_eq_iff` proved ✅; `Matroid.ofVectors` offered upstream — **not yet** |
+| Days 61–90 | ✅ Track D (beyond the warm-up: proved for type A); Track E examples — **not started** | Q1 resolved for type A ✅ |
+| Beyond | Track F — **not started**; ✅ Track G items G3–G5, G7, G6 and Theorem A; flag-Dressian poset map — frozen with Track C | Gated on the kill criteria above |
 
 ## Paperability
 

@@ -9,7 +9,8 @@ Three results:
    by the product of the tangent weights. It determines the weights with multiplicities, and hence the local
    lattice `S(X)_{⩾pt}`. Thesis v2, Theorem 4.15.
 2. **Theorem B (§4).** Local weight matroids do not determine `H*_T`: the pair
-   `Hess(M,(2,3,5,5,5))`, `Hess(M,(2,4,4,5,5))` in `Fl(C⁵)`. Thesis v2, Theorem 4.42.
+   `Hess(M,(2,3,5,5,5))`, `Hess(M,(2,4,4,5,5))` in `Fl(C⁵)`. Thesis v2, Theorem 4.45 (with Lemmas 4.42–4.43
+   and Proposition 4.44).
 3. **Theorem C (§5).** The face poset determines the Betti numbers for isospectral manifolds and all full and
    partial regular semisimple Hessenberg varieties of type A, because `Cl_Γ` determines `Γ`. Thesis v2,
    Theorems 4.35 and 4.38; `experiments/question1/PROOF.md`.
