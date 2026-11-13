@@ -1,0 +1,41 @@
+== Part 1. acyclic <=> vertex, totally cyclic <=> interior, mixed <=> boundary
+[PASS] 68 actions (Hessenberg n <= 5, Grassmannians), fixed points by (oriented matroid, position): {('acyclic', 'vertex'): 682, ('totally cyclic', 'interior'): 1668, ('mixed', 'boundary'): 12}
+
+== Part 2. cyclic words of a generic T^2
+n = 4, characters [(6, 8), (28, 27), (30, 13), (28, -13)]: 5 connected Hessenberg functions, 4 Poincare polynomials
+    multiset of words:        4 classes, 0 with more than one Poincare polynomial
+    multiset of index sets:   4 classes, 0 ambiguous
+    dim and number of vertices: 4 classes, 0 ambiguous
+n = 4, characters [(-2, 3), (21, -11), (-1, -10), (-16, -5)]: 5 connected Hessenberg functions, 4 Poincare polynomials
+    multiset of words:        4 classes, 0 with more than one Poincare polynomial
+    multiset of index sets:   4 classes, 0 ambiguous
+    dim and number of vertices: 4 classes, 0 ambiguous
+n = 4, characters [(29, 16), (27, 3), (-15, -25), (-7, 23)]: 5 connected Hessenberg functions, 4 Poincare polynomials
+    multiset of words:        4 classes, 0 with more than one Poincare polynomial
+    multiset of index sets:   4 classes, 0 ambiguous
+    dim and number of vertices: 4 classes, 0 ambiguous
+n = 5, characters [(-7, -29), (-7, 13), (-5, 7), (-6, 20), (-18, 17)]: 14 connected Hessenberg functions, 9 Poincare polynomials
+    multiset of words:        10 classes, 0 with more than one Poincare polynomial
+    multiset of index sets:   10 classes, 0 ambiguous
+    dim and number of vertices: 7 classes, 2 ambiguous
+    Track A pair: words differ: True (4 and 4 distinct words); index sets: X1 {(0, 1, 2, 3, 4, 5): 20, (1, 2, 3, 4): 97, (2, 3): 3}, X2 {(0, 1, 2, 3, 4, 5): 20, (1, 2, 3, 4): 88, (2, 3): 12}
+n = 5, characters [(6, -7), (21, -6), (4, -21), (23, 7), (6, -19)]: 14 connected Hessenberg functions, 9 Poincare polynomials
+    multiset of words:        10 classes, 0 with more than one Poincare polynomial
+    multiset of index sets:   10 classes, 0 ambiguous
+    dim and number of vertices: 7 classes, 2 ambiguous
+    Track A pair: words differ: True (4 and 4 distinct words); index sets: X1 {(0, 1, 2, 3, 4, 5): 20, (1, 2, 3, 4): 95, (2, 3): 5}, X2 {(0, 1, 2, 3, 4, 5): 20, (1, 2, 3, 4): 86, (2, 3): 14}
+n = 5, characters [(-19, -25), (18, -1), (26, 24), (-12, 21), (-29, -16)]: 14 connected Hessenberg functions, 9 Poincare polynomials
+    multiset of words:        10 classes, 0 with more than one Poincare polynomial
+    multiset of index sets:   10 classes, 0 ambiguous
+    dim and number of vertices: 7 classes, 2 ambiguous
+    Track A pair: words differ: True (4 and 4 distinct words); index sets: X1 {(0, 1, 2, 3, 4, 5): 20, (1, 2, 3, 4): 92, (2, 3): 8}, X2 {(0, 1, 2, 3, 4, 5): 20, (1, 2, 3, 4): 88, (2, 3): 12}
+n = 6, characters [(3, -27), (4, -20), (6, -12), (-29, 11), (23, 21), (-3, -26)]: 42 connected Hessenberg functions, 22 Poincare polynomials
+    multiset of words:        26 classes, 0 with more than one Poincare polynomial
+    multiset of index sets:   26 classes, 0 ambiguous
+    dim and number of vertices: 11 classes, 7 ambiguous
+n = 6, characters [(7, 4), (-11, 20), (4, -25), (-9, -25), (-13, 17), (-24, 27)]: 42 connected Hessenberg functions, 22 Poincare polynomials
+    multiset of words:        26 classes, 0 with more than one Poincare polynomial
+    multiset of index sets:   26 classes, 0 ambiguous
+    dim and number of vertices: 11 classes, 7 ambiguous
+
+ALL PASS

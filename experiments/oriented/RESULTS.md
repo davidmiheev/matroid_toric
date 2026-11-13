@@ -72,16 +72,83 @@ are identified, and that identification is what carries the cohomology. Restrict
 moves part of this global information into the local oriented matroids, the whole of it in the
 case of a circle.
 
+## Second round: subtori of rank 2 (`subtori.py`, log `subtori.log`)
+
+### Acyclic fixed points are the vertices of the moment polytope
+
+**Proposition.** Let a torus `H` act on a compact symplectic manifold `X` in a Hamiltonian way with
+isolated fixed points, with moment map `μ` and moment polytope `Δ = μ(X)`, and let the weights
+`α_{p,j} ∈ 𝔥*` be taken with respect to a compatible almost complex structure, with the sign
+convention for which `μ(z) = μ(p) + ½ Σ_j |z_j|² α_{p,j}` in the local normal form at `p`. Let `C_p`
+be the cone spanned by the weights at `p`. Then the tangent cone of `Δ` at `μ(p)` is `C_p`, and so
+
+- `OM_p` is acyclic iff `μ(p)` is a vertex of `Δ`, and `p ↦ μ(p)` is a bijection from the acyclic
+  fixed points to the vertices of `Δ`;
+- `OM_p` is totally cyclic iff `μ(p)` is an interior point of `Δ`;
+- in general `μ(p)` lies in the relative interior of a face of dimension `dim (C_p ∩ −C_p)`.
+
+*Proof.* By the local normal form the image of a neighbourhood of `p` is a neighbourhood of the
+apex in `μ(p) + C_p`. The fibres of `μ` are connected (Atiyah; Guillemin–Sternberg), and by the
+local convexity theorem the polytope near a value `μ(x)` is the local cone at any point `x` of the
+fibre (Sjamaar, 1998). Hence `Δ` coincides with `μ(p) + C_p` near `μ(p)`. The weights are nonzero
+because `p` is isolated, so they lie in an open half-space iff `C_p` is pointed, i.e. iff `μ(p)` is
+a vertex; they are totally cyclic iff `C_p` is a linear subspace, which is all of `𝔥*` since the
+action is effective; and the face of `Δ` through `μ(p)` is cut out by the lineality space
+`C_p ∩ −C_p`. Finally the fibre over a vertex is connected and consists of fixed points, so it is
+one point. ∎
+
+So the count of acyclic fixed points is not a new invariant: it is the number of vertices of the
+moment polytope. Checked on 68 actions of 2-dimensional subtori on Hessenberg varieties (`n ⩽ 5`)
+and Grassmannians, generic and not, where the weights at `p` are only some of the differences
+`μ(p′) − μ(p)`: 682 acyclic fixed points are all vertices of the hull of the images, 1,668 totally
+cyclic ones are all interior, 12 mixed ones are all on the boundary and not vertices; no exceptions.
+For a generic `T²` on a connected Hessenberg variety in `Fl(Cⁿ)` the polygon is the projected
+permutohedron, with `n(n−1)` vertices whatever `h` is, so this count carries no information there.
+
+### What the oriented matroids of a generic `T²` see
+
+For a generic 2-torus the oriented matroid at `p` is a cyclic word: the weights and their negatives
+in angular order, up to rotation and reflection. Equivalently it is the function `θ ↦ ind_p(θ)` on
+the circle of directions, without its base point. The Betti numbers are `Σ_p q^{ind_p(θ)}` at one
+common `θ`, which the unbased words do not obviously give.
+
+| | `n = 4` | `n = 5` | `n = 6` |
+|---|---|---|---|
+| connected Hessenberg functions | 5 | 14 | 42 |
+| Poincaré polynomials | 4 | 9 | 22 |
+| classes by the multiset of words | 4 | 10 | 26 |
+| … of which contain two Poincaré polynomials | 0 | 0 | 0 |
+| classes by the multiset of index sets `{ind_p(θ)}_θ` | 4 | 10 | 26 |
+| … ambiguous | 0 | 0 | 0 |
+| classes by (dimension, number of vertices) | 4 | 7 | 11 |
+| … ambiguous | 0 | 2 | 7 |
+
+(three choices of generic characters for `n = 4, 5`, two for `n = 6`; same counts each time.)
+
+- **In every case computed, the oriented matroids of a generic `T²` determine the Betti numbers.**
+  They do more: 4, 10, 26 are the numbers of connected Hessenberg functions up to reversal, so the
+  multiset of words determines the variety. Even the much coarser multiset of index sets does.
+- The Track A pair is separated: e.g. for one choice of characters the index sets
+  `{0..5}, {1..4}, {2,3}` occur `20, 97, 3` times on `X₁` and `20, 88, 12` times on `X₂`. These
+  numbers depend on the subtorus; the 20 is the number of vertices.
+- There is no formula here, and no proof that the words determine the Betti numbers. The picture
+  across ranks is: rank 1, the oriented matroids give the Betti numbers by an identity; rank 2,
+  they determine them in all examples, for no known reason; full rank on a homogeneous space, they
+  are constant and determine nothing.
+
+The formula that does produce Betti numbers from oriented data is the one of Track F
+(`experiments/chow/RESULTS.md`, §4): it uses the signs of the weights against one common `ξ`, and
+the local Tutte polynomials of the negative parts.
+
 ## Status and restated target
 
 - Atomic experiment: done. Kill criterion: met on the named examples and on all homogeneous
   spaces and Hessenberg varieties with the full torus (item 2 is a proof); not met for subtorus
   actions.
-- Restated target: for an action with an invariant almost complex structure, study the oriented
-  matroids `OM_p` **together with the tope of a common generic `ξ`** (equivalently, the oriented
-  matroids of the subtori). Natural first questions: (i) which part of `H*(X)` do the `OM_p` of a
-  rank-2 subtorus see, between the two extremes above; (ii) is the number of acyclic fixed points
-  always the number of vertices of the moment polytope for Hamiltonian actions (it is in every
-  example here).
+- Restated target, after the second round: (i) prove or refute that the oriented matroids of a
+  generic 2-torus determine the Betti numbers (true for `n ⩽ 6`); (ii) the object to use for
+  cohomology is the oriented matroid at each fixed point **with the tope of a common generic `ξ`**,
+  which enters the stratum formula of Track F. The question about acyclic fixed points is settled
+  by the proposition above.
 - Engine: `oriented_matroid` (chirotope, signed circuits, acyclic / totally cyclic, topes and
   index set, canonical forms up to relabelling and up to reorientation for at most 7 elements).
