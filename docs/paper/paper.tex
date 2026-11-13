@@ -104,7 +104,7 @@ The global face posets of $X_1$ and $X_2$ are different. This leaves the questio
 \begin{theoremC}[Theorems~\ref{thm:cl-rigid} and~\ref{thm:q1-partial}, Corollary~\ref{cor:q1-hess}]
 \begin{enumerate}[nosep,label=(\arabic*)]
 \item For simple graphs $\Gamma,\Gamma'$, an isomorphism of cluster-permutohedra $\Cl_\Gamma\cong\Cl_{\Gamma'}$ implies $\Gamma\cong\Gamma'$.
-\item Let $X$ and $X'$ each be an isospectral manifold $M_{\Gamma,\lambda}$ or a regular semisimple Hessenberg variety $\Hess(M,h)$ of type~A, with $\Gamma$, resp.\ $\Gamma_h$, connected. If $S(X)\cong S(X')$, then $X$ and $X'$ have the same Betti numbers and, up to an automorphism of the torus, isomorphic equivariant cohomology.
+\item Let $X$ and $X'$ each be an isospectral manifold $M_{\Gamma,\lambda}$ or a regular semisimple Hessenberg variety $\Hess(M,h)$ of type~A, with $\Gamma$, resp.\ $\Gamma_h$, connected. If $S(X)\cong S(X')$, then $X$ and $X'$ have the same Betti numbers and isomorphic equivariant cohomology rings.
 \item The same conclusion about Betti numbers holds for partial regular semisimple Hessenberg varieties, including all partial flag varieties.
 \end{enumerate}
 \end{theoremC}
@@ -147,7 +147,7 @@ It is a smooth projective variety of complex dimension $\sum_j(h(j)-j)$ with $H^
 P_{\Hess(M,h)}(q)=\sum_{w\in S_n}q^{\ell_h(w)},\qquad \ell_h(w)=\#\{(j,i)\mid j<i\leqslant h(j),\ w(j)>w(i)\}.
 \end{equation}
 
-Let $\bar k=(k_1,\dots,k_s)$ be a composition of $n$, $K_b=k_1+\dots+k_b$, and $h$ a Hessenberg function on $[s]$. The \emph{partial Hessenberg variety} $\Hess_{\bar k}(M,h)$ is the set of partial flags $V_{K_1}\subset\dots\subset V_{K_s}=\C^n$ with $MV_{K_a}\subset V_{K_{h(a)}}$ for all~$a$. Its fixed points are the ordered set partitions $J=(J_1,\dots,J_s)$ of $[n]$ with $|J_a|=k_a$, and its tangent weights at $J$ are $t_x-t_y$ for $x\in J_a$, $y\in J_b$, $a<b\leqslant h(a)$~\cite[§5]{AB24}. For a generic one-parameter subgroup, the Białynicki-Birula decomposition gives
+Let $\bar k=(k_1,\dots,k_s)$ be a composition of $n$, $K_b=k_1+\dots+k_b$, and $h$ a Hessenberg function on $[s]$. The \emph{partial Hessenberg variety} $\Hess_{\bar k}(M,h)$ is the set of partial flags $V_{K_1}\subset\dots\subset V_{K_s}=\C^n$ with $MV_{K_a}\subset V_{K_{h(a)}}$ for all~$a$. It is smooth (Lemma~\ref{lem:fibration}). Its fixed points are the ordered set partitions $J=(J_1,\dots,J_s)$ of $[n]$ with $|J_a|=k_a$, and its tangent weights at $J$ are $t_y-t_x$ for $x\in J_a$, $y\in J_b$, $a<b\leqslant h(a)$~\cite[§5]{AB24}. In~\cite{AB24} this variety is denoted $M'_{\bar k,\Gamma_h,\lambda}$ and is defined by the conditions $ML_a\subset\bigoplus_bL_b$, the sum over $b=a$ and the neighbours $b$ of $a$ in $\Gamma_h$, on the orthogonal pieces $L_a=V_{K_a}\cap V_{K_{a-1}}^\perp$. Since $M$ is real and diagonal, hence Hermitian, $ML_a\perp L_b$ if and only if $ML_b\perp L_a$, and the two definitions agree. For a generic one-parameter subgroup, the Białynicki-Birula decomposition gives
 \begin{equation}\label{eq:bb}
 P_{\Hess_{\bar k}(M,h)}(q)=\sum_Jq^{\operatorname{ind}(J)},\qquad\operatorname{ind}(J)=\#\{(x,y)\mid x\in J_a,\ y\in J_b,\ a<b\leqslant h(a),\ x>y\},
 \end{equation}
@@ -161,7 +161,7 @@ Let $\Gamma$ be a simple graph on $[n]$. A \emph{clustering} is a partition $C=\
 \end{definition}
 
 \begin{theorem}[Ayzenberg--Buchstaber~{\cite[Thm.~1, Cor.~2.43]{AB24}}, \cite{AB21}]\label{thm:AB}
-For connected $\Gamma$ and generic $\lambda$, $S(M_{\Gamma,\lambda})\cong\Cl_\Gamma$. If $\Gamma_h$ is connected, then $\Hess(M,h)$ and $M_{\Gamma_h,\lambda}$ are twins: they have homeomorphic orbit spaces by a homeomorphism preserving orbit dimensions, isomorphic equivariant cohomology and equal Betti numbers. In particular $S(\Hess(M,h))\cong\Cl_{\Gamma_h}$. For partial Hessenberg varieties, $S(\Hess_{\bar k}(M,h))$ is the poset of~\cite[Thm.~2]{AB24} described in Section~\ref{sec:partial}.
+For connected $\Gamma$ and generic $\lambda$, $S(M_{\Gamma,\lambda})\cong\Cl_\Gamma$. If $\Gamma_h$ is connected, then $\Hess(M,h)$ and $M_{\Gamma_h,\lambda}$ are twins: they have homeomorphic orbit spaces by a homeomorphism preserving orbit dimensions, equivariant cohomology rings that are isomorphic as graded rings, and equal Betti numbers~\cite[Thm.~3.11]{AB21}. In particular $S(\Hess(M,h))\cong\Cl_{\Gamma_h}$. The isomorphism of equivariant cohomology is not one of $H^*(BT)$-algebras in general: the weights of $M_{\Gamma_h,\lambda}$ at the fixed point $w$ are $t_i-t_j$, those of $\Hess(M,h)$ are $t_{w(i)}-t_{w(j)}$. The face poset of a partial Hessenberg variety is described in Lemma~\ref{lem:partial-faces}, following~\cite[Thm.~2]{AB24}.
 \end{theorem}
 
 %======================================================================
@@ -309,21 +309,37 @@ Adjacency alone is the line graph. Whitney's theorem~\cite{Whi32} together with 
 \end{remark}
 
 \begin{corollary}\label{cor:q1-hess}
-Let each of $X$ and $X'$ be either $M_{\Gamma,\lambda}$ with $\Gamma$ connected and $\lambda$ generic, or $\Hess(M,h)$ with $\Gamma_h$ connected. If $S(X)\cong S(X')$, then $\beta_j(X)=\beta_j(X')$ for all $j$, and $\HT(X)\cong\HT(X')$ up to an automorphism of $T$.
+Let each of $X$ and $X'$ be either $M_{\Gamma,\lambda}$ with $\Gamma$ connected and $\lambda$ generic, or $\Hess(M,h)$ with $\Gamma_h$ connected. If $S(X)\cong S(X')$, then $\beta_j(X)=\beta_j(X')$ for all $j$, and $\HT(X)\cong\HT(X')$ as graded rings. If $X$ and $X'$ are both Hessenberg varieties, this is an isomorphism of $H^*(BT)$-algebras; if both are isospectral manifolds, it is one up to an automorphism of~$T$.
 \end{corollary}
 
 \begin{proof}
-By Theorem~\ref{thm:AB} the face posets are $\Cl_\Gamma$ and $\Cl_{\Gamma'}$ for the corresponding graphs, so $\Gamma\cong\Gamma'$ by Theorem~\ref{thm:cl-rigid}. If $\pi$ is a permutation with $\pi(\Gamma)=\Gamma'$ and $P_\pi$ its permutation matrix, conjugation $A\mapsto P_\pi AP_\pi^{-1}$ preserves the spectrum and the zero pattern up to relabelling, $(P_\pi AP_\pi^{-1})_{\pi(i)\pi(j)}=a_{ij}$. It is therefore a diffeomorphism $M_{\Gamma,\lambda}\to M_{\Gamma',\lambda}$, equivariant along the automorphism $t\mapsto P_\pi tP_\pi^{-1}$ of $T$. A Hessenberg variety and its twin $M_{\Gamma_h,\lambda}$ have isomorphic equivariant cohomology and equal Betti numbers~\cite[Thm.~3.11]{AB21}.
+By Theorem~\ref{thm:AB} the face posets are $\Cl_\Gamma$ and $\Cl_{\Gamma'}$ for the corresponding graphs, so $\Gamma\cong\Gamma'$ by Theorem~\ref{thm:cl-rigid}. If $\pi$ is a permutation with $\pi(\Gamma)=\Gamma'$ and $P_\pi$ its permutation matrix, conjugation $A\mapsto P_\pi AP_\pi^{-1}$ preserves the spectrum and the zero pattern up to relabelling, $(P_\pi AP_\pi^{-1})_{\pi(i)\pi(j)}=a_{ij}$. It is therefore a diffeomorphism $M_{\Gamma,\lambda}\to M_{\Gamma',\lambda}$, equivariant along the automorphism $t\mapsto P_\pi tP_\pi^{-1}$ of $T$. This proves the corollary for two isospectral manifolds. A Hessenberg variety and its twin $M_{\Gamma_h,\lambda}$ have equal Betti numbers and equivariant cohomology rings isomorphic as graded rings (Theorem~\ref{thm:AB}), which gives the general case. Finally, let $X=\Hess(M,h)$ and $X'=\Hess(M,h')$ with $\pi(\Gamma_h)=\Gamma_{h'}$. In the GKM description, $\HT(X)$ consists of the $(f_w)_{w\in S_n}$ with $f_w-f_{w\circ(i\,j)}\in(t_{w(i)}-t_{w(j)})$ for every edge $ij$ of $\Gamma_h$. Since $(\pi(i)\,\pi(j))\circ\pi=\pi\circ(i\,j)$, the map $(f_w)\mapsto(f'_{w'})$, $f'_{w'}=f_{w'\pi}$, sends these conditions to the conditions for $\Gamma_{h'}$, and it is $H^*(BT)$-linear.
 \end{proof}
 
 The corollary does not use $H^{\mathrm{odd}}=0$. In particular it covers $M_{K_{1,3},\lambda}$ and the manifolds $M_{C_n,\lambda}$, $n\geqslant4$, which are not equivariantly formal~\cite{AB24,AMS23}.
 
 \subsection{Partial Hessenberg varieties}\label{sec:partial}
-Let $X=\Hess_{\bar k}(M,h)$. By~\cite[Thm.~2]{AB24}, its faces are the sets $\{(W_j,c_j)\}$ in which the blocks $W_j$ partition $[n]$, each $c_j$ is a vector of part counts with $\sum_ac_j(a)=|W_j|$ and $\sum_jc_j=\bar k$, and each block induces a connected subgraph of the inflation. The order is refinement with counts adding up, and the rank is $n$ minus the number of blocks. The minimal faces are the fixed points, and the number of fixed points below a face is
+Let $X=\Hess_{\bar k}(M,h)$ and $G=\Gamma_h(\bar k)$. For a partition $W=\{W_1,\dots,W_l\}$ of $[n]$ let $T_W\subset T$ be the subtorus of the elements whose coordinates are equal within every block. The following description of the faces is~\cite[Thm.~2]{AB24}, in the form in which it appears in the proof given there. As Theorem~\ref{thm:q1-partial} depends on its details, we include a proof.
+
+\begin{lemma}\label{lem:partial-faces}
+The faces of $X$ correspond to the families $\{(W_j,c_j)\}_{j=1}^l$, where $W_1,\dots,W_l$ are the blocks of a partition of $[n]$, each $c_j\in\Z_{\geqslant0}^s$ is a vector of part counts with $\sum_ac_j(a)=|W_j|$, $\sum_jc_j=\bar k$, and for every $j$ either $|W_j|=1$, or the support $\{a\mid c_j(a)>0\}$ has at least two elements and induces a connected subgraph of~$\Gamma_h$. The fixed points of the face are the $J$ with $|J_a\cap W_j|=c_j(a)$ for all $a$ and $j$, so their number is
 \[
 \nu\bigl(\{(W_j,c_j)\}\bigr)=\prod_j\frac{|W_j|!}{\prod_ac_j(a)!}.
 \]
-For every fixed point $J$, $S(X)_{\geqslant J}\cong\Flats(\Gamma_h(\bar k))$, in accordance with Theorem~\ref{thm:AC} and the weights of Section~\ref{sec:prelim}.
+The rank of the face is $n-l$, and $\{(W'_i,c'_i)\}\leqslant\{(W_j,c_j)\}$ if and only if every $W'_i$ lies in some $W_j$ and $c_j=\sum_{W'_i\subset W_j}c'_i$ for all~$j$. For every fixed point $J$, $S(X)_{\geqslant J}\cong\Flats(G)$.
+\end{lemma}
+
+\begin{proof}
+A subgroup $H\subset T$ has the same invariant subspaces in $\C^n$ as $T_W$, where $W$ is the partition of $[n]$ into the classes on which the characters $t_x|_H$ coincide. Hence every stabilizer is some $T_W$, and the faces are the connected components $Y$ of the sets $X^{T_W}$ for which $T_W$ is the stabilizer of a generic point of~$Y$; such a face has rank $n-l$.
+
+A $T_W$-invariant subspace is the direct sum of its intersections with the $\C^{W_j}$, so a flag in $X^{T_W}$ is a direct sum of flags $V^{(j)}_\bullet$ in $\C^{W_j}$. Since $M$ preserves $\C^{W_j}$, the sum satisfies the Hessenberg condition if and only if every summand does. The dimensions $c_j(a)=\dim V^{(j)}_{K_a}-\dim V^{(j)}_{K_{a-1}}$ are locally constant, and the flags with given $c$ form the set
+\[
+Y(W,c)\cong\prod_{j=1}^l\Hess_{c_j}(M|_{\C^{W_j}},h),
+\]
+where the parts $a$ with $c_j(a)=0$ are omitted, so that the $j$th factor is the partial Hessenberg variety of the induced subgraph of $\Gamma_h$ on the support of~$c_j$. Its fixed points are as stated. At a fixed point $J$, the tangent weights of $Y(W,c)$ are the weights $t_y-t_x$ of $X$ with $x$ and $y$ in one block. They span a space of dimension $n-l$ if and only if every block induces a connected subgraph of $G$, the vertices of $G$ being labelled through $J$; that is, if and only if every block is a single element or has counts supported on a connected set of at least two parts. If this holds, every factor is connected, by~\eqref{eq:bb} or by Lemma~\ref{lem:fibration}, so $Y(W,c)$ is connected with generic stabilizer $T_W$ and is a face. If it fails, the generic stabilizer of each component of $Y(W,c)$ is larger than $T_W$, and the component is counted for a finer partition.
+
+Two faces $Y'\subset Y$ have generic stabilizers $T_{W'}\supset T_W$, so $W'$ refines $W$, and a common fixed point shows that the counts add up; the converse holds because $Y'$ is connected, is fixed by $T_W$ and meets $Y$. The faces containing $J$ correspond to the partitions $W$ whose blocks induce connected subgraphs of $G$ labelled through $J$, which are the flats of the graphic matroid of~$G$, in accordance with Theorem~\ref{thm:AC}.
+\end{proof}
 
 \begin{theorem}\label{thm:q1-partial}
 If $X$ and $X'$ are partial regular semisimple Hessenberg varieties with $S(X)\cong S(X')$, then $\beta_j(X)=\beta_j(X')$ for all~$j$.
@@ -352,7 +368,7 @@ Moreover, $\Gamma_{\tilde h}$ is the inflation $\Gamma_h(\bar k)$ with every par
 \end{lemma}
 
 \begin{proof}
-A full flag $F_\bullet$ lies in $\Hess(M,\tilde h)$ iff $MF_i\subset F_{\tilde h(i)}$ for all~$i$. For $i$ in part $a$ we have $F_i\subset F_{K_a}$ and $\tilde h(i)=\tilde h(K_a)$, so the condition at $i$ follows from the condition at $K_a$, and the conditions at $K_1,\dots,K_s$ say that $\pi(F_\bullet)\in X$. The projection $\pi$ is a holomorphic bundle with fibre $\prod_a\Fl(V_{K_a}/V_{K_{a-1}})$ over $V_\bullet$, so it restricts to a bundle over~$X$. The cohomology of the fibre is generated by Chern classes of tautological bundles defined on the total space, and all spaces involved have only even cohomology, so the Leray--Hirsch theorem gives the product formula, with $P_{\Fl(\C^k)}=[k]_q!$. Finally, $i<j$ is an edge of $\Gamma_{\tilde h}$ iff $j\leqslant K_{h(a)}$ for the part $a$ of $i$, that is, iff $j$ lies in part $a$ or in a part $b$ with $a<b\leqslant h(a)$.
+A full flag $F_\bullet$ lies in $\Hess(M,\tilde h)$ iff $MF_i\subset F_{\tilde h(i)}$ for all~$i$. For $i$ in part $a$ we have $F_i\subset F_{K_a}$ and $\tilde h(i)=\tilde h(K_a)$, so the condition at $i$ follows from the condition at $K_a$, and the conditions at $K_1,\dots,K_s$ say that $\pi(F_\bullet)\in X$. The projection $\pi$ is a holomorphic bundle with fibre $\prod_a\Fl(V_{K_a}/V_{K_{a-1}})$ over $V_\bullet$, so it restricts to a bundle over~$X$. In particular $X$ is smooth, since $\Hess(M,\tilde h)$ is smooth and $\pi$ is a submersion. The cohomology of the fibre is generated by Chern classes of tautological bundles defined on the total space, and all spaces involved have only even cohomology, so the Leray--Hirsch theorem gives the product formula, with $P_{\Fl(\C^k)}=[k]_q!$. Finally, $i<j$ is an edge of $\Gamma_{\tilde h}$ iff $j\leqslant K_{h(a)}$ for the part $a$ of $i$, that is, iff $j$ lies in part $a$ or in a part $b$ with $a<b\leqslant h(a)$.
 \end{proof}
 
 \begin{lemma}[Reconstruction]\label{lem:reconstruct}
@@ -360,29 +376,29 @@ Let $G=\Gamma_h(\bar k)$ with its partition into parts. The poset $S(X)$ determi
 \end{lemma}
 
 \begin{proof}
-The number $\#X^T$ is the number of minimal elements. Fix a fixed point $J$ and identify $S(X)_{\geqslant J}$ with $\Flats(G)$. For edges $uv$ and $vw$ the join of their atoms has the single block $\{u,v,w\}$, so $\nu=3$ if $u$ and $w$ lie in one part and $\nu=6$ otherwise, since adjacent vertices lie in different parts. Two disjoint edges give $\nu=4$. As in the proof of Theorem~\ref{thm:cl-rigid}, an isomorphism $\Phi\colon S(X)\to S(X')$ induces a bijection $\varphi$ between the edge sets of the inflations that preserves the rank and $\nu$ of the join of every set of edges. By the values of $\nu$, $\varphi^{\pm1}$ preserve adjacency, and since the rank statement of Lemma~\ref{lem:atoms-nu} holds verbatim for $\Flats(G)$, they preserve triangles. By Proposition~\ref{prop:edge-iso}, $\varphi$ is induced by a bijection $\psi$ between the non-isolated vertices.
+The number $\#X^T$ is the number of minimal elements. Fix a fixed point $J$ and identify $S(X)_{\geqslant J}$ with $\Flats(G)$ as in Lemma~\ref{lem:partial-faces}. For edges $uv$ and $vw$ the join of their atoms has the single nontrivial block $\{u,v,w\}$, so by the formula for $\nu$ in that lemma $\nu=3$ if $u$ and $w$ lie in one part and $\nu=6$ otherwise, since adjacent vertices lie in different parts. Two disjoint edges give $\nu=4$. As in the proof of Theorem~\ref{thm:cl-rigid}, an isomorphism $\Phi\colon S(X)\to S(X')$ induces a bijection $\varphi$ between the edge sets of the inflations that preserves the rank and $\nu$ of the join of every set of edges. By the values of $\nu$, $\varphi^{\pm1}$ preserve adjacency, and since the rank statement of Lemma~\ref{lem:atoms-nu} holds verbatim for $\Flats(G)$, they preserve triangles. By Proposition~\ref{prop:edge-iso}, $\varphi$ is induced by a bijection $\psi$ between the non-isolated vertices.
 
 The map $\psi$ preserves parts. Two distinct non-isolated vertices $u,w$ lie in one part iff they have a common neighbour $v$ with $\nu(a_{uv}\vee a_{vw})=3$: a non-isolated vertex is a copy of a part $a$ of a component $Q$ of $\Gamma_h$ with at least two parts, so the copies of $a$ have a common neighbour, and $\nu=3$ forces $u,w$ into one part. Since $\psi$ preserves adjacency and $\varphi$ preserves $\nu$, $\psi$ preserves this relation. Finally, the components of $G$ with an edge are the inflations $G_Q$ of the components $Q$ of $\Gamma_h$ with at least two parts, and copies of the remaining parts are isolated, so $\psi$ matches these components as graphs with parts.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:q1-partial}]
-By Lemma~\ref{lem:split} it suffices to show that $S(X)$ determines $\#X^T$ and $\prod_QP_Q(q)/P_Q(1)$ over the components $Q$ of $\Gamma_h$ with at least two parts. For such $Q$, Lemma~\ref{lem:fibration} gives $P_Q=P_{\Hess(M_Q,\tilde h_Q)}/\prod_{a\in Q}[k_a]_q!$. The graph $\Gamma_{\tilde h_Q}$ is connected and is obtained from $G_Q$ by making the parts cliques, so by Corollary~\ref{cor:q1-hess} and Theorem~\ref{thm:AB} its Poincaré polynomial depends only on $G_Q$ with its parts, up to isomorphism; so do the part sizes. Lemma~\ref{lem:reconstruct} completes the proof.
+By Lemma~\ref{lem:split} it suffices to show that $S(X)$ determines $\#X^T$ and $\prod_QP_Q(q)/P_Q(1)$ over the components $Q$ of $\Gamma_h$ with at least two parts. For such $Q$, Lemma~\ref{lem:fibration} gives $P_Q=P_{\Hess(M_Q,\tilde h_Q)}/\prod_{a\in Q}[k_a]_q!$. The graph $\Gamma_{\tilde h_Q}$ is connected and is obtained from $G_Q$ by making the parts cliques, and isomorphic connected graphs $\Gamma_{\tilde h}$ give Hessenberg varieties with equal Betti numbers (the twins are then equivariantly diffeomorphic, as in the proof of Corollary~\ref{cor:q1-hess}). Hence $P_{\Hess(M_Q,\tilde h_Q)}$ depends only on the isomorphism class of $G_Q$ with its parts; so do the part sizes. Lemma~\ref{lem:reconstruct} completes the proof.
 \end{proof}
 
 \subsection{Remarks}
 Theorem~\ref{thm:q1-partial} includes partial flag varieties ($\Gamma_h=K_s$) and Grassmannians, where it is classical, and the full case $\bar k=(1,\dots,1)$. For disconnected $\Gamma_h$ the variety $\Hess(M,h)$ is a disjoint union of products of smaller Hessenberg varieties, and Theorem~\ref{thm:q1-partial} covers it as well.
 
-Lemma~\ref{lem:fibration} and Theorem~\ref{thm:cl-rigid} were also checked by computer: the identity of Lemma~\ref{lem:fibration} for all $2\,949$ pairs $(\bar k,h)$ with $n\leqslant7$, and Theorem~\ref{thm:cl-rigid} by exact poset isomorphism for all $208$ graphs with $n\leqslant6$.
+The statements of this subsection were rechecked by a program written independently of the proofs: Lemma~\ref{lem:partial-faces} against the faces computed from the GKM graph for all $186$ pairs $(\bar k,h)$ with $n\leqslant5$; formula~\eqref{eq:bb} against the number of $\mathbb F_q$-points of $\Hess_{\bar k}(M,h)$ for $n=4$ and $q=5,7$; and the statement that the data recovered in Lemma~\ref{lem:reconstruct} determine the Poincaré polynomial, for all pairs with $n\leqslant7$. Lemma~\ref{lem:fibration} and Theorem~\ref{thm:cl-rigid} were also checked by computer: the identity of Lemma~\ref{lem:fibration} for all $2\,949$ pairs $(\bar k,h)$ with $n\leqslant7$, and Theorem~\ref{thm:cl-rigid} by exact poset isomorphism for all $208$ graphs with $n\leqslant6$.
 
 %======================================================================
 \section{Open questions}\label{sec:open}
 %======================================================================
 
 \begin{enumerate}[label=(\arabic*)]
-\item \emph{Other Lie types.} Regular semisimple Hessenberg varieties exist for every reductive group. Is there an analogue of Theorem~\ref{thm:cl-rigid} for their face posets? Outside type~A the local weight matroids are no longer graphic, and the star argument of Proposition~\ref{prop:edge-iso} does not apply directly.
+\item \emph{Other Lie types.} Regular semisimple Hessenberg varieties exist for every reductive group. Is there an analogue of Theorem~\ref{thm:cl-rigid} for their face posets? Outside type~A the local weight matroids are no longer graphic, and the star argument of Proposition~\ref{prop:edge-iso} does not apply directly. The face poset has the same shape in every type: its elements are the pairs $(F,wW_F)$ of a flat $F$ of the matroid of the ideal $I\subset\Phi^+$ defining the variety and a coset of the reflection subgroup $W_F$ generated by~$F$. A computation for all $1\,230$ ideals of the root systems of rank at most~$4$ and of $A_5$, $B_5$, $C_5$, $D_5$ found no counterexample: the number of fixed points and the lattice of flats of $I$ with the function $F\mapsto|W_F|$, both read off from the face poset, determine the Betti numbers, and for connected varieties they determine $I$ up to diagram automorphisms and the duality $\alpha\leftrightarrow\alpha^\vee$.
 \item \emph{A formula.} In complexity zero, $S(X)$ determines the Betti numbers through the $h$-vector. Is there a formula for $\beta_j$ in terms of $S(X)$ for Hessenberg varieties, as opposed to the reconstruction argument given here?
 \item \emph{Beyond algebraic actions.} Question~\ref{q:betti} remains open for general equivariantly formal torus manifolds of positive complexity.
-\item \emph{Oriented weights.} If $X$ carries an invariant stably complex structure, the weights have signs and $S(X)_{\geqslant p}$ refines to an oriented matroid. What does the resulting oriented structure determine?
+\item \emph{Oriented weights.} If $X$ carries an invariant stably complex structure, the weights have signs and $S(X)_{\geqslant p}$ refines to an oriented matroid. What does the resulting oriented structure determine? For flag varieties and regular semisimple Hessenberg varieties with their full torus it determines nothing new: the signed weights at the fixed point $w$ are the image under $w$ of those at the identity, so the oriented matroid is the same at every fixed point. For subtori it does carry information; for a generic circle the oriented matroid at $p$ is the pair $\{\operatorname{ind}(p),n-\operatorname{ind}(p)\}$, and these pairs give the Betti numbers.
 \end{enumerate}
 
 \paragraph{Acknowledgements.}

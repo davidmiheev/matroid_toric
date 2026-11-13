@@ -1,6 +1,6 @@
 # Paper draft
 
-*Face posets, local weight matroids and Betti numbers of torus actions* (`paper.tex`, `paper.pdf`, 10 pp.).
+*Face posets, local weight matroids and Betti numbers of torus actions* (`paper.tex`, `paper.pdf`, 11 pp.).
 Compile with XeLaTeX (same fonts as the thesis: TeX Gyre Pagella + Euler).
 
 Three results:
@@ -19,4 +19,4 @@ Still to do before submission:
 
 - Affiliation, e-mail and acknowledgements (marked `TODO(author)` in the source).
 - Choose a venue. The draft is written as a short research article.
-- An independent read of §5, in particular the partial-flag case (§5.2).
+- ~~An independent read of §5.2.~~ Done: `REVIEW-5.2.md` (one overstated claim in Corollary 5.6 corrected, Lemma 5.7 added). A read by a specialist is still worth having.

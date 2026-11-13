@@ -1,0 +1,53 @@
+== Part 1. Local matroids of the Track A pair
+X1 = Hess(2, 3, 5, 5, 5): rank 4, flats by rank [1, 5, 8, 5, 1]
+    A(M)            [1, 14, 14, 1]   (presentation = FY basis: True)
+    augmented A(M)  [1, 19, 44, 19, 1]   (presentation = FY basis: True)
+    KL polynomial   [1],  Z-polynomial = Hilbert series of IH(M)  [1, 5, 8, 5, 1]
+    Orlik-Solomon   [1, 5, 9, 7, 2]
+X2 = Hess(2, 4, 4, 5, 5): rank 4, flats by rank [1, 5, 8, 5, 1]
+    A(M)            [1, 14, 14, 1]   (presentation = FY basis: True)
+    augmented A(M)  [1, 19, 44, 19, 1]   (presentation = FY basis: True)
+    KL polynomial   [1],  Z-polynomial = Hilbert series of IH(M)  [1, 5, 8, 5, 1]
+    Orlik-Solomon   [1, 5, 9, 7, 2]
+    all equal for X1 and X2: True
+    Betti numbers:  X1 [1, 17, 42, 42, 17, 1]   X2 [1, 12, 47, 47, 12, 1]
+
+== Part 2. Euler-characteristic counts over the face poset
+f          matroid           CP^2      CP^3   Fl(C^3)        X1        X2
+target: number of fixed points        3         4         6       120       120
+1          restriction          1         1        -2       -14       -24
+1          contraction          1         1        -2       -14       -24
+dim A      restriction          2         0        -1        25        10
+dim A      contraction          4        15         4      2046      2026
+dim aug A  restriction          2        -4        -6         4       -26
+dim aug A  contraction         10        41        19      5751      5711
+dim IH     restriction          1         0        -7        50        20
+dim IH     contraction          7        15        13       511       481
+P_KL(1)    restriction          1         1        -2       -14       -24
+P_KL(1)    contraction          1         1        -2       -14       -24
+dim OS     restriction          1         0        -6        44        24
+dim OS     contraction          7        15        19       771       751
+
+== Part 3. Stratum polynomials e
+Fl(C^3): e = 4 + 1q
+X1: e = 6 + 1q
+X2: e = 6 + 1q
+connected Hessenberg functions with n <= 6: 64; Tutte classes: 37; classes in which e is not constant: 3
+    h = (2, 3, 5, 6, 6, 6): e = 28 + 8q + 1q^2
+    h = (2, 4, 5, 5, 6, 6): e = 33 + 8q + 1q^2
+    h = (3, 4, 4, 5, 6, 6): e = 28 + 8q + 1q^2
+
+    h = (2, 3, 6, 6, 6, 6): e = 73 + 35q + 8q^2 + 1q^3
+    h = (2, 5, 5, 5, 6, 6): e = 78 + 35q + 8q^2 + 1q^3
+    h = (4, 4, 4, 5, 6, 6): e = 73 + 35q + 8q^2 + 1q^3
+
+    h = (2, 4, 6, 6, 6, 6): e = 219 + 134q + 43q^2 + 9q^3 + 1q^4
+    h = (2, 5, 5, 6, 6, 6): e = 224 + 134q + 43q^2 + 9q^3 + 1q^4
+    h = (3, 5, 5, 5, 6, 6): e = 224 + 134q + 43q^2 + 9q^3 + 1q^4
+    h = (4, 4, 5, 5, 6, 6): e = 219 + 134q + 43q^2 + 9q^3 + 1q^4
+
+trees (free matroid), e: {'1'}
+K_3: e = 4 + 1q
+K_4: e = 33 + 20q + 6q^2 + 1q^3
+K_5: e = 456 + 453q + 260q^2 + 111q^3 + 35q^4 + 8q^5 + 1q^6
+K_6: e = 9460 + 13139q + 10805q^2 + 6921q^3 + 3691q^4 + 1681q^5 + 649q^6 + 209q^7 + 54q^8 + 10q^9 + 1q^10
