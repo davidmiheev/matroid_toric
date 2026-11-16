@@ -1,0 +1,9 @@
+[PASS] 1. e_top from the Tutte formula = e_top from the recursion -- 22 connected Hessenberg functions, n <= 5
+[PASS] 2. P = sum (q-1)^rk e   for Fl(C^3) -- P = [1, 2, 2, 1], e_top = 4 + 1q
+[PASS] 2. P = sum (q-1)^rk e   for Fl(C^4) -- P = [1, 3, 5, 6, 5, 3, 1], e_top = 33 + 20q + 6q^2 + 1q^3
+[PASS] 2. P = sum (q-1)^rk e   for Gr(2,4) -- P = [1, 1, 2, 1, 1], e_top = 4 + 1q
+[PASS] 2. P = sum (q-1)^rk e   for X1 = Hess(2,3,5,5,5) -- P = [1, 17, 42, 42, 17, 1], e_top = 6 + 1q
+[PASS] 2. P = sum (q-1)^rk e   for X2 = Hess(2,4,4,5,5) -- P = [1, 12, 47, 47, 12, 1], e_top = 6 + 1q
+[PASS] 2. P = sum (q-1)^rk e   for CP^3 with T^2 -- P = [1, 1, 1, 1], e_top = 3 + 1q
+[PASS] 3. e_top of X1 is the same for four different xi -- {(6, 1)}
+ALL PASS

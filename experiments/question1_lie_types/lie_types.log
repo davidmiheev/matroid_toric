@@ -1,0 +1,24 @@
+A1: |W| = 2, 1 positive roots, 2 ideals (1 connected), 0.0s
+A2: |W| = 6, 3 positive roots, 5 ideals (2 connected), 0.0s
+A3: |W| = 24, 6 positive roots, 14 ideals (5 connected), 0.0s
+A4: |W| = 120, 10 positive roots, 42 ideals (14 connected), 0.2s
+A5: |W| = 720, 15 positive roots, 132 ideals (42 connected), 1.9s
+B2: |W| = 8, 4 positive roots, 6 ideals (3 connected), 0.0s
+G2: |W| = 12, 6 positive roots, 8 ideals (5 connected), 0.0s
+B3: |W| = 48, 9 positive roots, 20 ideals (10 connected), 0.1s
+C3: |W| = 48, 9 positive roots, 20 ideals (10 connected), 0.1s
+D4: |W| = 192, 12 positive roots, 50 ideals (20 connected), 0.3s
+B4: |W| = 384, 16 positive roots, 70 ideals (35 connected), 0.6s
+C4: |W| = 384, 16 positive roots, 70 ideals (35 connected), 0.6s
+F4: |W| = 1152, 24 positive roots, 105 ideals (66 connected), 3.1s
+D5: |W| = 1920, 20 positive roots, 182 ideals (77 connected), 5.9s
+B5: |W| = 3840, 25 positive roots, 252 ideals (126 connected), 17.2s
+C5: |W| = 3840, 25 positive roots, 252 ideals (126 connected), 16.2s
+
+connected ideals: 577 ideals, 460 classes of (|W|, L, nu), 396 Poincare polynomials
+    classes containing ideals of different types: 61
+    classes with more than one Poincare polynomial: 0
+
+all ideals: 1230 ideals, 749 classes of (|W|, L, nu), 661 Poincare polynomials
+    classes containing ideals of different types: 153
+    classes with more than one Poincare polynomial: 0

@@ -1,0 +1,11 @@
+[PASS] A2: 3 positive roots, induced cycles by length {3: 1}
+[PASS] A3: 6 positive roots, induced cycles by length {3: 8, 4: 3}
+[PASS] A4: 10 positive roots, induced cycles by length {3: 30, 4: 15, 5: 12}
+[PASS] A5: 15 positive roots, induced cycles by length {3: 80, 4: 45, 5: 72, 6: 60}
+[PASS] A6: 21 positive roots, induced cycles by length {3: 175, 4: 105, 5: 252, 6: 420, 7: 360}
+[PASS] D4: 12 positive roots, induced cycles by length {3: 64, 4: 108}
+[PASS] D5: 20 positive roots, induced cycles by length {3: 240, 4: 510, 5: 384}
+[PASS] D6: 30 positive roots, induced cycles by length {3: 640, 4: 1500, 5: 2304, 6: 3840}
+[PASS] E6: 36 positive roots, induced cycles by length {3: 1200, 4: 4050, 5: 7776, 6: 2160}
+[PASS] E7: 63 positive roots, induced cycles by length {3: 3637, 4: 20586, 5: 84136, 6: 191644} (capped)
+ALL PASS

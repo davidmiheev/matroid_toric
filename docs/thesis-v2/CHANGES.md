@@ -162,3 +162,8 @@ Moot: the text is newly written in English, and theorem numbering is automatic.
 | Bibliography | added Whitney 1932, Jung 1966, McKay–Piperno 2014 | D |
 
 Full proofs: `experiments/question1/PROOF.md`.
+
+### Correction after the independent read of the paper's §5.2 (2026-11-13)
+| Place | Change | Track |
+|---|---|---|
+| Corollary 4.37 | "`H*_T(X) ≅ H*_T(X')` up to an automorphism of `T`" was too strong when one manifold is a Hessenberg variety and the other an isospectral manifold: the twin theorem (AB21, Thm 3.11) gives an isomorphism of graded rings only. Now: graded rings in general; `H*(BT)`-algebras for two Hessenberg varieties (GKM argument added to the proof); up to an automorphism of `T` for two isospectral manifolds. See `docs/paper/REVIEW-5.2.md`. | D |

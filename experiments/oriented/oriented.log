@@ -1,0 +1,95 @@
+== 1. The examples named in the plan (full torus)
+CP^1: 2 fixed points, 1 weights of rank 1
+    underlying matroid classes: 1;  oriented classes: 1;  reorientation classes: 1
+    acyclicity: {'acyclic': 2}
+    index sets: {(0, 1): 2}
+CP^2: 3 fixed points, 2 weights of rank 2
+    underlying matroid classes: 1;  oriented classes: 1;  reorientation classes: 1
+    acyclicity: {'acyclic': 3}
+    index sets: {(0, 1, 2): 3}
+CP^3: 4 fixed points, 3 weights of rank 3
+    underlying matroid classes: 1;  oriented classes: 1;  reorientation classes: 1
+    acyclicity: {'acyclic': 4}
+    index sets: {(0, 1, 2, 3): 4}
+CP^4: 5 fixed points, 4 weights of rank 4
+    underlying matroid classes: 1;  oriented classes: 1;  reorientation classes: 1
+    acyclicity: {'acyclic': 5}
+    index sets: {(0, 1, 2, 3, 4): 5}
+CP^5: 6 fixed points, 5 weights of rank 5
+    underlying matroid classes: 1;  oriented classes: 1;  reorientation classes: 1
+    acyclicity: {'acyclic': 6}
+    index sets: {(0, 1, 2, 3, 4, 5): 6}
+Fl(C^3): 6 fixed points, 3 weights of rank 2
+    underlying matroid classes: 1;  oriented classes: 1;  reorientation classes: 1
+    acyclicity: {'acyclic': 6}
+    index sets: {(0, 1, 2, 3): 6}
+
+== 2. Further homogeneous spaces and Hessenberg varieties (full torus)
+Fl(C^4): 24 fixed points, 6 weights of rank 3
+    underlying matroid classes: 1;  oriented classes: 1;  reorientation classes: 1
+    acyclicity: {'acyclic': 24}
+    index sets: {(0, 1, 2, 3, 4, 5, 6): 24}
+Gr(2,4): 6 fixed points, 4 weights of rank 3
+    underlying matroid classes: 1;  oriented classes: 1;  reorientation classes: 1
+    acyclicity: {'acyclic': 6}
+    index sets: {(0, 1, 2, 3, 4): 6}
+Gr(2,5): 10 fixed points, 6 weights of rank 4
+    underlying matroid classes: 1;  oriented classes: 1;  reorientation classes: 1
+    acyclicity: {'acyclic': 10}
+    index sets: {(0, 1, 2, 3, 4, 5, 6): 10}
+Hess(2,3,5,5,5)  [Track A, X1]: 120 fixed points, 5 weights of rank 4
+    underlying matroid classes: 1;  oriented classes: 1;  reorientation classes: 1
+    acyclicity: {'acyclic': 120}
+    index sets: {(0, 1, 2, 3, 4, 5): 120}
+Hess(2,4,4,5,5)  [Track A, X2]: 120 fixed points, 5 weights of rank 4
+    underlying matroid classes: 1;  oriented classes: 1;  reorientation classes: 1
+    acyclicity: {'acyclic': 120}
+    index sets: {(0, 1, 2, 3, 4, 5): 120}
+Hess(3,4,4,4) in Fl(C^4): 24 fixed points, 5 weights of rank 3
+    underlying matroid classes: 1;  oriented classes: 1;  reorientation classes: 1
+    acyclicity: {'acyclic': 24}
+    index sets: {(0, 1, 2, 3, 4, 5): 24}
+Sp(4)/B = SO(5)/B  [B2]: 8 fixed points, 4 weights of rank 2
+    underlying matroid classes: 1;  oriented classes: 1;  reorientation classes: 1
+    acyclicity: {'acyclic': 8}
+    index sets: {(0, 1, 2, 3, 4): 8}
+G2/B: 12 fixed points, 6 weights of rank 2
+    underlying matroid classes: 1;  oriented classes: 1;  reorientation classes: 1
+    acyclicity: {'acyclic': 12}
+    index sets: {(0, 1, 2, 3, 4, 5, 6): 12}
+
+== 3. Generic circle in the torus: rank 1
+Fl(C^3) with a generic circle: 6 fixed points, 3 weights of rank 1
+    underlying matroid classes: 1;  oriented classes: 2;  reorientation classes: 1
+    acyclicity: {'acyclic': 2, 'totally cyclic': 4}
+    index sets: {(0, 3): 2, (1, 2): 4}
+    Morse indices of the circle: [1, 2, 2, 1]
+Hess(2,3,5,5,5) with a generic circle: 120 fixed points, 5 weights of rank 1
+    underlying matroid classes: 1;  oriented classes: 3;  reorientation classes: 1
+    acyclicity: {'acyclic': 2, 'totally cyclic': 118}
+    index sets: {(0, 5): 2, (1, 4): 34, (2, 3): 84}
+    Morse indices of the circle: [1, 17, 42, 42, 17, 1]
+Hess(2,4,4,5,5) with a generic circle: 120 fixed points, 5 weights of rank 1
+    underlying matroid classes: 1;  oriented classes: 3;  reorientation classes: 1
+    acyclicity: {'acyclic': 2, 'totally cyclic': 118}
+    index sets: {(0, 5): 2, (1, 4): 24, (2, 3): 94}
+    Morse indices of the circle: [1, 12, 47, 47, 12, 1]
+
+== 4. CP^n with a generic subtorus T^k, characters a_0..a_n in Z^k
+CP^3, T^2, characters in convex position: 4 fixed points, 3 weights of rank 2
+    underlying matroid classes: 1;  oriented classes: 1;  reorientation classes: 1
+    acyclicity: {'acyclic': 4}
+    index sets: {(0, 1, 2, 3): 4}
+CP^3, T^2, three characters around a fourth: 4 fixed points, 3 weights of rank 2
+    underlying matroid classes: 1;  oriented classes: 2;  reorientation classes: 1
+    acyclicity: {'acyclic': 3, 'totally cyclic': 1}
+    index sets: {(0, 1, 2, 3): 3, (1, 2): 1}
+CP^4, T^2, pentagon: 5 fixed points, 4 weights of rank 2
+    underlying matroid classes: 1;  oriented classes: 1;  reorientation classes: 1
+    acyclicity: {'acyclic': 5}
+    index sets: {(0, 1, 2, 3, 4): 5}
+    (search over random 7-point configurations in Z^3; most reorientation classes found: 3)
+CP^6, T^3, characters [(8, -4, -6), (9, 9, -3), (2, -6, 8), (-7, 9, -8), (-3, 6, 8), (4, 1, 5), (9, 5, 2)]: 7 fixed points, 6 weights of rank 3
+    underlying matroid classes: 1;  oriented classes: 3;  reorientation classes: 3
+    acyclicity: {'acyclic': 6, 'totally cyclic': 1}
+    index sets: {(0, 1, 2, 3, 4, 5, 6): 6, (1, 2, 3, 4, 5): 1}

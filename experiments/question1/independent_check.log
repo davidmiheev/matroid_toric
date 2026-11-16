@@ -1,0 +1,5 @@
+[PASS] A. faces from the GKM graph = faces {(W_j, c_j)} of Lemma 5.7, with ranks -- 186 pairs (kbar, h), n <= 5
+[PASS] B. #X(F_q) = sum_J q^ind(J)  (formula (2.2)), n = 4, q = 5, 7 -- 72 cases
+[PASS] C. P_Hess(h~) = P_X * prod [k_a]_q!  (Lemma 5.10) -- 2949 pairs (kbar, h), n <= 7
+[PASS] D. data reconstructed by Lemma 5.11 determines the Poincare polynomial -- 2949 pairs fall into 824 classes, n <= 7
+ALL PASS
