@@ -258,7 +258,7 @@ automorphism or the duality `α ↔ α^∨`, which gives a rigidity conjecture g
 "`H*_T(X) ≅ H*_T(X')` up to an automorphism of `T`" was too strong for a Hessenberg variety against an isospectral
 manifold (the twin isomorphism is one of graded rings only) and is corrected in the paper and in thesis v2.
 
-*Status (computations, before the proof):* for regular semisimple Hessenberg varieties with n ≤ 7 (714 functions) the answer is
+*Status (computations, before the proof):* for regular semisimple Hessenberg varieties with 4 ≤ n ≤ 7 (617 functions) the answer is
 **yes**, rigorously: the face poset `Cl(Γ_h)` determines `Γ_h` up to isomorphism (its cover
 invariants separate all 151 graph classes at n = 7), and isomorphic graphs give equal Betti
 numbers (`experiments/question1/`). Partial Hessenberg varieties (2,940 cases with n ≤ 7,
