@@ -116,20 +116,59 @@ Consequences.
   Tutte classes, and why it is not a matroid invariant in general.
 - **What it uses.** The face poset (the faces and their fixed points), the local matroids (the
   Tutte polynomials) and the signs of the weights against one `ξ` (the sets `N_p`). The third
-  ingredient is exactly the oriented datum singled out in Track E: the oriented matroid at each
-  fixed point together with the tope of a common `ξ`. So the formula is not a function of `S(X)`
-  alone; it says precisely which extra structure turns the face poset into Betti numbers.
+  ingredient is the oriented datum singled out in Track E: the oriented matroid at each fixed point
+  together with the tope of a common `ξ`. The *formula* uses the signs; the *value* need not depend on
+  them. See §5: for Hessenberg varieties of types A, D, E the polynomial `e_σ` depends only on
+  `S(X)_{⩽σ}`. An earlier version of this file said that `e_σ` is "not a function of `S(X)` alone";
+  that was wrong for these varieties.
 
 Checked: against the recursion for all 22 connected Hessenberg functions with `n ⩽ 5`; the identity
 for `P_X` on `Fl(C³)`, `Fl(C⁴)`, `Gr(2,4)`, both Track A varieties and `CP³` with a 2-torus;
 independence of `ξ` on `X₁`.
 
+## 5. Does `e_σ` depend only on the face poset? (`e_poset_check.py`)
+
+The question left open in §4 was whether the signs in the formula can be avoided. Checked and answered
+as follows; the paper has the details (Proposition 7.3 and Remark 7.4).
+
+- **Equivalence with Question 1.** By the recursion `e_τ = (q−1)^{−rk τ}(P_{X_τ} − Σ_{σ<τ} (q−1)^{rk σ} e_σ)`,
+  `e_σ` depends only on `S(X)_{⩽σ}` whenever the face poset determines the Betti numbers of all face
+  submanifolds; conversely, if every `e_σ` depends only on `S(X)_{⩽σ}`, so does `P_X`. For a class of
+  actions closed under faces, "`e_σ` without the signs" is the same question as Question 1.
+- **Proof for types A, D, E.** The faces of `Hess(I)` are `(F, wW_F)`; their face submanifolds are GKM
+  manifolds with GKM graph a translate of `Γ(F)`, and their face posets are the intervals
+  `S(X)_{⩽σ}`. The rigidity theorem for simply-laced types (paper, Theorem 6.6, now stated for any set of
+  roots) shows that the interval determines `W_F` and the lines of `F` up to isometry, hence `P_{X_σ}`,
+  hence `e_σ`. So for these varieties `e_σ` is a function of `S(X)_{⩽σ}`: the signs are needed to
+  *compute* it by Theorem 7.1, not to *determine* it.
+- **Computation for all types.** `e_poset_check.py` computes `e` of the face `(I, W_I)` from Theorem 7.1,
+  for every nonempty Hessenberg ideal, and checks that it is independent of `ξ` and constant on the
+  classes of `(|W|, L(I), ν)`, the data read off from the face poset above one fixed point.
+
+| Root systems | Nonempty ideals | `e` independent of `ξ` (3 choices) | Classes of `(|W|, L, ν)` with ≥ 2 ideals | … with two different `e` |
+|---|---|---|---|---|
+| `A₁–A₅, B₂–B₄, C₃, C₄, D₄, G₂` (all ideals) | 427 | yes, all | 122 | **0** |
+| the same, connected ideals only | — | — | 45 | **0** |
+
+  (`e_poset_check.log`; runs for `D₅` and `F₄` are in `e_poset_check_D5.log`, `e_poset_check_F4.log`
+  if they finished.) The non-simply-laced cases `B₂–B₄, C₃, C₄, G₂` are not covered by the proof, so
+  this is new evidence there. The same computation shows that `e` is finer than the Betti numbers: two
+  ideals of `C₃` with `|I| = 4` have the same Poincaré polynomial `1 + 12q + 22q² + 12q³ + q⁴` but
+  `e = q + 9` and `e = q + 7`.
+
+- **Not a function of local data.** `e` is not a function of the matroid `L(I)` alone (paper,
+  Example 7.2(4): `h = (2,3,5,6,6,6)` and `(2,4,5,5,6,6)`, isomorphic graphic matroids, `e` with
+  constant terms 28 and 33).
+- **Open.** A formula for `e_σ` in terms of `S(X)_{⩽σ}` (paper, open question (2)); a proof for types
+  B, C, F₄, G₂.
+
 ## Status
 
 - Atomic experiment: done. Kill criterion: met (§2). Frozen as "glue Chow-type rings".
 - The surviving question, to compute `e_σ`, is answered by the theorem of §4: `e_σ` is a sum of Tutte
-  polynomials `T(1, q)` of the negative parts of the local matroids. What remains open is whether
-  `e_σ` can be computed from `S(X)` without the signs.
+  polynomials `T(1, q)` of the negative parts of the local matroids. For Hessenberg varieties of types
+  A, D, E the result depends only on the face poset (§5); what is open is a formula in terms of the
+  poset, and the other types.
 - Engine: `chow_ring` (plain and augmented, Macaulay2 against the FY basis) and `kazhdan_lusztig`
   (KL polynomial and Z-polynomial), tested against the published values for uniform and braid
   matroids.
