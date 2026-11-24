@@ -150,8 +150,8 @@ as follows; the paper has the details (Proposition 7.3 and Remark 7.4).
 | `A₁–A₅, B₂–B₄, C₃, C₄, D₄, G₂` (all ideals) | 427 | yes, all | 122 | **0** |
 | the same, connected ideals only | — | — | 45 | **0** |
 
-  (`e_poset_check.log`; runs for `D₅` and `F₄` are in `e_poset_check_D5.log`, `e_poset_check_F4.log`
-  if they finished.) The non-simply-laced cases `B₂–B₄, C₃, C₄, G₂` are not covered by the proof, so
+  (`e_poset_check.log`. Runs for `D₅` and `F₄` were started but stopped unfinished after about an
+  hour; run `../../engine/.venv/bin/python e_poset_check.py D5 F4` on a faster machine to extend.) The non-simply-laced cases `B₂–B₄, C₃, C₄, G₂` are not covered by the proof, so
   this is new evidence there. The same computation shows that `e` is finer than the Betti numbers: two
   ideals of `C₃` with `|I| = 4` have the same Poincaré polynomial `1 + 12q + 22q² + 12q³ + q⁴` but
   `e = q + 9` and `e = q + 7`.
