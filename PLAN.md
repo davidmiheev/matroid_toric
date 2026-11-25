@@ -18,7 +18,7 @@ and both are prerequisites for everything downstream. Tracks C–F are research;
 | C — tropical flags | ⏸ frozen (kill criterion met) | `experiments/tropical_flags/RESULTS.md` | only with a geometric correspondence |
 | D — Question 1 | ✅ proved for type A (Theorem C / v2 Theorems 4.35, 4.38) and for **all simply-laced types** (`experiments/question1_lie_types/PROOF.md`); types B, C, F₄, G₂: yes in every case computed, no proof | Theorem A (`Cl_Γ` determines `Γ`) machine-checked in Lean; sweep of all 1,230 ideals in 16 root systems (`experiments/question1_lie_types/RESULTS.md`) | prove the rigidity statement for B, C, F₄, G₂ (angles inside `B₂`- and `G₂`-planes) |
 | E — oriented matroids | atomic experiment done: vacuous for the full torus on homogeneous spaces and Hessenberg varieties (proved), **not** vacuous for subtori | `experiments/oriented/RESULTS.md` | acyclic fixed points = vertices of the moment polytope (proved); open: do the oriented matroids of a generic `T²` determine the Betti numbers? (yes for `n ⩽ 6`) |
-| F — Chow-ring direction | ⏸ frozen: kill criterion met (the dimension count fails for `CP²` for `A`, augmented `A`, `IH`, `OS`) | `experiments/chow/RESULTS.md` | `e_σ` computed: `e_σ = Σ_p T_{M(N_p(σ))}(1, q)` over the fixed points whose negative weights span (proved, `RESULTS.md` §4); open: can the signs be avoided? |
+| F — Chow-ring direction | ⏸ frozen: kill criterion met (the dimension count fails for `CP²` for `A`, augmented `A`, `IH`, `OS`) | `experiments/chow/RESULTS.md` | `e_σ` computed: `e_σ = Σ_p T_{M(N_p(σ))}(1, q)` over the fixed points whose negative weights span (proved, `RESULTS.md` §4); for ADE Hessenberg varieties `e_σ` depends only on `S(X)_{⩽σ}` (paper, Prop. 7.3); open: a formula in terms of the poset |
 | G — Lean | ◐ G1–G7 and Theorem A proved; G8 not started (stretch) | `lake build` clean (18130 jobs); all 183 theorems in `MatroidToric` use only `propext`, `Classical.choice`, `Quot.sound`; no `sorry` | offer G1, G3, G5 upstream; G8 only if the `n = 4` pair evaluates |
 
 ---
@@ -258,7 +258,7 @@ automorphism or the duality `α ↔ α^∨`, which gives a rigidity conjecture g
 "`H*_T(X) ≅ H*_T(X')` up to an automorphism of `T`" was too strong for a Hessenberg variety against an isospectral
 manifold (the twin isomorphism is one of graded rings only) and is corrected in the paper and in thesis v2.
 
-*Status (computations, before the proof):* for regular semisimple Hessenberg varieties with n ≤ 7 (714 functions) the answer is
+*Status (computations, before the proof):* for regular semisimple Hessenberg varieties with 4 ≤ n ≤ 7 (617 functions) the answer is
 **yes**, rigorously: the face poset `Cl(Γ_h)` determines `Γ_h` up to isomorphism (its cover
 invariants separate all 151 graph classes at n = 7), and isomorphic graphs give equal Betti
 numbers (`experiments/question1/`). Partial Hessenberg varieties (2,940 cases with n ≤ 7,

@@ -1,0 +1,45 @@
+A1: 1 nonempty ideals
+A2: 4 nonempty ideals
+A3: 13 nonempty ideals
+A4: 41 nonempty ideals
+A5: 131 nonempty ideals
+B2: 5 nonempty ideals
+G2: 7 nonempty ideals
+B3: 19 nonempty ideals
+C3: 19 nonempty ideals
+D4: 49 nonempty ideals
+B4: 69 nonempty ideals
+C4: 69 nonempty ideals
+[PASS] 1. e independent of xi: 427 ideals, 0 with xi-dependence
+[PASS] 2. connected ideals: 132 classes of (|W|, L, nu), 45 with more than one ideal, 0 with two different e
+[PASS] 2. all ideals: 224 classes of (|W|, L, nu), 122 with more than one ideal, 0 with two different e
+
+Examples of e for the identity face (connected ideals):
+    A3  |I|= 3  e = (1,)   P = (1, 11, 11, 1)
+    A3  |I|= 4  e = (5, 1)   P = (1, 6, 10, 6, 1)
+    A3  |I|= 4  e = (5, 1)   P = (1, 6, 10, 6, 1)
+    A3  |I|= 5  e = (15, 6, 1)   P = (1, 3, 8, 8, 3, 1)
+    A3  |I|= 6  e = (33, 20, 6, 1)   P = (1, 3, 5, 6, 5, 3, 1)
+    B2  |I|= 2  e = (1,)   P = (1, 6, 1)
+    B2  |I|= 3  e = (5, 1)   P = (1, 3, 3, 1)
+    B2  |I|= 4  e = (9, 4, 1)   P = (1, 2, 2, 2, 1)
+    G2  |I|= 2  e = (1,)   P = (1, 10, 1)
+    G2  |I|= 3  e = (7, 1)   P = (1, 5, 5, 1)
+    G2  |I|= 4  e = (13, 5, 1)   P = (1, 3, 4, 3, 1)
+    G2  |I|= 5  e = (19, 10, 4, 1)   P = (1, 2, 3, 3, 2, 1)
+    G2  |I|= 6  e = (25, 16, 9, 4, 1)   P = (1, 2, 2, 2, 2, 2, 1)
+    B3  |I|= 3  e = (1,)   P = (1, 23, 23, 1)
+    B3  |I|= 4  e = (7, 1)   P = (1, 10, 26, 10, 1)
+    B3  |I|= 4  e = (7, 1)   P = (1, 12, 22, 12, 1)
+    B3  |I|= 5  e = (25, 8, 1)   P = (1, 5, 18, 18, 5, 1)
+    B3  |I|= 5  e = (15, 5, 1)   P = (1, 8, 15, 15, 8, 1)
+    B3  |I|= 6  e = (41, 20, 6, 1)   P = (1, 3, 11, 18, 11, 3, 1)
+    B3  |I|= 6  e = (61, 32, 8, 1)   P = (1, 5, 11, 14, 11, 5, 1)
+    C3  |I|= 3  e = (1,)   P = (1, 23, 23, 1)
+    C3  |I|= 4  e = (9, 1)   P = (1, 12, 22, 12, 1)
+    C3  |I|= 4  e = (7, 1)   P = (1, 12, 22, 12, 1)
+    C3  |I|= 5  e = (23, 7, 1)   P = (1, 4, 19, 19, 4, 1)
+    C3  |I|= 5  e = (15, 5, 1)   P = (1, 8, 15, 15, 8, 1)
+    C3  |I|= 6  e = (41, 20, 6, 1)   P = (1, 3, 11, 18, 11, 3, 1)
+    C3  |I|= 6  e = (55, 29, 7, 1)   P = (1, 4, 11, 16, 11, 4, 1)
+ALL PASS

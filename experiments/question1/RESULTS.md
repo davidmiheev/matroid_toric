@@ -6,7 +6,7 @@ imply equal Betti numbers?
 > **Update: now proved for all n** (`PROOF.md`; thesis v2, Theorems 4.35 and 4.38). The
 > computations below came first and motivated the proof. They remain as independent evidence.
 
-**Result: yes, within this family, for all n ≤ 7 (714 Hessenberg functions).** Partial
+**Result: yes, within this family, for all 4 ≤ n ≤ 7 (617 Hessenberg functions; see `hessenberg_q1.log`).** Partial
 Hessenberg varieties are treated in the second half of this file. In this family
 the face poset determines the graph `Γ_h` up to isomorphism, and the graph determines the
 Betti numbers.

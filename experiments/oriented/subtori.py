@@ -191,7 +191,15 @@ def main():
                 return sum(1 for v in groups.values() if len({P for _, P in v}) > 1)
             nP = len({P for v in by_words.values() for _, P in v})
             print(f"n = {n}, characters {a}: {count} connected Hessenberg functions, {nP} Poincare polynomials")
-            print(f"    multiset of words:        {len(by_words)} classes, {amb(by_words)} with more than one Poincare polynomial")
+            hs = [h for h in hessenberg_functions(n) if not any(h[j] == j + 1 for j in range(n - 1))]
+            edges_of = {h: frozenset((j, i) for j in range(n) for i in range(j + 1, h[j])) for h in hs}
+            rev = {h: next(g for g in hs if edges_of[g] == frozenset((n - 1 - i, n - 1 - j) for j, i in edges_of[h]))
+                   for h in hs}
+            orbits = {frozenset({h, rev[h]}) for h in hs}
+            same = {frozenset(h for h, _ in v) for v in by_words.values()} == orbits
+            ok &= same
+            print(f"    multiset of words:        {len(by_words)} classes, {amb(by_words)} with more than one Poincare polynomial;"
+                  f" classes = orbits of h under reversal: {same}")
             print(f"    multiset of index sets:   {len(by_idx)} classes, {amb(by_idx)} ambiguous")
             print(f"    dim and number of vertices: {len(by_acyc)} classes, {amb(by_acyc)} ambiguous")
             if n == 5:
